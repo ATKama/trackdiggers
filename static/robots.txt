@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trackdiggers.netlify.app/sitemap-index.xml
