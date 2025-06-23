@@ -37,7 +37,8 @@
     "react-icons": "^3.9.0",
     "react-router-dom": "^5.1.2",
     "react-router-hash-link": "^1.2.2",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "tarteaucitronjs": "^1.21.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

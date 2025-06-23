@@ -160,7 +160,7 @@ export default (() => {
 					font-weight="700"
 					margin-bottom="8px"
 				>
-					Découvrir le moteur TrackDigger
+					Découvrir le moteur TrackDiggers
 				</Link>
 				<Link
 					href="https://airtable.com/app6jjhoCkgO9tcDB/paghHyRTIs9FHxMBq/form"

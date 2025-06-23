@@ -206,122 +206,39 @@ export default (() => {
 				Politique de confidentialité
 			</Text>
 			{"  "}
-			<Text font="--base" color="--dark">
-				Trackdiggers collecte certaines données personnelles dans le cadre de son fonctionnement, notamment via :
-				<br />
-				<Strong
-					overflow-wrap="normal"
-					word-break="normal"
-					white-space="normal"
-					text-indent="0"
-					text-overflow="clip"
-					hyphens="manual"
-					user-select="auto"
-					pointer-events="auto"
-				>
-					L’adresse e-mail
-				</Strong>
-				, utilisée :
-				<br />
-				Lors de la soumission de morceaux par les artistes,
-				<br />
-				Lors de la demande de cartes collectors par les utilisateurs (une seule par jour).
-				<br />
-				<Strong
-					overflow-wrap="normal"
-					word-break="normal"
-					white-space="normal"
-					text-indent="0"
-					text-overflow="clip"
-					hyphens="manual"
-					user-select="auto"
-					pointer-events="auto"
-				>
-					Les morceaux sélectionnés
-				</Strong>
-				{" "}lors d’une commande de cartes, à des fins d’archivage et de traçabilité.
-				<br />
-				<Strong
-					overflow-wrap="normal"
-					word-break="normal"
-					white-space="normal"
-					text-indent="0"
-					text-overflow="clip"
-					hyphens="manual"
-					user-select="auto"
-					pointer-events="auto"
-				>
-					L’utilisation éventuelle d’outils de mesure d’audience
-				</Strong>
-				{" "}(type Umami, Matomo ou Google Analytics), pour améliorer l’expérience utilisateur.
-				<br />
-				Les données collectées servent uniquement à assurer :
-				<br />
-				Le bon fonctionnement du site (modération, validation, personnalisation des cartes, envoi automatique),
-				<br />
-				L’amélioration continue des services proposés.
-				<br />
-				Aucune donnée personnelle n’est revendue ni partagée avec des tiers extérieurs à Trackdiggers.
-				<br />
-				Les informations sont stockées sur des bases de données sécurisées (type Google Sheets, Airtable) et traitées automatiquement via des outils comme{" "}
-				<Strong
-					overflow-wrap="normal"
-					word-break="normal"
-					white-space="normal"
-					text-indent="0"
-					text-overflow="clip"
-					hyphens="manual"
-					user-select="auto"
-					pointer-events="auto"
-				>
-					n8n
-				</Strong>
-				{" "}hébergé sur{" "}
-				<Strong
-					overflow-wrap="normal"
-					word-break="normal"
-					white-space="normal"
-					text-indent="0"
-					text-overflow="clip"
-					hyphens="manual"
-					user-select="auto"
-					pointer-events="auto"
-				>
-					Hetzner
-				</Strong>
-				, dans l’Union européenne.
-				<br />
-				Les{" "}
-				<Strong
-					overflow-wrap="normal"
-					word-break="normal"
-					white-space="normal"
-					text-indent="0"
-					text-overflow="clip"
-					hyphens="manual"
-					user-select="auto"
-					pointer-events="auto"
-				>
-					plateformes externes intégrées
-				</Strong>
-				{" "}comme YouTube, Spotify ou SoundCloud peuvent quant à elles collecter des données selon leurs propres politiques, indépendamment de Trackdiggers.
-				<br />
-				Les cartes collectors générées via le site sont **gratuites, non transférables** et n’impliquent **aucune transaction commerciale**. Elles sont uniquement destinées à l’usage personnel des utilisateurs.
-				<br />
-				Conformément au RGPD, chaque utilisateur peut demander à consulter, rectifier ou supprimer ses données à tout moment en écrivant à :{" "}
-				<Strong
-					overflow-wrap="normal"
-					word-break="normal"
-					white-space="normal"
-					text-indent="0"
-					text-overflow="clip"
-					hyphens="manual"
-					user-select="auto"
-					pointer-events="auto"
-				>
-					contact@atkmusic.fr
-				</Strong>
-			</Text>
+	<Text font="--base" color="--dark">
+	Trackdiggers collecte certaines données personnelles dans le cadre de son fonctionnement, notamment :
+	<br />
+	<Strong>L’adresse e-mail</Strong>, utilisée :
+	<br />
+	– Lors de la soumission de morceaux par les artistes,  
+	<br />
+	– Lors de la demande de cartes collectors par les utilisateurs (une seule par jour),  
+	<br />
+	– Et, si l’utilisateur y consent explicitement, pour l’envoi occasionnel de nouveautés ou contenus exclusifs liés à Trackdiggers.
+	<br />
+	<Strong>Les morceaux sélectionnés</Strong> lors d’une commande de cartes, à des fins d’archivage, de personnalisation et de traçabilité.
+	<br />
+	<Strong>L’utilisation éventuelle d’outils de mesure d’audience</Strong> (type Umami, Matomo ou Google Analytics), afin d’améliorer l’expérience utilisateur.
+	<br /><br />
+	Les données collectées servent uniquement à assurer :
+	<br />
+	– Le bon fonctionnement du site (modération, validation, personnalisation des cartes, envoi automatique),  
+	<br />
+	– L’amélioration continue des services proposés,  
+	<br />
+	– Et, uniquement en cas de consentement explicite, l’envoi de communications liées à Trackdiggers (nouveaux contenus, fonctionnalités, etc.).
+	<br /><br />
+	Aucune donnée personnelle n’est revendue ni partagée avec des tiers extérieurs à Trackdiggers.
+	<br />
+	Les informations sont stockées sur des bases de données sécurisées (type Google Sheets, Airtable) et traitées automatiquement via des outils comme <Strong>n8n</Strong> hébergé sur <Strong>Hetzner</Strong>, dans l’Union européenne.
+	<br />
+	Les <Strong>plateformes externes intégrées</Strong> comme YouTube, Spotify ou SoundCloud peuvent quant à elles collecter des données selon leurs propres politiques, indépendamment de Trackdiggers.
+	<br /><br />
+	Les cartes collectors générées via le site sont <Strong>gratuites, non transférables</Strong> et n’impliquent <Strong>aucune transaction commerciale</Strong>. Elles sont uniquement destinées à l’usage personnel des utilisateurs.
+	<br /><br />
+	Conformément au <Strong>RGPD</Strong>, chaque utilisateur peut demander à consulter, rectifier ou supprimer ses données à tout moment en écrivant à : <Strong>contact@atkmusic.fr</Strong>
+</Text>
 		</Section>
 		<Section padding="80px 0 40px 0" quarkly-title="Conditions d'utilisation">
 			<Override

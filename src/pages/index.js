@@ -102,7 +102,7 @@ export default (() => {
 						margin="0 6px 0 0"
 						display="inline-block"
 					>
-						TrackDigger
+						TrackDiggers
 					</Text>
 					c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. Décris ton mood, on te balance les trois morceaux qui match le mieux !
 				</Text>
@@ -149,20 +149,112 @@ export default (() => {
 				</Box>
 				{"  "}
 				<Box
-					width="50%"
-					padding="8px 8px 8px 8px"
-					lg-width="100%"
-					sm-background="#f0f0f0"
-					sm-border-radius="12px"
-					sm-padding="16px"
-					sm-margin="0px auto 40px auto"
-					sm-max-width="700px"
-					sm-text-align="center"
-				>
-					<div dangerouslySetInnerHTML={{
-						"__html": "<form style=\"display:grid; gap:16px;\" onsubmit=\"event.preventDefault(); const form = this; const email = form.email.value; const track1 = form.track1.value; const track2 = form.track2.value; const track3 = form.track3.value; fetch('https://n8n.atkmusic.fr/webhook/receive-pack-request', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ email, track1, track2, track3 }) }).then(res => { if(res.ok) { alert('🎉 Pack envoyé avec succès !'); } else { alert('❌ Une erreur est survenue.'); } }).catch(() => alert('❌ Problème réseau.'));\">\n    <label style=\"display:flex; flex-direction:column; width:100%;\">\n      <span style=\"margin-bottom:4px; color: #000;\">Ton adresse e-mail :</span>\n      <input type=\"email\" name=\"email\" required style=\"width:100%; padding:8px;\" />\n    </label>\n    <input type=\"hidden\" name=\"track1\" id=\"track1\" value=\"\" />\n    <input type=\"hidden\" name=\"track2\" id=\"track2\" value=\"\" />\n    <input type=\"hidden\" name=\"track3\" id=\"track3\" value=\"\" />\n    <button type=\"submit\" style=\"padding: 10px 20px; background:#000; color:#fff; border-radius:8px; font-weight:bold; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;\">Réclamer mon pack 🎁</button>\n    <a href=\"/cartes\" style=\"padding: 10px 20px; background:#000; color:#fff; border-radius:8px; font-weight:bold; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); display:inline-block; text-align:center; text-decoration:none; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease; margin-top: 12px;\" onmouseover=\"this.style.background='#333'; this.style.boxShadow='0px 6px 18px rgba(255,255,255,0.2)'; this.style.transform='scale(1.05)'\" onmouseout=\"this.style.background='#000'; this.style.boxShadow='0px 4px 12px rgba(0,0,0,0.3)'; this.style.transform='scale(1)'\">Voir mes cartes</a>\n  </form>"
-					}} />
-				</Box>
+	width="50%"
+	padding="8px 8px 8px 8px"
+	lg-width="100%"
+	sm-background="#f0f0f0"
+	sm-border-radius="12px"
+	sm-padding="16px"
+	sm-margin="0px auto 40px auto"
+	sm-max-width="700px"
+	sm-text-align="center"
+>
+	<form
+	style={{ display: "grid", gap: "16px" }}
+	onSubmit={async (e) => {
+		e.preventDefault();
+		const form = e.target;
+		const email = form.email.value;
+		const track1 = form.track1.value;
+		const track2 = form.track2.value;
+		const track3 = form.track3.value;
+		const consentCartes = form.consentCartes.checked;
+		const consentNews = form.consentNews.checked;
+
+		const output = document.getElementById("pack-result");
+		output.innerHTML = "⏳ Traitement en cours...";
+
+		if (!consentCartes) {
+			output.innerHTML = "❌ Tu dois accepter de recevoir les cartes par e-mail.";
+			return;
+		}
+
+		try {
+			const response = await fetch("https://n8n.atkmusic.fr/webhook/receive-pack-request", {
+				method: "POST",
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				body: new URLSearchParams({
+					email,
+					track1,
+					track2,
+					track3,
+					consentCartes,
+					consentNews,
+				}),
+			});
+
+			const text = await response.text();
+
+			if (response.status === 409) {
+				output.innerHTML = `⛔️ Tu as déjà réclamé un pack aujourd’hui.<br><br>👉 <a href="https://trackdiggers.pages.dev/cartes" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`;
+			} else if (response.status >= 200 && response.status < 300) {
+				output.innerHTML = `🎉 Ton pack a bien été envoyé !<br><br>👉 <a href="https://trackdiggers.pages.dev/cartes" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`;
+			} else {
+				output.innerHTML = `❌ Erreur inattendue (${response.status}) : ${text}`;
+			}
+		} catch (error) {
+			output.innerHTML = "❌ Problème réseau. Vérifie ta connexion.";
+		}
+	}}
+>
+	<label style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+		<span style={{ marginBottom: "4px", color: "#000" }}>Ton adresse e-mail :</span>
+		<input type="email" name="email" required style={{ width: "100%", padding: "8px" }} />
+	</label>
+	<input type="hidden" name="track1" id="track1" value="" />
+	<input type="hidden" name="track2" id="track2" value="" />
+	<input type="hidden" name="track3" id="track3" value="" />
+	<label style={{ fontSize: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
+		<input type="checkbox" name="consentCartes" required /> J'accepte de recevoir mes cartes Trackdiggers par e-mail
+	</label>
+	<label style={{ fontSize: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
+		<input type="checkbox" name="consentNews" /> Je souhaite recevoir des nouveautés Trackdiggers
+	</label>
+	<a href="/informations-legales" style={{ fontSize: "12px", color: "#666" }}>Voir la politique de confidentialité</a>
+	<button
+		type="submit"
+		style={{
+			padding: "10px 20px",
+			background: "#000",
+			color: "#fff",
+			borderRadius: "8px",
+			fontWeight: "bold",
+			boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.3)",
+			transition: "transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease"
+		}}
+	>
+		Réclamer mon pack 🎁
+	</button>
+</form>
+
+{/* 🔽 Ce bloc doit être placé juste en dessous du formulaire pour afficher le résultat */}
+<div
+	id="pack-result"
+	style={{
+		marginTop: "1rem",
+		background: "#fff",
+		padding: "1rem",
+		borderRadius: "8px",
+		border: "1px solid #ccc",
+		textAlign: "center",
+		color: "#000",
+		fontSize: "14px"
+	}}
+	dangerouslySetInnerHTML={{
+		__html: `👉 <a href="https://trackdiggers.pages.dev/cartes" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`
+	}}
+></div>
+</Box>
 			</Box>
 		</Section>
 		<Section padding="80px 0" sm-padding="0px 0 0px 0">

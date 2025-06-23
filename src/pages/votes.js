@@ -93,7 +93,7 @@ export default (() => {
 				sm-margin="0px auto 40px auto"
 			>
 				<Text font="--lead" color="--dark" margin="0" display="inline">
-					Tu veux faire bouger les sélections TrackDigger ?
+					C'est toi qui sélectionne les morceaux TrackDiggers
 					<br />
 					<br />
 					Découvre les morceaux proposés par la communauté et vote pour ceux que tu veux entendre dans la prochaine playlist.

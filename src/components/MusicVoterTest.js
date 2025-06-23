@@ -233,16 +233,19 @@ const MusicVoterTest = () => {
 				key={p["CUSTOM ID"]}
 				id={`sound-${p["CUSTOM ID"]}`}
 				style={{
-					display: "flex",
-					flexDirection: "column",
-					border: "1px solid #222",
-					backgroundColor: "#161616",
-					boxShadow: "0 0 0 1px #2a2a2a inset, 0 2px 6px rgba(0,0,0,0.8)",
-					padding: "1rem",
-					borderRadius: "8px",
-					transition: "transform 0.2s ease, box-shadow 0.2s ease",
-					cursor: "pointer"
-				}}
+	display: "flex",
+	flexDirection: "column",
+	border: "1px solid #222",
+	backgroundColor: "#161616",
+	boxShadow: "0 0 0 1px #2a2a2a inset, 0 2px 6px rgba(0,0,0,0.8)",
+	padding: "1rem",
+	borderRadius: "8px",
+	transition: "transform 0.2s ease, box-shadow 0.2s ease",
+	cursor: "pointer",
+	willChange: "transform, box-shadow",
+	backfaceVisibility: "hidden",
+	transform: "translateZ(0)"
+}}
 				onMouseEnter={e => {
 					e.currentTarget.style.transform = "scale(1.03)";
 					e.currentTarget.style.boxShadow = "0 4px 12px rgba(255,255,255,0.2)";
