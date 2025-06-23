@@ -219,20 +219,22 @@ export default (() => {
 	<br />
 	<Strong>Les morceaux sélectionnés</Strong> lors d’une commande de cartes, à des fins d’archivage, de personnalisation et de traçabilité.
 	<br />
-	<Strong>L’utilisation éventuelle d’outils de mesure d’audience</Strong> (type Umami, Matomo ou Google Analytics), afin d’améliorer l’expérience utilisateur.
-	<br /><br />
-	Les données collectées servent uniquement à assurer :
-	<br />
-	– Le bon fonctionnement du site (modération, validation, personnalisation des cartes, envoi automatique),  
-	<br />
-	– L’amélioration continue des services proposés,  
-	<br />
-	– Et, uniquement en cas de consentement explicite, l’envoi de communications liées à Trackdiggers (nouveaux contenus, fonctionnalités, etc.).
-	<br /><br />
-	Aucune donnée personnelle n’est revendue ni partagée avec des tiers extérieurs à Trackdiggers.
-	<br />
-	Les informations sont stockées sur des bases de données sécurisées (type Google Sheets, Airtable) et traitées automatiquement via des outils comme <Strong>n8n</Strong> hébergé sur <Strong>Hetzner</Strong>, dans l’Union européenne.
-	<br />
+<Strong>L’utilisation éventuelle d’outils de mesure d’audience</Strong> (type Umami, Matomo ou Google Analytics), afin d’améliorer l’expérience utilisateur.
+<br /><br />
+Les données collectées servent uniquement à assurer :
+<br />
+– Le bon fonctionnement du site (modération, validation, personnalisation des cartes, envoi automatique),  
+<br />
+– L’amélioration continue des services proposés,  
+<br />
+– Et, uniquement en cas de consentement explicite, l’envoi de communications liées à Trackdiggers (nouveaux contenus, fonctionnalités, etc.).
+<br />
+Il est également possible d’envoyer des emails informatifs aux utilisateurs ayant réclamé un pack, lorsque ces messages concernent des services similaires. Chaque email inclut un lien de désinscription permettant de s’opposer à tout moment à ces envois.
+<br /><br />
+Aucune donnée personnelle n’est revendue ni partagée avec des tiers extérieurs à Trackdiggers.
+<br />
+Les informations sont stockées sur des bases de données sécurisées (type Google Sheets, Airtable) et traitées automatiquement via des outils comme <Strong>n8n</Strong> hébergé sur <Strong>Hetzner</Strong>, dans l’Union européenne.
+<br />
 	Les <Strong>plateformes externes intégrées</Strong> comme YouTube, Spotify ou SoundCloud peuvent quant à elles collecter des données selon leurs propres politiques, indépendamment de Trackdiggers.
 	<br /><br />
 	Les cartes collectors générées via le site sont <Strong>gratuites, non transférables</Strong> et n’impliquent <Strong>aucune transaction commerciale</Strong>. Elles sont uniquement destinées à l’usage personnel des utilisateurs.
@@ -287,6 +289,10 @@ export default (() => {
 					Limites de responsabilité
 				</Strong>
 				{" "}: Trackdiggers est proposé “tel quel”, sans garantie de disponibilité continue. L’algorithme repose sur une interprétation subjective des émotions musicales. Le service peut être modifié, suspendu ou interrompu à tout moment.
+				<Strong>
+					Emails informatifs
+				</Strong> 
+				{" "}: En réclamant un pack sur Trackdiggers, l’utilisateur accepte de recevoir occasionnellement des emails informatifs en lien avec le service (nouveaux packs, fonctionnalités, rappels). Ces emails incluent toujours un lien de désinscription. L’utilisateur peut s’opposer à tout moment à leur réception via ce lien ou en contactant contact@atkmusic.fr.
 				<br />
 				<br />
 				<br />

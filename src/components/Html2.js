@@ -1,3 +1,4 @@
+/* global gtag */
 import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
 import atomize from "@quarkly/atomize";
 
@@ -107,7 +108,13 @@ const EmbedHTML = ({
 		form.addEventListener("submit", async function (e) {
 			e.preventDefault();
 			const mood = form.querySelector("#mood").value;
-			window.startAuralinkLoading && window.startAuralinkLoading();
+
+	// 🔹 Événement GA - recherche mood
+	if (typeof gtag !== "undefined") {
+		gtag('event', 'mood_search', {
+			mood_text: mood
+		});
+	}window.startAuralinkLoading && window.startAuralinkLoading();
 			const res = await fetch("https://n8n.atkmusic.fr/webhook/74886902-8e06-4662-89d6-6a92561ac9f7", {
 				method: "POST",
 				headers: {
