@@ -17,7 +17,8 @@ export default (() => {
         <meta property="og:title" content="Trackdiggers — bêta testeurs" />
         <meta property="og:description" content="Rejoins notre communauté d’explorateurs musicaux et accède aux fonctionnalités exclusives avant tout le monde." />
         <meta property="og:image" content="https://uploads.quarkly.io/682f25cf9335410018cc8538/images/TrackDigger_BetaCover.png" />
-      </Helmet>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
+     crossorigin="anonymous"></script></Helmet>
 
       <Section padding="64px 0" background="#ffffff">
         <Override slot="SectionContent" max-width="900px" margin="0 auto" text-align="center" />

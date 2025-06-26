@@ -23,7 +23,8 @@ export default (() => {
 			<link rel={"apple-touch-startup-image"} href={"https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20%2864%20x%2064%20px%29.png?v=2025-06-21T16:50:26.362Z"} />
 			<meta name={"msapplication-TileImage"} content={"https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20%2864%20x%2064%20px%29.png?v=2025-06-21T16:50:26.362Z"} />
 			<meta name={"msapplication-TileColor"} content={"#000000"} />
-		</Helmet>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
+     crossorigin="anonymous"></script></Helmet>
 		<Section
 			padding="0px 0 16px 0"
 			quarkly-title="Header"
@@ -237,6 +238,12 @@ Les informations sont stockées sur des bases de données sécurisées (type Goo
 <br />
 	Les <Strong>plateformes externes intégrées</Strong> comme YouTube, Spotify ou SoundCloud peuvent quant à elles collecter des données selon leurs propres politiques, indépendamment de Trackdiggers.
 	<br /><br />
+<Strong>Publicités Google AdSense</Strong> : Trackdiggers utilise le service Google AdSense pour afficher des publicités ciblées. Ce service peut déposer des cookies ou collecter certaines données personnelles via des scripts tiers, dans le respect de la politique de confidentialité de Google. 
+<br />
+L’affichage de ces publicités est soumis au <Strong>consentement explicite</Strong> de l’utilisateur via la bannière de gestion des cookies (Tarteaucitron.js). 
+<br />
+Les utilisateurs peuvent à tout moment gérer ou retirer leur consentement dans la section “Gestion des cookies” disponible en bas de page.
+<br /><br />
 	Les cartes collectors générées via le site sont <Strong>gratuites, non transférables</Strong> et n’impliquent <Strong>aucune transaction commerciale</Strong>. Elles sont uniquement destinées à l’usage personnel des utilisateurs.
 	<br /><br />
 	Conformément au <Strong>RGPD</Strong>, chaque utilisateur peut demander à consulter, rectifier ou supprimer ses données à tout moment en écrivant à : <Strong>contact@atkmusic.fr</Strong>

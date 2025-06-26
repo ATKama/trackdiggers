@@ -361,7 +361,8 @@ const MusicVoterTest = () => {
 						                Partage
               
 					</button>
-					<button
+					{false && (
+						<button
   onClick={() => {
     localStorage.removeItem("votedForever");
     setVotedIds([]);
@@ -380,6 +381,7 @@ const MusicVoterTest = () => {
 >
   🔁 Réinitialiser mes votes
 </button>
+)}
 					            
 				</div>
 				          

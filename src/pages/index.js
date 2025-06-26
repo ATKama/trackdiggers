@@ -23,7 +23,8 @@ export default (() => {
 			<link rel={"apple-touch-startup-image"} href={"https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20%2864%20x%2064%20px%29.png?v=2025-06-21T16:50:26.362Z"} />
 			<meta name={"msapplication-TileImage"} content={"https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20%2864%20x%2064%20px%29.png?v=2025-06-21T16:50:26.362Z"} />
 			<meta name={"msapplication-TileColor"} content={"#000000"} />
-		</Helmet>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
+     crossorigin="anonymous"></script></Helmet>
 		<Section
 			padding="0px 0 16px 0"
 			quarkly-title="Header"
@@ -109,7 +110,7 @@ export default (() => {
 			</Box>
 			<Components.Html2 sm-padding="0px" sm-margin="-50px 0px 0px 0px" margin="0px 0px 0px 0px" />
 		</Section>
-		<Section
+		{false && (<Section
   quarkly-title="Affiliation Sovrn"
   background="--color-light"
   padding="24px 0"
@@ -136,7 +137,7 @@ export default (() => {
   >
     🎧 Découvrez notre sélection audio exclusive
   </Link>
-</Section>
+</Section>)}
 		<Section background="--color-light" color="--dark" padding="64px 0 64px 0">
 			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff">
 				{"  "}

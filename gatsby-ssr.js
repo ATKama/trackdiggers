@@ -97,8 +97,11 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
               moreInfoLink: true,
               useExternalCss: false,
               useExternalJs: false,
-              googleConsentMode: true
+              googleConsentMode: true,
             });
+tarteaucitron.user.adsensecapub = "ca-pub-1398071244867525"; // ton identifiant
+tarteaucitron.job = tarteaucitron.job || [];
+tarteaucitron.job.push("adsenseauto");
 
             tarteaucitron.user.gtagUa = "G-GGZH8XN7JV";
             tarteaucitron.job = tarteaucitron.job || [];
