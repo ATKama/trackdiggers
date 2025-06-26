@@ -92,9 +92,13 @@ const MusicVoterTest = () => {
 
 			if (res.ok) {
 				const data = await res.json();
-				setPropositions(prev => prev.map(p => p["CUSTOM ID"] === customID ? { ...p,
-					votes: data.votes
-				} : p));
+				setPropositions(prev =>
+  prev.map(p =>
+    p["CUSTOM ID"] === customID
+      ? { ...p, votes: Number(data.votes || 0) }
+      : p
+  )
+);
 				const updatedVotes = [...storedVotes, customID];
 				localStorage.setItem("votedForever", JSON.stringify(updatedVotes));
 			} else {
@@ -337,7 +341,7 @@ const MusicVoterTest = () => {
 					</button>
 					              
 					<button onClick={() => {
-						const shareUrl = `https://trackdigger.netlify.app/votes?soundID=${p["CUSTOM ID"]}`;
+						const shareUrl = `https://trackdiggers.pages.dev/votes?soundID=${p["CUSTOM ID"]}`;
 						const shareData = {
 							title: `${p.artist} – ${p.title}`,
 							text: "Vote pour ce son sur TrackDigger 🎧",
@@ -357,6 +361,25 @@ const MusicVoterTest = () => {
 						                Partage
               
 					</button>
+					<button
+  onClick={() => {
+    localStorage.removeItem("votedForever");
+    setVotedIds([]);
+    alert("Votes réinitialisés (uniquement côté local).");
+  }}
+  style={{
+    marginTop: "2rem",
+    padding: "10px",
+    backgroundColor: "#f44336",
+    color: "#fff",
+    border: "none",
+    borderRadius: "6px",
+    fontWeight: "bold",
+    cursor: "pointer"
+  }}
+>
+  🔁 Réinitialiser mes votes
+</button>
 					            
 				</div>
 				          

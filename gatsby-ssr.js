@@ -18,6 +18,16 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
       rel="stylesheet"
       href="/tarteaucitron/tarteaucitron.css"
     />,
+      <style
+      key="global-font-style"
+      dangerouslySetInnerHTML={{
+        __html: `
+          html, body, #___gatsby, #___gatsby > div {
+            font-family: 'Black Ops One', sans-serif !important;
+          }
+        `,
+      }}
+    />,
   ]);
 
   setPostBodyComponents([

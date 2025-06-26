@@ -289,10 +289,11 @@ Les informations sont stockées sur des bases de données sécurisées (type Goo
 					Limites de responsabilité
 				</Strong>
 				{" "}: Trackdiggers est proposé “tel quel”, sans garantie de disponibilité continue. L’algorithme repose sur une interprétation subjective des émotions musicales. Le service peut être modifié, suspendu ou interrompu à tout moment.
+				<br />
 				<Strong>
 					Emails informatifs
 				</Strong> 
-				{" "}: En réclamant un pack sur Trackdiggers, l’utilisateur accepte de recevoir occasionnellement des emails informatifs en lien avec le service (nouveaux packs, fonctionnalités, rappels). Ces emails incluent toujours un lien de désinscription. L’utilisateur peut s’opposer à tout moment à leur réception via ce lien ou en contactant contact@atkmusic.fr.
+				{" "}: En cas de consentement explicite, l’utilisateur accepte de recevoir occasionnellement des emails informatifs en lien avec le service (nouveaux packs, fonctionnalités, rappels). Ces emails incluent toujours un lien de désinscription. L’utilisateur peut s’opposer à tout moment à leur réception via ce lien ou en contactant contact@atkmusic.fr.
 				<br />
 				<br />
 				<br />

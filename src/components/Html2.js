@@ -115,7 +115,7 @@ const EmbedHTML = ({
 			mood_text: mood
 		});
 	}window.startAuralinkLoading && window.startAuralinkLoading();
-			const res = await fetch("https://n8n.atkmusic.fr/webhook/74886902-8e06-4662-89d6-6a92561ac9f7", {
+			const res = await fetch("https://n8n.atkmusic.fr/webhook/0760f2ba-0b65-46f5-b5fa-2deb23ac1d66", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -174,7 +174,7 @@ const EmbedHTML = ({
 			const track1 = form.track1.value;
 			const track2 = form.track2.value;
 			const track3 = form.track3.value;
-			fetch("https://n8n.atkmusic.fr/webhook-test/receive-pack-request", {
+			fetch("https://n8n.atkmusic.fr/webhook/receive-pack-request", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded"

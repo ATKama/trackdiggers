@@ -109,6 +109,34 @@ export default (() => {
 			</Box>
 			<Components.Html2 sm-padding="0px" sm-margin="-50px 0px 0px 0px" margin="0px 0px 0px 0px" />
 		</Section>
+		<Section
+  quarkly-title="Affiliation Sovrn"
+  background="--color-light"
+  padding="24px 0"
+>
+  <Override
+    slot="SectionContent"
+    display="flex"
+    justify-content="center"
+    align-items="center"
+    padding="0 20px"
+  />
+  <Link
+    href="https://sovrn.co/1oaipfo"
+    text-decoration="none"
+    font="--lead"
+    padding="12px 24px"
+    border-radius="8px"
+    background="#000"
+    color="#fff"
+    transition="transform 0.2s ease"
+    hover-transform="scale(1.05)"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    🎧 Découvrez notre sélection audio exclusive
+  </Link>
+</Section>
 		<Section background="--color-light" color="--dark" padding="64px 0 64px 0">
 			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff">
 				{"  "}
