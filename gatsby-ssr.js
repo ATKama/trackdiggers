@@ -26,6 +26,7 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
         __html: `
           html, body, #___gatsby, #___gatsby > div {
             font-family: 'Black Ops One', sans-serif !important;
+            overflow-x: hidden; /* ✅ Ajout ici */
           }
         `,
       }}

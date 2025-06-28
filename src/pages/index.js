@@ -75,70 +75,248 @@ export default (() => {
 			border-width="0px"
 		>
 			<Override
-				slot="SectionContent"
-				display="flex"
-				flex-direction="column"
-				align-items="center"
-				justify-content="center"
-				padding="80px 20px 0px 20px"
-				max-width="1200px"
-				margin="0 auto"
-			/>
-			<Box
-				background="#f0f0f0"
-				padding="16px"
-				border-radius="12px"
-				max-width="700px"
-				margin="0px auto 0px auto"
-				text-align="center"
-				sm-margin="0px auto 20px auto"
-			>
-				<Text font="--lead" color="--dark" margin="0" display="inline">
-					<Text
-						as="span"
-						color="--light"
-						background="rgba(0, 0, 0, 0.81)"
-						padding="4px 8px"
-						border-radius="6px"
-						margin="0 6px 0 0"
-						display="inline-block"
-					>
-						TrackDiggers
-					</Text>
-					c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. Décris ton mood, on te balance les trois morceaux qui match le mieux !
-				</Text>
-			</Box>
-			<Components.Html2 sm-padding="0px" sm-margin="-50px 0px 0px 0px" margin="0px 0px 0px 0px" />
-		</Section>
-		{false && (<Section
-  quarkly-title="Affiliation Sovrn"
-  background="--color-light"
-  padding="24px 0"
+	slot="SectionContent"
+	display="block"
+	width="100%"
+	max-width="100%"
+	padding="80px 20px 0px 20px"
+/>
+			
+<Box
+  max-width="900px"
+  width="100%"
+  margin="0 auto"
+  padding="0 16px"
+  box-sizing="border-box"
 >
-  <Override
-    slot="SectionContent"
-    display="flex"
-    justify-content="center"
-    align-items="center"
-    padding="0 20px"
-  />
-  <Link
-    href="https://sovrn.co/1oaipfo"
-    text-decoration="none"
-    font="--lead"
-    padding="12px 24px"
-    border-radius="8px"
-    background="#000"
-    color="#fff"
-    transition="transform 0.2s ease"
-    hover-transform="scale(1.05)"
-    target="_blank"
-    rel="noopener noreferrer"
+  <Box
+    background="#f0f0f0"
+    padding="16px"
+    border-radius="12px"
+    text-align="center"
+    margin="0 0 24px 0"
+    box-sizing="border-box"
   >
-    🎧 Découvrez notre sélection audio exclusive
-  </Link>
-</Section>)}
-		<Section background="--color-light" color="--dark" padding="64px 0 64px 0">
+    <Text font="--lead" color="--dark" margin="0" display="inline">
+      <Text
+        as="span"
+        color="--light"
+        background="rgba(0, 0, 0, 0.81)"
+        padding="4px 8px"
+        border-radius="6px"
+        margin="0 6px 0 0"
+        display="inline-block"
+      >
+        TrackDiggers
+      </Text>
+      c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. Décris ton mood, on te balance les trois morceaux qui match le mieux !
+    </Text>
+  </Box>
+
+  <Components.Html2
+    sm-margin="0px"
+    margin="0px"
+    width="100%"
+    max-width="100%"
+    display="block"
+  />
+</Box>
+</Section>
+<Section padding="80px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 0px 0px"> 
+  <Override slot="SectionContent" max-width="1000px" margin="0 auto" />
+  
+  <Text
+    as="h2"
+    font="--headline2"
+    margin="0 0 60px 0"
+    text-align="center"
+    color="#000000"
+  >
+    Des outils pour les Diggers
+  </Text>
+
+<Box
+  display="flex"
+  flex-wrap="wrap"
+  justify-content="center"
+  align-items="stretch"
+  width="100%"
+  max-width="1200px"
+  margin="0 auto"
+  style={{
+    gap: "40px",
+    rowGap: "60px",
+  }}
+>
+
+    {/* Bloc 1 */}
+    <Box
+      background="#f6f6f6"
+      border-radius="20px"
+      padding="24px 16px"
+      text-align="center"
+      width="200px"
+      box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+      display="flex"
+      flex-direction="column"
+    >
+      <Text font="36px" margin-bottom="16px">🔍</Text>
+      <Text font="--lead" margin="0 0 10px 0" font-weight="700">Recherche par mood</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Découvre des sons qui matchent parfaitement ton humeur.</Text>
+      <Link
+        href="#mood"
+        background="#000"
+        color="#fff"
+        padding="10px 16px"
+        border-radius="30px"
+        font="--base"
+        text-decoration="none"
+        margin-top="auto"
+      >
+        Tester
+      </Link>
+    </Box>
+
+    {/* Bloc 2 */}
+    <Box
+      background="#f6f6f6"
+      border-radius="20px"
+      padding="24px 16px"
+      text-align="center"
+      width="200px"
+      box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+      display="flex"
+      flex-direction="column"
+    >
+      <Text font="36px" margin-bottom="16px">🎴</Text>
+      <Text font="--lead" margin="0 0 10px 0" font-weight="700">Cartes collector</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Utilise les outils Trackdiggers pour débloquer des cartes à collectionner.</Text>
+      <Link
+        href="#booster"
+        background="#000"
+        color="#fff"
+        padding="10px 16px"
+        border-radius="30px"
+        font="--base"
+        text-decoration="none"
+        margin-top="auto"
+      >
+        Découvrir
+      </Link>
+    </Box>
+
+    {/* Bloc 3 */}
+    <Box
+      background="#f6f6f6"
+      border-radius="20px"
+      padding="24px 16px"
+      text-align="center"
+      width="200px"
+      box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+      display="flex"
+      flex-direction="column"
+    >
+      <Text font="36px" margin-bottom="16px">📥</Text>
+      <Text font="--lead" margin="0 0 10px 0" font-weight="700">Vote pour les sons</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">C’est la communauté qui décide ! Vote pour faire entrer les sons.</Text>
+      <Link
+        href="/vote"
+        background="#000"
+        color="#fff"
+        padding="10px 16px"
+        border-radius="30px"
+        font="--base"
+        text-decoration="none"
+        margin-top="auto"
+      >
+        Voter
+      </Link>
+    </Box>
+
+    {/* Bloc 4 */}
+    <Box
+      background="#f6f6f6"
+      border-radius="20px"
+      padding="24px 16px"
+      text-align="center"
+      width="200px"
+      box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+      display="flex"
+      flex-direction="column"
+    >
+      <Text font="36px" margin-bottom="16px">📤</Text>
+      <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Soumets ton morceau pour tenter d’entrer dans la sélection.</Text>
+      <Link
+        href="#submit"
+        background="#000"
+        color="#fff"
+        padding="10px 16px"
+        border-radius="30px"
+        font="--base"
+        text-decoration="none"
+        margin-top="auto"
+      >
+        Proposer
+      </Link>
+    </Box>
+
+    {/* Bloc 5 */}
+    <Box
+      background="#f6f6f6"
+      border-radius="20px"
+      padding="24px 16px"
+      text-align="center"
+      width="200px"
+      box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+      display="flex"
+      flex-direction="column"
+    >
+      <Text font="36px" margin-bottom="16px">🗞️</Text>
+      <Text font="--lead" margin="0 0 10px 0" font-weight="700">Actualités & News</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Découvre les infos, mises à jour et coups de cœur.</Text>
+      <Link
+        href="/actu"
+        background="#000"
+        color="#fff"
+        padding="10px 16px"
+        border-radius="30px"
+        font="--base"
+        text-decoration="none"
+        margin-top="auto"
+      >
+        Lire
+      </Link>
+    </Box>
+	    <Box
+      background="#f6f6f6"
+      border-radius="20px"
+      padding="24px 16px"
+      text-align="center"
+      width="200px"
+      box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+      display="flex"
+      flex-direction="column"
+    >
+      <Text font="36px" margin-bottom="16px">⛏️</Text>
+      <Text font="--lead" margin="0 0 10px 0" font-weight="700">À propos</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Découvre l'histoire de TrackDiggers</Text>
+      <Link
+        href="/actu"
+        background="#000"
+        color="#fff"
+        padding="10px 16px"
+        border-radius="30px"
+        font="--base"
+        text-decoration="none"
+        margin-top="auto"
+      >
+        Lire
+      </Link>
+    </Box>
+  </Box>
+</Section>
+		<Section background="white" color="--dark" padding="64px 0 64px 0">
 			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff">
 				{"  "}
 				<Box padding="16px 16px 16px 16px" width="50%" lg-width="100%">

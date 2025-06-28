@@ -2,241 +2,256 @@
 import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
 import atomize from "@quarkly/atomize";
 
-const EmbedHTML = ({
-	children,
-	...props
-}) => {
-	const ref = useRef(null);
-	const containerRef = useRef(null);
-	const [hasContent, setHasContent] = useState(false);
-	const [loading, setLoading] = useState(false);
-	useLayoutEffect(() => {
-		if (!ref.current) return;
-		ref.current.innerHTML = `
+const EmbedHTML = ({ children, ...props }) => {
+  const ref = useRef(null);
+  const containerRef = useRef(null);
+  const [hasContent, setHasContent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+
+    ref.current.innerHTML = `
       <style>
-        @keyframes pulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-          100% { transform: scale(1); }
-        }
-
-        .auralink-form-container {
-          max-width: 500px;
-          margin: 4rem auto;
-          padding: 2rem;
-          background: #ffffff;
-          border-radius: 60px;
-          font-family: system-ui, sans-serif;
-          color: #000000;
-          box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-          position: relative;
-          animation: pulse 4s ease-in-out infinite;
-          transform-origin: center center;
-        }
-
-        .auralink-form-container h2 {
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-          text-align: center;
-          color: #000000;
-        }
-
-        .auralink-form-container label {
-          display: block;
-          margin-bottom: 2rem;
-          font-weight: bold;
-          color: #000000;
-        }
-
-        .auralink-form-group {
-          background: #f4f4f4;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 50px;
-          margin-bottom: 1.5rem;
-        }
-
-        .auralink-form-container input[type="text"] {
-          width: 90%;
-          padding: 1rem;
-          border: 1px solid #444;
-          border-radius: 50px;
-          background: #f2f2f2;
-          color: #000000;
-          margin: 0 auto 1.5rem auto;
-          display: block;
-          font-size: 16px;
-        }
-
-        .auralink-form-container button {
+        .auralink-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 2rem 1rem;
           width: 100%;
-          padding: 1rem;
-          background: #3E3E3E;
-          color: #ffffff;
-          border: none;
-          border-radius: 10px;
+          box-sizing: border-box;
+        }
+
+        .auralink-form {
+          display: flex;
+          width: 100%;
+          max-width: 700px;
+          border: 2px solid #000;
+          border-radius: 50px;
+          overflow: hidden;
+          background: #fff;
+          margin: 0 auto;
+        }
+
+        .auralink-form input[type="text"] {
+          flex: 1;
+          padding: 1.2rem 1rem;
           font-size: 1rem;
-          font-weight: bold;
+          border: none;
+          outline: none;
+          background: transparent;
+          color: #000;
+        }
+
+        .auralink-form button {
+          background: #000;
+          color: #fff;
+          border: none;
+          padding: 0 1.5rem;
+          font-size: 1.2rem;
           cursor: pointer;
+          transition: background 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .auralink-form button:hover {
+          background: #222;
+        }
+
+        @media (max-width: 600px) {
+          .auralink-wrapper {
+            padding: 1rem;
+          }
+			@media (max-width: 600px) {
+  .links a:last-child {
+    margin-top: 8px;
+  }
+}
+
+          .auralink-form {
+            max-width: 100%;
+            border-radius: 30px;
+          }
+
+          .auralink-form input[type="text"] {
+            padding: 1rem;
+            font-size: 0.85rem;
+          }
+
+          .auralink-form button {
+            padding: 0 1rem;
+            font-size: 1rem;
+          }
+        }
+
+        .track {
+          background:rgb(255, 255, 255);
+          border-radius: 16px;
+          padding: 20px;
+          margin-bottom: 30px;
+          box-shadow: 0 0 12px rgb(32, 32, 32);
+          transition: transform 0.2s ease;
+        }
+
+        .track:hover {
+          transform: scale(1.02);
+        }
+
+        .title {
+          font-size: 22px;
+          font-weight: bold;
+          margin-bottom: 8px;
+          color: #1e1e1e;
+        }
+
+        .artist {
+          font-size: 16px;
+          color:rgb(32, 32, 32);
+          margin-bottom: 15px;
+        }
+
+        .links a {
+          display: inline-block;
+          margin-right: 12px;
+          padding: 8px 14px;
+          background: #000000;
+          color: #ffffff;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
           transition: background 0.3s ease;
         }
 
-        .auralink-form-container button:hover {
-          background: #333;
+        .links a:hover {
+          background: #000000;
+        }
+
+        .video {
+          margin-bottom: 15px;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 0 12px rgba(0, 255, 200, 0.1);
         }
       </style>
 
-      <div class="auralink-form-container">
-        <form id="mood-form">
-          <div class="auralink-form-group">
-            <label for="mood">Décris ton mood :</label>
-            <input 
-              type="text" 
-              id="mood" 
-              name="mood" 
-              placeholder="Je veux danser, pleurer ..." 
-              required 
-            />
-          </div>
-          <button type="submit">Demander</button>
+      <div class="auralink-wrapper">
+        <form id="mood-form" class="auralink-form">
+          <input 
+            type="text" 
+            id="mood" 
+            name="mood" 
+            placeholder="Ex : J’veux danser, je suis triste, besoin d’un boost..." 
+            required 
+            maxlength="60"
+          />
+          <button type="submit">🔍</button>
         </form>
       </div>
 
-      <div id="auralink-results" style="margin-top: 40px;"></div>
+      <div id="auralink-results">
+        <div class="track track-card">
+          <div class="title track-title">Premier son</div>
+          <div class="artist track-artist">Artiste 1</div>
+          <div class="video">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="links">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://spotify.com" target="_blank">Spotify</a>
+            <a href="https://instagram.com" target="_blank">Follow</a>
+          </div>
+        </div>
+
+        <div class="track track-card">
+          <div class="title track-title">Deuxième son</div>
+          <div class="artist track-artist">Artiste 2</div>
+          <div class="video">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="links">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://spotify.com" target="_blank">Spotify</a>
+            <a href="https://instagram.com" target="_blank">Follow</a>
+          </div>
+        </div>
+
+        <div class="track track-card">
+          <div class="title track-title">Troisième son</div>
+          <div class="artist track-artist">Artiste 3</div>
+          <div class="video">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="links">
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+            <a href="https://spotify.com" target="_blank">Spotify</a>
+            <a href="https://instagram.com" target="_blank">Follow</a>
+          </div>
+        </div>
+      </div>
     `;
-		const form = ref.current.querySelector("#mood-form");
-		form.addEventListener("submit", async function (e) {
-			e.preventDefault();
-			const mood = form.querySelector("#mood").value;
 
-	// 🔹 Événement GA - recherche mood
-	if (typeof gtag !== "undefined") {
-		gtag('event', 'mood_search', {
-			mood_text: mood
-		});
-	}window.startAuralinkLoading && window.startAuralinkLoading();
-			const res = await fetch("https://n8n.atkmusic.fr/webhook/0760f2ba-0b65-46f5-b5fa-2deb23ac1d66", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					"Authorization": "Basic " + btoa("admin:LOrenzOmOOd!")
-				},
-				body: JSON.stringify({
-					chatInput: mood
-				})
-			});
-			const html = await res.text();
-			window.refreshAuralink && window.refreshAuralink(html);
-		});
-	}, []);
-	useEffect(() => {
-		if (typeof window === "undefined") return;
+    const form = ref.current.querySelector("#mood-form");
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const mood = form.querySelector("#mood").value;
 
-		window.startAuralinkLoading = () => {
-			setLoading(true);
-			setHasContent(false);
-			if (containerRef.current) containerRef.current.innerHTML = "";
-		};
+      if (typeof gtag !== "undefined") {
+        gtag('event', 'mood_search', {
+          mood_text: mood
+        });
+      }
+document.getElementById("auralink-results").innerHTML = "";
+      window.startAuralinkLoading && window.startAuralinkLoading();
 
-		window.refreshAuralink = html => {
-			setLoading(false);
+      const res = await fetch("https://n8n.atkmusic.fr/webhook/0760f2ba-0b65-46f5-b5fa-2deb23ac1d66", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Basic " + btoa("admin:LOrenzOmOOd!")
+        },
+        body: JSON.stringify({ chatInput: mood })
+      });
 
-			if (containerRef.current) {
-				containerRef.current.innerHTML = "";
-				containerRef.current.insertAdjacentHTML("beforeend", html);
-				setHasContent(true);
-				const anchors = containerRef.current.querySelectorAll("a");
-				anchors.forEach(anchor => {
-					anchor.addEventListener("click", e => {
-						e.preventDefault();
-						window.open(anchor.href, "_blank");
-					});
-				});
-				const cards = containerRef.current.querySelectorAll(".track-card");
-				const trackInputs = [document.querySelector('input[name="track1"]'), document.querySelector('input[name="track2"]'), document.querySelector('input[name="track3"]')];
+      const html = await res.text();
+      window.refreshAuralink && window.refreshAuralink(html);
+    });
+  }, []);
 
-				if (cards.length >= 3 && trackInputs.every(Boolean)) {
-					cards.forEach((card, index) => {
-						if (index < 3) {
-							const title = card.querySelector(".track-title")?.textContent?.trim() || "";
-							const artist = card.querySelector(".track-artist")?.textContent?.trim() || "";
-							trackInputs[index].value = `${title} – ${artist}`;
-						}
-					});
-				}
-			}
-		};
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-		window.handlePackSubmit = function (e) {
-			e.preventDefault();
-			const form = e.target;
-			const email = form.email.value;
-			const track1 = form.track1.value;
-			const track2 = form.track2.value;
-			const track3 = form.track3.value;
-			fetch("https://n8n.atkmusic.fr/webhook/receive-pack-request", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded"
-				},
-				body: new URLSearchParams({
-					email,
-					track1,
-					track2,
-					track3
-				})
-			}).then(res => alert(res.ok ? "🎉 Pack envoyé avec succès !" : "❌ Une erreur est survenue.")).catch(() => alert("❌ Problème réseau."));
-		};
-	}, []);
-	return <div {...props}>
-		      
-		<div ref={ref} />
-		      
-		{loading && <div style={{
-			margin: "20px auto",
-			padding: "16px 24px",
-			border: "2px solid #0000000",
-			borderRadius: "12px",
-			maxWidth: "260px",
-			display: "flex",
-			flexDirection: "column",
-			alignItems: "center",
-			backgroundColor: "transparent"
-		}}>
-			          
-			<div style={{
-				width: "30px",
-				height: "30px",
-				border: "4px solid #000000",
-				borderTop: "4px solid transparent",
-				borderRadius: "50%",
-				animation: "spin 1s linear infinite"
-			}} />
-			          
-			<p style={{
-				marginTop: "10px",
-				color: "#000000",
-				fontSize: "20px"
-			}}>
-				            Vote toi aussi pour les sons qui appraissent dans les sélections
-          
-			</p>
-			          
-			<style>
-				            
-				{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}
-				          
-			</style>
-			        
-		</div>}
-		      
-		<div ref={containerRef} />
-		    
-	</div>;
+    window.startAuralinkLoading = () => {
+      setLoading(true);
+      setHasContent(false);
+      if (containerRef.current) containerRef.current.innerHTML = "";
+    };
+
+    window.refreshAuralink = html => {
+      setLoading(false);
+      if (containerRef.current) {
+        containerRef.current.innerHTML = html;
+        setHasContent(true);
+      }
+    };
+  }, []);
+
+  return <div {...props}>
+    <div ref={ref} />
+    {loading && <div style={{ margin: "20px auto", padding: "16px 24px", border: "2px solid #0000000", borderRadius: "12px", maxWidth: "260px", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "transparent" }}>
+      <div style={{ width: "30px", height: "30px", border: "4px solid #000000", borderTop: "4px solid transparent", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
+      <p style={{ marginTop: "10px", color: "#000000", fontSize: "20px" }}>
+        Vote toi aussi pour les sons qui appraissent dans les sélections
+      </p>
+      <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+    </div>}
+    <div ref={containerRef} />
+  </div>;
 };
 
 export default atomize(EmbedHTML)({
-	name: "EmbedHTMLUnified",
-	normalize: true,
-	mixins: true
+  name: "EmbedHTMLUnified",
+  normalize: true,
+  mixins: true
 });

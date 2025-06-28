@@ -111,6 +111,28 @@ const SlideMenu = ({ ...props }) => {
 					>
 						Mes cartes
 					</a>
+					<a
+						onClick={() => goTo("/about")}
+						style={{
+							margin: "10px 0",
+							color: "#000",
+							textDecoration: "none",
+							cursor: "pointer"
+						}}
+					>
+						À propos
+					</a>
+					<a
+						onClick={() => goTo("/actus")}
+						style={{
+							margin: "10px 0",
+							color: "#000",
+							textDecoration: "none",
+							cursor: "pointer"
+						}}
+					>
+						Actualités & News
+					</a>
 				</div>
 			</div>
 		</>
