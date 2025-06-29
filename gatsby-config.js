@@ -1,9 +1,9 @@
 module.exports = {
     siteMetadata: {
-        title: "Quarkly gatsby project",
-        description: "",
-        author: "@quarkly",
-        siteUrl: "https://trackdiggers.netlify.app"
+        title: "Trackdiggers – Recherche par mood",
+        description: "Découvre des sons en fonction de ton humeur, vote pour tes morceaux préférés et collectionne des cartes musicales uniques.",
+        author: "@trackdiggers",
+        siteUrl: "https://trackdiggers.com", // 👈 Mets bien ton vrai domaine ici
     },
     plugins: [
         "gatsby-plugin-react-helmet",
@@ -12,14 +12,14 @@ module.exports = {
         "gatsby-plugin-styled-components",
         "gatsby-plugin-resolve-src",
         "gatsby-plugin-meta-redirect",
+
         {
             resolve: "gatsby-plugin-sitemap",
             options: {
-                output: "/"
+                output: "/sitemap.xml", // 👈 Correct path
             }
         },
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        // "gatsby-plugin-offline",
+
+        // "gatsby-plugin-offline", // optionnel si PWA
     ],
 };

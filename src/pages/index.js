@@ -220,7 +220,7 @@ export default (() => {
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Vote pour les sons</Text>
       <Text font="--base" margin="0 0 20px 0" color="#444">C’est la communauté qui décide ! Vote pour faire entrer les sons.</Text>
       <Link
-        href="/vote"
+        href="/votes"
         background="#000"
         color="#fff"
         padding="10px 16px"
@@ -248,7 +248,7 @@ export default (() => {
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
       <Text font="--base" margin="0 0 20px 0" color="#444">Soumets ton morceau pour tenter d’entrer dans la sélection.</Text>
       <Link
-        href="#submit"
+        href="https://airtable.com/app6jjhoCkgO9tcDB/paghHyRTIs9FHxMBq/form"
         background="#000"
         color="#fff"
         padding="10px 16px"
@@ -276,7 +276,7 @@ export default (() => {
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Actualités & News</Text>
       <Text font="--base" margin="0 0 20px 0" color="#444">Découvre les infos, mises à jour et coups de cœur.</Text>
       <Link
-        href="/actu"
+        href="/actus"
         background="#000"
         color="#fff"
         padding="10px 16px"
@@ -302,7 +302,7 @@ export default (() => {
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">À propos</Text>
       <Text font="--base" margin="0 0 20px 0" color="#444">Découvre l'histoire de TrackDiggers</Text>
       <Link
-        href="/actu"
+        href="/about"
         background="#000"
         color="#fff"
         padding="10px 16px"
@@ -316,7 +316,7 @@ export default (() => {
     </Box>
   </Box>
 </Section>
-		<Section background="white" color="--dark" padding="64px 0 64px 0">
+		<Section id="booster" background="white" color="--dark" padding="64px 0 64px 0">
 			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff">
 				{"  "}
 				<Box padding="16px 16px 16px 16px" width="50%" lg-width="100%">

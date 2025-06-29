@@ -9,7 +9,7 @@ import * as Components from "components";
 const NewsPage = () => {
   return (
     <Theme theme={theme}>
-      <GlobalQuarklyPageStyles pageUrl={"actu"} />
+      <GlobalQuarklyPageStyles pageUrl={"actus"} />
       <Helmet>
         <title>Actualités & News | Trackdiggers</title>
         <meta name="description" content="Toutes les dernières infos de Trackdiggers : sorties, mises à jour, artistes à suivre et plus encore." />
