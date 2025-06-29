@@ -88,18 +88,25 @@ export default (() => {
 				background="#f0f0f0"
 				padding="16px"
 				border-radius="12px"
-				max-width="700px"
+				max-width="1000px"
 				margin="0px auto 40px auto"
 				text-align="center"
 				sm-margin="0px auto 40px auto"
 			>
 				<Text font="--lead" color="--dark" margin="0" display="inline">
-					C'est toi qui sélectionne les morceaux TrackDiggers
-					<br />
-					<br />
-					Découvre les morceaux proposés par la communauté et vote pour ceux que tu veux entendre dans la prochaine playlist.
-			T’es artiste ? Propose ton son et fais-le valider par le public.
-				</Text>
+	C'est toi qui sélectionne les morceaux TrackDiggers
+	<br />
+	<br />
+	Découvre les morceaux proposés par la communauté et vote pour ceux que tu veux entendre dans la prochaine playlist.
+	T’es artiste ? Propose ton son et fais-le valider par le public.
+	<br />
+	<br />
+	Chaque vote compte : les morceaux les plus appréciés reçoivent leur propre carte collector et intègrent la sélection officielle.  
+	Participe à faire émerger les talents de demain — un clic peut tout changer.
+	<br />
+	<br />
+	Tu peux aussi partager le lien de ton son dans ta story ou à tes proches pour booster tes chances de récolter plus de votes !
+</Text>
 			</Box>
 			<Box display="flex" flex-direction="column" gap="16px" align-items="center">
 				<Link
@@ -122,7 +129,7 @@ export default (() => {
 					font-weight="700"
 					margin-bottom="8px"
 				>
-					Découvrir le moteur TrackDigger
+					Découvrir le moteur TrackDiggers
 				</Link>
 				<Link
 					href="https://airtable.com/app6jjhoCkgO9tcDB/paghHyRTIs9FHxMBq/form"
@@ -153,6 +160,125 @@ export default (() => {
 			<Override slot="SectionContent" border-color="#ffffff" />
 			<Components.MusicVoterTest />
 		</Section>
+		<Section background="#ffffff" padding="40px 0px">
+	<Override slot="SectionContent" max-width="800px" margin="0 auto" text-align="center" />
+	<Text font="--lead" color="#000000" margin="0 0 20px 0">
+		Tu viens de voter pour tes sons préférés ? Bravo, t’as peut-être contribué à faire émerger la prochaine pépite de demain !
+	</Text>
+	<Text font="--base" color="#444444" margin="0 0 20px 0">
+		🎴 Les morceaux qui atteignent un certain nombre de votes sont validés par la communauté et reçoivent une carte collector officielle.
+	</Text>
+	<Text font="--base" color="#444444" margin="0 0 20px 0">
+		Pense à revenir régulièrement : les sons changent, les votes évoluent, et ton avis compte.
+	</Text>
+	<Text font="--base" color="#444444" margin="0 0 20px 0">
+	Tous les morceaux proposés sur cette page viennent directement d’artistes émergents, labels indépendants ou passionnés. Chaque vote reçu est une forme de soutien : plus un son est voté, plus il a de chances d’être sélectionné et de gagner en visibilité.
+</Text>
+	<Link
+		href="/"
+		text-decoration-line="none"
+		color="#fff"
+		font="--base"
+		padding="12px 24px"
+		border-radius="30px"
+		background="#000000"
+		display="inline-block"
+		margin-top="20px"
+	>
+		🔍 Explorer les autres outils Trackdiggers
+	</Link>
+</Section>
+<Section padding="20px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 80px 0px"> 
+  <Override slot="SectionContent" flex-direction="column" align-items="center" />
+  <Text as="h2" font="--headline2" margin="0 0 48px 0" text-align="center" color="#000000">
+	Comment ça marche ?
+  </Text>
+  <Box
+   display="flex"
+  flex-wrap="wrap"
+  justify-content="center"
+  align-items="stretch"
+  width="100%"
+  max-width="1200px"
+  margin="0 auto"
+  style={{
+	gap: "40px",
+	rowGap: "60px",
+  }}
+  >
+	{/* Bloc 1 */}
+	<Box
+	  width="200px"
+	  background="#f9f9f9"
+	  padding="24px"
+	  border-radius="16px"
+	  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+	  text-align="center"
+	>
+	  <Text font="40px" margin-bottom="16px">🧠</Text>
+	  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+		Analyse par IA
+	  </Text>
+	  <Text font="--base" color="#444">
+		Chaque recherche est traitée par une intelligence artificielle qui comprend ton mood à partir du texte que tu écris.
+	  </Text>
+	</Box>
+
+	{/* Bloc 2 */}
+	<Box
+	  width="200px"
+	  background="#f9f9f9"
+	  padding="24px"
+	  border-radius="16px"
+	  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+	  text-align="center"
+	>
+	  <Text font="40px" margin-bottom="16px">📊</Text>
+	  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+		Filtrage intelligent
+	  </Text>
+	  <Text font="--base" color="#444">
+		L'IA compare ton intention avec notre base de sons, en croisant mood, ambiance, énergie et style pour te proposer les meilleurs matchs.
+	  </Text>
+	</Box>
+
+	{/* Bloc 3 */}
+	<Box
+	  width="200px"
+	  background="#f9f9f9"
+	  padding="24px"
+	  border-radius="16px"
+	  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+	  text-align="center"
+	>
+	  <Text font="40px" margin-bottom="16px">🗳️</Text>
+	  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+		Votes & seuils
+	  </Text>
+	  <Text font="--base" color="#444">
+		Quand un morceau reçoit 20 votes, il est automatiquement validé et passe dans la sélection officielle.
+	  </Text>
+	</Box>
+
+	{/* Bloc 4 */}
+	<Box
+	  width="200px"
+	  background="#f9f9f9"
+	  padding="24px"
+	  border-radius="16px"
+	  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+	  text-align="center"
+	>
+	  <Text font="40px" margin-bottom="16px">🎴</Text>
+	  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+		Génération de cartes
+	  </Text>
+	  <Text font="--base" color="#444">
+		Une carte numérique unique est alors générée pour le morceau validé, avec numéro, visuel, et lien direct.
+	  </Text>
+	</Box>
+  </Box>
+</Section>
 		<Components.SlideMenu
 			sm-bottom="-80px"
 			sm-left="-285px"

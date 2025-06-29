@@ -109,7 +109,9 @@ export default (() => {
       >
         TrackDiggers
       </Text>
-      c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. Décris ton mood, on te balance les trois morceaux qui match le mieux !
+      
+c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. Décris ton mood, on te balance les trois morceaux qui match le mieux !
+
     </Text>
   </Box>
 
@@ -122,7 +124,30 @@ export default (() => {
   />
 </Box>
 </Section>
-<Section padding="80px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 0px 0px"> 
+<Section padding="60px 0px" background="#f9f9f9">
+  <Box max-width="900px" margin="0 auto" text-align="center">
+    <Text as="h2" font="--headline2" margin="0 0 24px 0" color="#000000">
+      La mission de Trackdiggers
+    </Text>
+    <Text font="--lead" color="#444444" margin="0 0 32px 0">
+      Trackdiggers a été créé pour offrir une vraie alternative aux plateformes dominantes : plus humaine, plus audacieuse, plus sincère. Notre mission : dénicher et faire briller les artistes émergents en proposant une découverte musicale guidée par l’émotion.
+    </Text>
+    <Link
+      href="/about"
+      background="#000"
+      color="#fff"
+      padding="12px 24px"
+      border-radius="30px"
+      font="--base"
+      text-decoration="none"
+      transition="all 0.3s ease"
+      hover-transform="scale(1.05)"
+    >
+      En savoir plus
+    </Link>
+  </Box>
+</Section>
+<Section padding="80px 24px 0px 0px" background="#ffffff" sm-padding="50px 0px 0px 0px"> 
   <Override slot="SectionContent" max-width="1000px" margin="0 auto" />
   
   <Text
@@ -162,7 +187,7 @@ export default (() => {
     >
       <Text font="36px" margin-bottom="16px">🔍</Text>
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Recherche par mood</Text>
-      <Text font="--base" margin="0 0 20px 0" color="#444">Découvre des sons qui matchent parfaitement ton humeur.</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Décris ton mood et découvre instantanément des morceaux qui te correspondent. Une expérience musicale unique, personnalisée et émotionnelle.</Text>
       <Link
         href="#mood"
         background="#000"
@@ -190,7 +215,7 @@ export default (() => {
     >
       <Text font="36px" margin-bottom="16px">🎴</Text>
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Cartes collector</Text>
-      <Text font="--base" margin="0 0 20px 0" color="#444">Utilise les outils Trackdiggers pour débloquer des cartes à collectionner.</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Gagne des cartes numériques exclusives en découvrant de nouveaux sons. Chaque carte est unique, numérotée et à collectionner.</Text>
       <Link
         href="#booster"
         background="#000"
@@ -218,7 +243,7 @@ export default (() => {
     >
       <Text font="36px" margin-bottom="16px">📥</Text>
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Vote pour les sons</Text>
-      <Text font="--base" margin="0 0 20px 0" color="#444">C’est la communauté qui décide ! Vote pour faire entrer les sons.</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Fais entendre ta voix ! Chaque vote influence la sélection officielle des meilleurs sons émergents.</Text>
       <Link
         href="/votes"
         background="#000"
@@ -246,7 +271,7 @@ export default (() => {
     >
       <Text font="36px" margin-bottom="16px">📤</Text>
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
-      <Text font="--base" margin="0 0 20px 0" color="#444">Soumets ton morceau pour tenter d’entrer dans la sélection.</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Tu es artiste ? Propose ton son et tente d’intégrer la prochaine sélection Trackdiggers. Mets ta musique entre les mains de vrais auditeurs.</Text>
       <Link
         href="https://airtable.com/app6jjhoCkgO9tcDB/paghHyRTIs9FHxMBq/form"
         background="#000"
@@ -274,7 +299,7 @@ export default (() => {
     >
       <Text font="36px" margin-bottom="16px">🗞️</Text>
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Actualités & News</Text>
-      <Text font="--base" margin="0 0 20px 0" color="#444">Découvre les infos, mises à jour et coups de cœur.</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Suis les dernières news de la scène, les mises à jour de la plateforme et les pépites musicales sélectionnées par les diggers.</Text>
       <Link
         href="/actus"
         background="#000"
@@ -300,7 +325,7 @@ export default (() => {
     >
       <Text font="36px" margin-bottom="16px">⛏️</Text>
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">À propos</Text>
-      <Text font="--base" margin="0 0 20px 0" color="#444">Découvre l'histoire de TrackDiggers</Text>
+      <Text font="--base" margin="0 0 20px 0" color="#444">Apprends comment est né TrackDiggers et pourquoi ce projet met la lumière sur les talents de demain.</Text>
       <Link
         href="/about"
         background="#000"
@@ -316,7 +341,7 @@ export default (() => {
     </Box>
   </Box>
 </Section>
-		<Section id="booster" background="white" color="--dark" padding="64px 0 64px 0">
+		<Section id="booster" background="white" color="--dark" padding="64px 0 50px 0">
 			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff">
 				{"  "}
 				<Box padding="16px 16px 16px 16px" width="50%" lg-width="100%">
@@ -464,6 +489,98 @@ export default (() => {
 </Box>
 			</Box>
 		</Section>
+		
+<Section padding="40px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 80px 0px"> 
+  <Override slot="SectionContent" flex-direction="column" align-items="center" />
+  <Text as="h2" font="--headline2" margin="0 0 48px 0" text-align="center" color="#000000">
+    Comment ça marche ?
+  </Text>
+  <Box
+   display="flex"
+  flex-wrap="wrap"
+  justify-content="center"
+  align-items="stretch"
+  width="100%"
+  max-width="1200px"
+  margin="0 auto"
+  style={{
+    gap: "40px",
+    rowGap: "60px",
+  }}
+  >
+    {/* Bloc 1 */}
+    <Box
+      width="200px"
+      background="#f9f9f9"
+      padding="24px"
+      border-radius="16px"
+      box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+      text-align="center"
+    >
+      <Text font="40px" margin-bottom="16px">🧠</Text>
+      <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+        Analyse par IA
+      </Text>
+      <Text font="--base" color="#444">
+        Chaque recherche est traitée par une intelligence artificielle qui comprend ton mood à partir du texte que tu écris.
+      </Text>
+    </Box>
+
+    {/* Bloc 2 */}
+    <Box
+      width="200px"
+      background="#f9f9f9"
+      padding="24px"
+      border-radius="16px"
+      box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+      text-align="center"
+    >
+      <Text font="40px" margin-bottom="16px">📊</Text>
+      <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+        Filtrage intelligent
+      </Text>
+      <Text font="--base" color="#444">
+        L'IA compare ton intention avec notre base de sons, en croisant mood, ambiance, énergie et style pour te proposer les meilleurs matchs.
+      </Text>
+    </Box>
+
+    {/* Bloc 3 */}
+    <Box
+      width="200px"
+      background="#f9f9f9"
+      padding="24px"
+      border-radius="16px"
+      box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+      text-align="center"
+    >
+      <Text font="40px" margin-bottom="16px">🗳️</Text>
+      <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+        Votes & seuils
+      </Text>
+      <Text font="--base" color="#444">
+        Quand un morceau reçoit 20 votes, il est automatiquement validé et passe dans la sélection officielle.
+      </Text>
+    </Box>
+
+    {/* Bloc 4 */}
+    <Box
+      width="200px"
+      background="#f9f9f9"
+      padding="24px"
+      border-radius="16px"
+      box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+      text-align="center"
+    >
+      <Text font="40px" margin-bottom="16px">🎴</Text>
+      <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+        Génération de cartes
+      </Text>
+      <Text font="--base" color="#444">
+        Une carte numérique unique est alors générée pour le morceau validé, avec numéro, visuel, et lien direct.
+      </Text>
+    </Box>
+  </Box>
+</Section>
 		<Section padding="80px 0" sm-padding="0px 0 0px 0">
 			<Override
 				slot="SectionContent"

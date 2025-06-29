@@ -200,6 +200,97 @@ export default (() => {
 				top="0px"
 			/>
 		</Section>
+		<Section padding="40px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 80px 0px"> 
+		  <Override slot="SectionContent" flex-direction="column" align-items="center" />
+		  <Text as="h2" font="--headline2" margin="0 0 48px 0" text-align="center" color="#000000">
+			Comment ça marche ?
+		  </Text>
+		  <Box
+		   display="flex"
+		  flex-wrap="wrap"
+		  justify-content="center"
+		  align-items="stretch"
+		  width="100%"
+		  max-width="1200px"
+		  margin="0 auto"
+		  style={{
+			gap: "40px",
+			rowGap: "60px",
+		  }}
+		  >
+			{/* Bloc 1 */}
+			<Box
+			  width="200px"
+			  background="#f9f9f9"
+			  padding="24px"
+			  border-radius="16px"
+			  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+			  text-align="center"
+			>
+			  <Text font="40px" margin-bottom="16px">🧠</Text>
+			  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+				Analyse par IA
+			  </Text>
+			  <Text font="--base" color="#444">
+				Chaque recherche est traitée par une intelligence artificielle qui comprend ton mood à partir du texte que tu écris.
+			  </Text>
+			</Box>
+		
+			{/* Bloc 2 */}
+			<Box
+			  width="200px"
+			  background="#f9f9f9"
+			  padding="24px"
+			  border-radius="16px"
+			  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+			  text-align="center"
+			>
+			  <Text font="40px" margin-bottom="16px">📊</Text>
+			  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+				Filtrage intelligent
+			  </Text>
+			  <Text font="--base" color="#444">
+				L'IA compare ton intention avec notre base de sons, en croisant mood, ambiance, énergie et style pour te proposer les meilleurs matchs.
+			  </Text>
+			</Box>
+		
+			{/* Bloc 3 */}
+			<Box
+			  width="200px"
+			  background="#f9f9f9"
+			  padding="24px"
+			  border-radius="16px"
+			  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+			  text-align="center"
+			>
+			  <Text font="40px" margin-bottom="16px">🗳️</Text>
+			  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+				Votes & seuils
+			  </Text>
+			  <Text font="--base" color="#444">
+				Quand un morceau reçoit 20 votes, il est automatiquement validé et passe dans la sélection officielle.
+			  </Text>
+			</Box>
+		
+			{/* Bloc 4 */}
+			<Box
+			  width="200px"
+			  background="#f9f9f9"
+			  padding="24px"
+			  border-radius="16px"
+			  box-shadow="0 4px 12px rgba(0, 0, 0, 0.05)"
+			  text-align="center"
+			>
+			  <Text font="40px" margin-bottom="16px">🎴</Text>
+			  <Text font="--lead" font-weight="700" margin="0 0 8px 0">
+				Génération de cartes
+			  </Text>
+			  <Text font="--base" color="#444">
+				Une carte numérique unique est alors générée pour le morceau validé, avec numéro, visuel, et lien direct.
+			  </Text>
+			</Box>
+		  </Box>
+		</Section>
 		<Section padding="40px 0" quarkly-title="Pied de page">
 			<Override
 				slot="SectionContent"
