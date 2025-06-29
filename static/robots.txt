@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trackdiggers.netlify.app/sitemap-index.xml
+Sitemap: https://trackdiggers.com/sitemap-index.xml
