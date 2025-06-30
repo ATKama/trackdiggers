@@ -558,7 +558,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
         Votes & seuils
       </Text>
       <Text font="--base" color="#444">
-        Quand un morceau reçoit 20 votes, il est automatiquement validé et passe dans la sélection officielle.
+        Quand un morceau reçoit 50 votes, il est automatiquement validé et passe dans la sélection officielle.
       </Text>
     </Box>
 
