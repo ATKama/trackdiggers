@@ -26,7 +26,8 @@ const AboutPage = () => {
           property="og:image"
           content="https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20(64%20x%2064%20px).png"
         />
-      <link rel="canonical" href="https://trackdiggers.com/about" /></Helmet>
+        <meta name="robots" content="index, follow" />
+      <link rel="canonical" href="https://trackdiggers.com/about/" /></Helmet>
       <Section
                 padding="0px 0 16px 0"
                 quarkly-title="Header"
