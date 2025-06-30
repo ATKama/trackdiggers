@@ -189,6 +189,200 @@ export default (() => {
 		🔍 Explorer les autres outils Trackdiggers
 	</Link>
 </Section>
+<Section padding="80px 24px 0px 0px" background="#ffffff" sm-padding="50px 0px 0px 0px"> 
+  <Override slot="SectionContent" max-width="1000px" margin="0 auto" />
+  
+  <Text
+	as="h2"
+	font="--headline2"
+	margin="0 0 60px 0"
+	text-align="center"
+	color="#000000"
+  >
+	Des outils pour les Diggers
+  </Text>
+
+<Box
+  display="flex"
+  flex-wrap="wrap"
+  justify-content="center"
+  align-items="stretch"
+  width="100%"
+  max-width="1200px"
+  margin="0 auto"
+  style={{
+	gap: "40px",
+	rowGap: "60px",
+  }}
+>
+
+	{/* Bloc 1 */}
+	<Box
+	  background="#f6f6f6"
+	  border-radius="20px"
+	  padding="24px 16px"
+	  text-align="center"
+	  width="200px"
+	  box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+	  display="flex"
+	  flex-direction="column"
+	>
+	  <Text font="36px" margin-bottom="16px">🔍</Text>
+	  <Text font="--lead" margin="0 0 10px 0" font-weight="700">Recherche par mood</Text>
+	  <Text font="--base" margin="0 0 20px 0" color="#444">Décris ton mood et découvre instantanément des morceaux qui te correspondent. Une expérience musicale unique, personnalisée et émotionnelle.</Text>
+	  <Link
+		href="#mood"
+		background="#000"
+		color="#fff"
+		padding="10px 16px"
+		border-radius="30px"
+		font="--base"
+		text-decoration="none"
+		margin-top="auto"
+	  >
+		Tester
+	  </Link>
+	</Box>
+
+	{/* Bloc 2 */}
+	<Box
+	  background="#f6f6f6"
+	  border-radius="20px"
+	  padding="24px 16px"
+	  text-align="center"
+	  width="200px"
+	  box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+	  display="flex"
+	  flex-direction="column"
+	>
+	  <Text font="36px" margin-bottom="16px">🎴</Text>
+	  <Text font="--lead" margin="0 0 10px 0" font-weight="700">Cartes collector</Text>
+	  <Text font="--base" margin="0 0 20px 0" color="#444">Gagne des cartes numériques exclusives en découvrant de nouveaux sons. Chaque carte est unique, numérotée et à collectionner.</Text>
+	  <Link
+		href="#booster"
+		background="#000"
+		color="#fff"
+		padding="10px 16px"
+		border-radius="30px"
+		font="--base"
+		text-decoration="none"
+		margin-top="auto"
+	  >
+		Découvrir
+	  </Link>
+	</Box>
+
+	{/* Bloc 3 */}
+	<Box
+	  background="#f6f6f6"
+	  border-radius="20px"
+	  padding="24px 16px"
+	  text-align="center"
+	  width="200px"
+	  box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+	  display="flex"
+	  flex-direction="column"
+	>
+	  <Text font="36px" margin-bottom="16px">📥</Text>
+	  <Text font="--lead" margin="0 0 10px 0" font-weight="700">Vote pour les sons</Text>
+	  <Text font="--base" margin="0 0 20px 0" color="#444">Fais entendre ta voix ! Chaque vote influence la sélection officielle des meilleurs sons émergents.</Text>
+	  <Link
+		href="/votes"
+		background="#000"
+		color="#fff"
+		padding="10px 16px"
+		border-radius="30px"
+		font="--base"
+		text-decoration="none"
+		margin-top="auto"
+	  >
+		Voter
+	  </Link>
+	</Box>
+
+	{/* Bloc 4 */}
+	<Box
+	  background="#f6f6f6"
+	  border-radius="20px"
+	  padding="24px 16px"
+	  text-align="center"
+	  width="200px"
+	  box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+	  display="flex"
+	  flex-direction="column"
+	>
+	  <Text font="36px" margin-bottom="16px">📤</Text>
+	  <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
+	  <Text font="--base" margin="0 0 20px 0" color="#444">Tu es artiste ? Propose ton son et tente d’intégrer la prochaine sélection Trackdiggers. Mets ta musique entre les mains de vrais auditeurs.</Text>
+	  <Link
+		href="https://airtable.com/app6jjhoCkgO9tcDB/paghHyRTIs9FHxMBq/form"
+		background="#000"
+		color="#fff"
+		padding="10px 16px"
+		border-radius="30px"
+		font="--base"
+		text-decoration="none"
+		margin-top="auto"
+	  >
+		Proposer
+	  </Link>
+	</Box>
+
+	{/* Bloc 5 */}
+	<Box
+	  background="#f6f6f6"
+	  border-radius="20px"
+	  padding="24px 16px"
+	  text-align="center"
+	  width="200px"
+	  box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+	  display="flex"
+	  flex-direction="column"
+	>
+	  <Text font="36px" margin-bottom="16px">🗞️</Text>
+	  <Text font="--lead" margin="0 0 10px 0" font-weight="700">Actualités & News</Text>
+	  <Text font="--base" margin="0 0 20px 0" color="#444">Suis les dernières news de la scène, les mises à jour de la plateforme et les pépites musicales sélectionnées par les diggers.</Text>
+	  <Link
+		href="/actus"
+		background="#000"
+		color="#fff"
+		padding="10px 16px"
+		border-radius="30px"
+		font="--base"
+		text-decoration="none"
+		margin-top="auto"
+	  >
+		Lire
+	  </Link>
+	</Box>
+		<Box
+	  background="#f6f6f6"
+	  border-radius="20px"
+	  padding="24px 16px"
+	  text-align="center"
+	  width="200px"
+	  box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+	  display="flex"
+	  flex-direction="column"
+	>
+	  <Text font="36px" margin-bottom="16px">⛏️</Text>
+	  <Text font="--lead" margin="0 0 10px 0" font-weight="700">À propos</Text>
+	  <Text font="--base" margin="0 0 20px 0" color="#444">Apprends comment est né TrackDiggers et pourquoi ce projet met la lumière sur les talents de demain.</Text>
+	  <Link
+		href="/about"
+		background="#000"
+		color="#fff"
+		padding="10px 16px"
+		border-radius="30px"
+		font="--base"
+		text-decoration="none"
+		margin-top="auto"
+	  >
+		Lire
+	  </Link>
+	</Box>
+  </Box>
+</Section>
 <Section padding="20px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 80px 0px"> 
   <Override slot="SectionContent" flex-direction="column" align-items="center" />
   <Text as="h2" font="--headline2" margin="0 0 48px 0" text-align="center" color="#000000">

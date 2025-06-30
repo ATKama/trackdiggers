@@ -184,7 +184,7 @@ const EmbedHTML = ({ children, ...props }) => {
             <iframe width="100%" height="200" src="https://www.youtube.com/embed/C9oOy1vBKRA" frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="links">
-            <a href="https://www.youtube.com/watch?v=C9oOy1vBKRA" target="_blank">YouTube</a>
+            <a href="https://www.youtube.com/C9oOy1vBKRA" target="_blank">YouTube</a>
             <a href="https://open.spotify.com/intl-fr/track/72bBIkl4EsLc3yXVt4wGk2?si=6f145fea753843f6" target="_blank">Spotify</a>
             <a href="https://hyperfollow.com/bleupetrole?fbclid=PAZXh0bgNhZW0CMTEAAafWWXU9S-h9EMKgFNv7nc_5Lx0numUPkHrM77gk8tdain42b-tNQmKSGejXEw_aem_a5EpbtRfn6RL5vdBycwaMA" target="_blank">Follow</a>
           </div>

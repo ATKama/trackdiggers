@@ -16,7 +16,7 @@ const NewsPage = () => {
         <meta property="og:title" content="Actualités Trackdiggers" />
         <meta property="og:description" content="Découvre nos actus, nos updates, et les artistes qui montent !" />
         <meta property="og:image" content="https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20(64%20x%2064%20px).png" />
-      <link rel="canonical" href="https://trackdiggers.com/actus" /></Helmet>
+      <link rel="canonical" href="https://trackdiggers.com/actus/" /></Helmet>
 
       {/* HEADER */}
       <Section padding="0px 0 16px 0" quarkly-title="Header" align-items="center" justify-content="center" background="#ffffff" position="fixed" top="0px" left="0px" right="0px" z-index="1000" width="100%" height="60px" border-style="solid" border-width="1px" border-color="rgba(0, 0, 0, 0.19)" border-radius="8px">
@@ -71,6 +71,49 @@ const NewsPage = () => {
           <Link href="/informations-legales" margin="0 10px">CGU</Link>
         </Text>
       </Section>
+      {/* OVERLAY DE MAINTENANCE */}
+<Box
+  position="fixed"
+  top="0"
+  left="0"
+  width="100vw"
+  height="100vh"
+  z-index="2000"
+  background="rgba(0, 0, 0, 0.6)"
+  style={{
+    backdropFilter: "blur(8px)",
+    WebkitBackdropFilter: "blur(8px)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "40px",
+    boxSizing: "border-box"
+  }}
+>
+  <Box background="#ffffff" padding="32px" borderRadius="16px" maxWidth="500px" boxShadow="0 0 20px rgba(0,0,0,0.2)">
+    <Text font="--headline3" margin="0 0 16px 0" color="#000">
+      🚧 En construction
+    </Text>
+    <Text font="--base" margin="0 0 24px 0" color="#444">
+      Cette page Actus est en cours de préparation. Reviens très vite pour découvrir toutes les nouveautés !
+    </Text>
+    <Link
+      href="/"
+      padding="12px 24px"
+      background="#000"
+      color="#fff"
+      border-radius="8px"
+      text-decoration="none"
+      font="--lead"
+      font-weight="700"
+      transition="background 0.3s ease"
+      hover-background="#333"
+    >
+      Découvrir Trackdiggers →
+    </Link>
+  </Box>
+</Box>
     </Theme>
   );
 };
