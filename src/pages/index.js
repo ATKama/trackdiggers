@@ -80,8 +80,7 @@ export default (() => {
 	width="100%"
 	max-width="100%"
 	padding="80px 20px 0px 20px"
-/>
-			
+/>			
 <Box
   max-width="900px"
   width="100%"
@@ -97,7 +96,7 @@ export default (() => {
     margin="0 0 24px 0"
     box-sizing="border-box"
   >
-    <Text font="--lead" color="--dark" margin="0" display="inline">
+    <Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
       <Text
         as="span"
         color="--light"

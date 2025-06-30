@@ -96,7 +96,7 @@ export default (() => {
 				text-align="center"
 				sm-margin="0px auto 40px auto"
 			>
-				<Text font="--lead" color="--dark" margin="0" display="inline">
+				<Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
 	C'est toi qui sélectionne les morceaux TrackDiggers
 	<br />
 	<br />

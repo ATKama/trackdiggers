@@ -82,6 +82,7 @@ export default (() => {
 					<Text
 						text-align="center"
 						padding="0px 16px 0px 16px"
+                        as="h1"
 						color="--light"
 						font="--headline1"
 						margin="16px 0px 0px 0px"

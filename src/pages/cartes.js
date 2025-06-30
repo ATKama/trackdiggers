@@ -96,7 +96,7 @@ export default (() => {
 				text-align="center"
 				sm-margin="0px auto 0px auto"
 			>
-				<Text font="--lead" color="--dark" margin="0" display="inline">
+				<Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
 					Ici, tu peux collectionner les cartes des sons disponibles dans
 				</Text>
 				<br />

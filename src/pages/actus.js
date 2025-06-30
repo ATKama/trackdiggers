@@ -51,7 +51,7 @@ const NewsPage = () => {
           <Box width="100%" max-width="400px" background="#f5f5f5" border-radius="16px" padding="24px" box-shadow="0 2px 8px rgba(0,0,0,0.05)">
             <Text font="--lead" font-weight="700" margin="0 0 12px 0">Titre de l'article</Text>
             <Text font="--base" margin="0 0 16px 0" color="#666">Résumé de l’article ou accroche engageante. 2 à 3 lignes max.</Text>
-            <Link href="/actu/titre-article" color="#000" text-decoration="underline">Lire l'article →</Link>
+            <Link href="/actus/" color="#000" text-decoration="underline">Lire l'article →</Link>
           </Box>
 
           {/* D'autres blocs comme celui-ci peuvent être ajoutés dynamiquement */}
