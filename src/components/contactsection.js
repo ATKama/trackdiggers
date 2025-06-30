@@ -10,6 +10,7 @@ const ContactSection = () => {
     if (!ref.current) return;
 
     ref.current.innerHTML = `
+     <div style="background: #eee; padding: 30px; border-radius: 16px;">
       <form id="contact-form" style="display:flex;flex-direction:column;gap:12px;max-width:500px;margin:0 auto;">
         <input type="text" name="email" placeholder="Ton email (optionnel)" style="padding:12px;border:1px solid #ccc;border-radius:8px;" />
         <select name="sujet" style="padding:12px;border:1px solid #ccc;border-radius:8px;">
@@ -56,7 +57,7 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section style={{ padding: "60px 20px", background: "#f9f9f9", textAlign: "center" }}>
+    <section style={{ padding: "30px 20px", background: "#f9f9f9", textAlign: "center", borderRadius: "16px" }}>
       <div style={{ maxWidth: "600px", margin: "0 auto", marginBottom: "40px" }}>
         <h2 style={{ marginBottom: "20px" }}>Une remarque ? Un bug ? Un message ?</h2>
         <p style={{ color: "#555" }}>

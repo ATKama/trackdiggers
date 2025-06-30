@@ -96,7 +96,7 @@ export default (() => {
     margin="0 0 24px 0"
     box-sizing="border-box"
   >
-    <Text as="h1"  font="--lead" color="--dark" margin="0" display="inline">
+    <Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
       <Text
         as="span"
         color="--light"
@@ -341,9 +341,9 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
   </Box>
 </Section>
 		<Section id="booster" background="white" color="--dark" padding="64px 0 50px 0">
-			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff">
+			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff" justify-content="center" >
 				{"  "}
-				<Box padding="16px 16px 16px 16px" width="50%" lg-width="100%">
+				<Box padding="0px 0px 0px 0px" width="50%" lg-width="100%" margin="0 auto">
 					{"    "}
 					<Box>
 						{"      "}
@@ -353,11 +353,13 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 							letter-spacing="1px"
 							text-transform="uppercase"
 							margin="0"
+							marginBotton="30px"
+							text-align="center"
 							text-shadow="1px 1px 2px rgba(0, 0, 0, 0.8)"
 						>
 							🎴 BOOSTER collector
 						</Text>
-						<Text font="normal 900 30px/1.2 --fontFamily-sans" max-width="500px" margin="10px 0 0 0" text-shadow="1px 1px 2px rgba(0, 0, 0, 0.8)">
+						<Text font="normal 900 30px/1.2 --fontFamily-sans" max-width="500px" text-align="center" text-shadow="1px 1px 2px rgba(0, 0, 0, 0.8)" margin="0 auto">
 							Tu veux collectionner ces morceaux ?{" "}
 							<br />
 							Reçois tes cartes Trackdiggers uniques !
@@ -643,9 +645,9 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 				width="100%"
 			/>
 		</Section>
-				<Section padding="20px 0" background="#ffffff">
+				<Section padding="20px 0" background="#ffffff" border-radius="30px">
 			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
-			<Components.contactsection sm-margin="0px" margin="0px" width="100%" max-width="100%" display="block" />
+			<Components.contactsection sm-margin="0px" margin="0px" width="100%" max-width="100%" display="block" border-radius="100px" />
 		</Section>
 		<Section padding="40px 0" quarkly-title="Pied de page">
 			<Override
