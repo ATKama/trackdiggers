@@ -16,7 +16,7 @@ const NewsPage = () => {
         <meta property="og:title" content="Actualités Trackdiggers" />
         <meta property="og:description" content="Découvre nos actus, nos updates, et les artistes qui montent !" />
         <meta property="og:image" content="https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20(64%20x%2064%20px).png" />
-      </Helmet>
+      <link rel="canonical" href="https://trackdiggers.com/actus" /></Helmet>
 
       {/* HEADER */}
       <Section padding="0px 0 16px 0" quarkly-title="Header" align-items="center" justify-content="center" background="#ffffff" position="fixed" top="0px" left="0px" right="0px" z-index="1000" width="100%" height="60px" border-style="solid" border-width="1px" border-color="rgba(0, 0, 0, 0.19)" border-radius="8px">

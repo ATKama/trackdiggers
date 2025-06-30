@@ -644,6 +644,10 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 				width="100%"
 			/>
 		</Section>
+				<Section padding="20px 0" background="#ffffff">
+			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
+			<Components.contactsection sm-margin="0px" margin="0px" width="100%" max-width="100%" display="block" />
+		</Section>
 		<Section padding="40px 0" quarkly-title="Pied de page">
 			<Override
 				slot="SectionContent"
