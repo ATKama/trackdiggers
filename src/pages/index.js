@@ -10,7 +10,7 @@ export default (() => {
 		<GlobalQuarklyPageStyles pageUrl={"index"} />
 		<Helmet>
 			<title>
-				Home | Recherche par mood
+				Home TrackDiggers | Recherche par mood
 			</title>
 			<meta name={"description"} content={"Trackdiggers te propose des sons d’artistes émergents en fonction de ton humeur. Trouve les morceaux qui matchent ton mood, découvre, vote et collectionne des cartes digitales exclusives."} />
 			<meta property={"og:title"} content={"Découvre les morceaux qui matchent ton mood – Trackdiggers"} />
@@ -96,7 +96,7 @@ export default (() => {
     margin="0 0 24px 0"
     box-sizing="border-box"
   >
-    <Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
+    <Text as="h1"  font="--lead" color="--dark" margin="0" display="inline">
       <Text
         as="span"
         color="--light"

@@ -76,7 +76,7 @@ export default (() => {
 				padding="0 20px"
 			/>
 			{"    "}
-			<Text font="--headline2" margin="0 0 20px 0" color="--dark">
+			<Text as="h1" font="--headline2" margin="0 0 20px 0" color="--dark">
 				Mentions légales
 			</Text>
 			{"  "}
