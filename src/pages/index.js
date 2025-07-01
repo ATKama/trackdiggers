@@ -74,6 +74,8 @@ export default (() => {
 			sm-background="#ffffff"
 			color="#000000"
 			border-width="0px"
+			style={{
+    minHeight: "1400px" }}
 		>
 			<Override
 	slot="SectionContent"
@@ -147,7 +149,8 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
     </Link>
   </Box>
 </Section>
-<Section padding="80px 24px 0px 0px" background="#ffffff" sm-padding="50px 0px 0px 0px"> 
+<Section padding="80px 24px 0px 0px" background="#ffffff" sm-padding="50px 0px 0px 0px" style={{
+    minHeight: "850px" }}> 
   <Override slot="SectionContent" max-width="1000px" margin="0 auto" />
   
   <Text
