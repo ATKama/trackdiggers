@@ -1,6 +1,9 @@
-/votes     /votes/     301
-/actus     /actus/     301
-/about     /about/     301
-/cartes    /cartes/    301
-/sitemap.xml  /sitemap.xml/sitemap-0.xml  200
-/informations-legales  /informations-legales/  301
+http://trackdiggers.com/*          https://trackdiggers.com/:splat      301!
+http://www.trackdiggers.com/*      https://trackdiggers.com/:splat      301!
+https://www.trackdiggers.com/*     https://trackdiggers.com/:splat      301!
+/votes            /votes/                     301
+/actus            /actus/                     301
+/about            /about/                     301
+/cartes           /cartes/                    301
+/sitemap.xml      /sitemap.xml/sitemap-0.xml  200
+/informations-legales  /informations-legales/ 301
