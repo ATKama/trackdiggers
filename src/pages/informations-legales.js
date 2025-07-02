@@ -1,4 +1,5 @@
 import React from "react";
+import { Box } from "@quarkly/widgets";
 import theme from "theme";
 import { Theme, Link, Image, Section, Text, Span, Strong } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
@@ -174,7 +175,7 @@ export default (() => {
 				>
 					Email :
 				</Span>
-				{" "}contact@atkmusic.fr
+				{" "}contact@trackdiggers.com
 				<br />
 				{"    "}
 				<Span
@@ -190,7 +191,7 @@ export default (() => {
 				>
 					Hébergeur :
 				</Span>
-				{" "}Netlify, 44 Montgomery Street, Suite 300, San Francisco, California 94104{"\n  "}
+				{" "}Cloudflare, Inc., 101 Townsend Street, San Francisco, California 94107, États-Unis{"\n  "}
 			</Text>
 		</Section>
 		<Section padding="80px 0 40px 0" quarkly-title="Politique de confidentialité">
@@ -340,6 +341,17 @@ Les utilisateurs peuvent à tout moment gérer ou retirer leur consentement dans
 				</Link>
 				{"  "}
 			</Text>
+			<Box margin="24px 0 0 0" display="flex" gap="40px" justify-content="center" align-items="center">
+			  <Link href="https://instagram.com/trackdiggers" target="_blank">
+				<Image src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="32px" alt="Instagram" margin="0 20px" />
+			  </Link>
+			  <Link href="https://tiktok.com/@trackdiggers" target="_blank">
+				<Image src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="32px" alt="TikTok" margin="0 20px" />
+			  </Link>
+			  <Link href="https://x.com/track_diggers" target="_blank">
+				<Image src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" width="32px" alt="X (Twitter)" margin="0 20px" />
+			  </Link>
+			</Box>
 		</Section>
 		<Components.SlideMenu />
 	</Theme>;

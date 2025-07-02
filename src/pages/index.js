@@ -698,6 +698,17 @@ form.track3.value = titles[2] || "";
 				</Link>
 				{"  "}
 			</Text>
+			<Box margin="24px 0 0 0" display="flex" gap="40px" justify-content="center" align-items="center">
+  <Link href="https://instagram.com/trackdiggers" target="_blank">
+    <Image src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="32px" alt="Instagram" margin="0 20px" />
+  </Link>
+  <Link href="https://tiktok.com/@trackdiggers" target="_blank">
+    <Image src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="32px" alt="TikTok" margin="0 20px" />
+  </Link>
+  <Link href="https://x.com/track_diggers" target="_blank">
+    <Image src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" width="32px" alt="X (Twitter)" margin="0 20px" />
+  </Link>
+</Box>
 		</Section>
 	</Theme>;
 });
