@@ -1,3 +1,4 @@
+/* global grecaptcha */
 import React from "react";
 import theme from "theme";
 import { Theme, Link, Image, Section, Text, Box, Strong } from "@quarkly/widgets";
@@ -25,7 +26,8 @@ export default (() => {
 			<meta name={"msapplication-TileColor"} content={"#000000"} />
 			<link rel="canonical" href="https://trackdiggers.com" />
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
-     crossorigin="anonymous"></script></Helmet>
+     crossorigin="anonymous"></script>
+	 <script src="https://www.google.com/recaptcha/api.js" async defer></script></Helmet>
 		<Section
 			padding="0px 0 16px 0"
 			quarkly-title="Header"
@@ -401,6 +403,15 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 	onSubmit={async (e) => {
 		e.preventDefault();
 		const form = e.target;
+		const titles = Array.from(document.querySelectorAll(".track")).slice(0, 3).map(track => {
+	const title = track.querySelector(".track-title")?.textContent?.trim() || "";
+	const artist = track.querySelector(".track-artist")?.textContent?.trim() || "";
+	return `${title} - ${artist}`;
+});
+
+form.track1.value = titles[0] || "";
+form.track2.value = titles[1] || "";
+form.track3.value = titles[2] || "";
 		const email = form.email.value;
 		const track1 = form.track1.value;
 		const track2 = form.track2.value;
@@ -409,6 +420,11 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 		const consentNews = form.consentNews.checked;
 
 		const output = document.getElementById("pack-result");
+		if (grecaptcha.getResponse() === "") {
+	const output = document.getElementById("pack-result");
+	output.innerHTML = "❌ Tu dois valider le captcha avant d'envoyer le formulaire.";
+	return;
+}
 		output.innerHTML = "⏳ Traitement en cours...";
 
 		if (!consentCartes) {
@@ -433,9 +449,9 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 			const text = await response.text();
 
 			if (response.status === 409) {
-				output.innerHTML = `⛔️ Tu as déjà réclamé un pack aujourd’hui.<br><br>👉 <a href="https://trackdiggers.pages.dev/cartes" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`;
+				output.innerHTML = `⛔️ Tu as déjà réclamé un pack aujourd’hui.<br><br>👉 <a href="https://trackdiggers.com/cartes/" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`;
 			} else if (response.status >= 200 && response.status < 300) {
-				output.innerHTML = `🎉 Ton pack a bien été envoyé !<br><br>👉 <a href="https://trackdiggers.pages.dev/cartes" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`;
+				output.innerHTML = `🎉 Ton pack a bien été envoyé !<br><br>👉 <a href="https://trackdiggers.com/cartes/" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`;
 			} else {
 				output.innerHTML = `❌ Erreur inattendue (${response.status}) : ${text}`;
 			}
@@ -472,6 +488,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 	>
 		Réclamer mon pack 🎁
 	</button>
+	<div class="g-recaptcha" data-sitekey="6Ldm13QrAAAAAHf__nAR96XS3TZQcO1h8vkPgAb2" required></div>
 </form>
 
 {/* 🔽 Ce bloc doit être placé juste en dessous du formulaire pour afficher le résultat */}
@@ -488,7 +505,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 		fontSize: "14px"
 	}}
 	dangerouslySetInnerHTML={{
-		__html: `👉 <a href="https://trackdiggers.pages.dev/cartes" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`
+		__html: `👉 <a href="https://trackdiggers.com/cartes/" target="_blank" rel="noopener noreferrer">Voir mes cartes</a>`
 	}}
 ></div>
 </Box>

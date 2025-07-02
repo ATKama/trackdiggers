@@ -341,7 +341,7 @@ const MusicVoterTest = () => {
 					</button>
 					              
 					<button onClick={() => {
-						const shareUrl = `https://trackdiggers.pages.dev/votes?soundID=${p["CUSTOM ID"]}`;
+						const shareUrl = `https://trackdiggers.com/votes?soundID=${p["CUSTOM ID"]}`;
 						const shareData = {
 							title: `${p.artist} – ${p.title}`,
 							text: "Vote pour ce son sur TrackDigger 🎧",
