@@ -278,7 +278,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
       <Text font="--base" margin="0 0 20px 0" color="#444">Tu es artiste ? Propose ton son et tente d’intégrer la prochaine sélection Trackdiggers. Mets ta musique entre les mains de vrais auditeurs.</Text>
       <Link
-        href="https://airtable.com/app6jjhoCkgO9tcDB/paghHyRTIs9FHxMBq/form"
+        href="https://airtable.com/app6jjhoCkgO9tcDB/pagiKds3fkQEmlWqp/form"
         background="#000"
         color="#fff"
         padding="10px 16px"
