@@ -278,18 +278,35 @@ const MusicVoterTest = () => {
 					{p.title}
 				</h3>
 				            
-				<iframe
-					width="100%"
-					style={{
-						aspectRatio: "1 / 1",
-						width: "100%",
-						borderRadius: "8px"
-					}}
-					src={`https://www.youtube.com/embed/${extraireIDYoutube(p.youtube)}`}
-					frameBorder="0"
-					allowFullScreen
-					title={p.title}
-				/>
+{p.youtube?.includes("soundcloud.com") ? (
+	<iframe
+		width="100%"
+		height="100%"
+		style={{
+			aspectRatio: "1 / 1",
+			width: "100%",
+			borderRadius: "8px"
+		}}
+		scrolling="no"
+		frameBorder="no"
+		allow="autoplay"
+		src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(p.youtube)}&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+		title={p.title}
+	/>
+) : (
+	<iframe
+		width="100%"
+		style={{
+			aspectRatio: "1 / 1",
+			width: "100%",
+			borderRadius: "8px"
+		}}
+		src={`https://www.youtube.com/embed/${extraireIDYoutube(p.youtube)}`}
+		frameBorder="0"
+		allowFullScreen
+		title={p.title}
+	/>
+)}
 				            
 				<div style={{
 					marginTop: "0.5rem"
