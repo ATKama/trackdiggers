@@ -4,10 +4,10 @@ import { navigate } from "gatsby";
 
 const SlideMenu = ({ ...props }) => {
 	const [open, setOpen] = useState(false);
-	const hasMounted = useRef(false);
+	const [mounted, setMounted] = useState(false); // 🆕 Ajout pour corriger l’hydratation
 
 	useEffect(() => {
-		hasMounted.current = true;
+		setMounted(true); // Marque le composant comme monté uniquement côté client
 	}, []);
 
 	const goTo = url => {
@@ -17,14 +17,14 @@ const SlideMenu = ({ ...props }) => {
 		}, 200); // Laisse le menu se fermer avant navigation
 	};
 
+	if (!mounted) return null; // 🆕 Empêche le rendu côté serveur (corrige le bug d’ouverture à froid)
+
 	return (
 		<>
 			{/* Icône burger */}
 			{!open && (
 				<div
-					onClick={() => {
-						if (hasMounted.current) setOpen(true);
-					}}
+					onClick={() => setOpen(true)}
 					style={{
 						position: "fixed",
 						top: "20px",
