@@ -8,11 +8,6 @@ import { Override } from "@quarkly/components";
 import * as Components from "components";
 import SlideMenu from "../components/SlideMenu"; // adapte le chemin si nécessaire
 export default (() => {
-		const [showSlideMenu, setShowSlideMenu] = useState(false);
-
-	useEffect(() => {
-		setShowSlideMenu(true);
-	}, []);
 	return <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"index"} />
 		<Helmet>
@@ -664,7 +659,7 @@ form.track3.value = titles[2] || "";
 			>
 				Deviens un DIGGER
 			</Link>
-{showSlideMenu && <SlideMenu key="force-visible" />}
+<SlideMenu />
 		</Section>
 				<Section padding="20px 0" background="#ffffff" border-radius="30px">
 			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
