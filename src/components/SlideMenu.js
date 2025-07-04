@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { navigate } from "gatsby";
 
 const SlideMenu = () => {
 	const [open, setOpen] = useState(false);
-	const [isClient, setIsClient] = useState(false);
-
-	useEffect(() => {
-		setIsClient(true); // Hydratation côté client OK
-	}, []);
 
 	const goTo = (url) => {
 		setOpen(false);
@@ -16,7 +11,7 @@ const SlideMenu = () => {
 
 	return (
 		<>
-			{/* Burger visible dès SSR */}
+			{/* Burger toujours visible */}
 			{!open && (
 				<div
 					onClick={() => setOpen(true)}
@@ -36,49 +31,47 @@ const SlideMenu = () => {
 				</div>
 			)}
 
-			{/* Menu latéral, rendu uniquement côté client */}
-			{isClient && (
+			{/* Menu latéral toujours visible (caché via translate) */}
+			<div
+				style={{
+					position: "fixed",
+					top: "0",
+					left: open ? "0" : "-300px",
+					width: "250px",
+					height: "100vh",
+					background: "#fff",
+					boxShadow: "4px 0 15px rgba(0,0,0,0.1)",
+					zIndex: "1002",
+					transition: "left 0.3s ease",
+					display: "flex",
+					flexDirection: "column",
+					padding: "40px 20px"
+				}}
+			>
 				<div
+					onClick={() => setOpen(false)}
 					style={{
-						position: "fixed",
-						top: "0",
-						left: open ? "0" : "-300px",
-						width: "250px",
-						height: "100vh",
-						background: "#fff",
-						boxShadow: "4px 0 15px rgba(0,0,0,0.1)",
-						zIndex: "1002",
-						transition: "left 0.3s ease",
-						display: "flex",
-						flexDirection: "column",
-						padding: "40px 20px"
+						position: "absolute",
+						top: "20px",
+						right: "20px",
+						fontSize: "24px",
+						cursor: "pointer",
+						opacity: 0.6,
+						zIndex: "1004"
 					}}
 				>
-					<div
-						onClick={() => setOpen(false)}
-						style={{
-							position: "absolute",
-							top: "20px",
-							right: "20px",
-							fontSize: "24px",
-							cursor: "pointer",
-							opacity: 0.6,
-							zIndex: "1004"
-						}}
-					>
-						✕
-					</div>
-
-					<div style={{ marginTop: "60px", display: "flex", flexDirection: "column" }}>
-						<div style={{ fontSize: "20px", marginBottom: "20px", fontWeight: "bold" }}>Menu</div>
-						<a onClick={() => goTo("/")} style={linkStyle}>Search by mood</a>
-						<a onClick={() => goTo("/votes")} style={linkStyle}>Page de votes</a>
-						<a onClick={() => goTo("/cartes")} style={linkStyle}>Mes cartes</a>
-						<a onClick={() => goTo("/about")} style={linkStyle}>À propos</a>
-						<a onClick={() => goTo("/actus")} style={linkStyle}>Actualités & News</a>
-					</div>
+					✕
 				</div>
-			)}
+
+				<div style={{ marginTop: "60px", display: "flex", flexDirection: "column" }}>
+					<div style={{ fontSize: "20px", marginBottom: "20px", fontWeight: "bold" }}>Menu</div>
+					<a onClick={() => goTo("/")} style={linkStyle}>Search by mood</a>
+					<a onClick={() => goTo("/votes")} style={linkStyle}>Page de votes</a>
+					<a onClick={() => goTo("/cartes")} style={linkStyle}>Mes cartes</a>
+					<a onClick={() => goTo("/about")} style={linkStyle}>À propos</a>
+					<a onClick={() => goTo("/actus")} style={linkStyle}>Actualités & News</a>
+				</div>
+			</div>
 		</>
 	);
 };
