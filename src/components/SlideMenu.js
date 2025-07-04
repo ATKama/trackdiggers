@@ -4,11 +4,10 @@ import { navigate } from "gatsby";
 
 const SlideMenu = ({ ...props }) => {
 	const [open, setOpen] = useState(false);
-	const mounted = useRef(false);
+	const hasMounted = useRef(false);
 
 	useEffect(() => {
-		// Assure que l’event onClick est actif après hydratation
-		mounted.current = true;
+		hasMounted.current = true;
 	}, []);
 
 	const goTo = url => {
@@ -24,7 +23,7 @@ const SlideMenu = ({ ...props }) => {
 			{!open && (
 				<div
 					onClick={() => {
-						if (mounted.current) setOpen(true);
+						if (hasMounted.current) setOpen(true);
 					}}
 					style={{
 						position: "fixed",
