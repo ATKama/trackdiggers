@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
+import SlideMenu from "../components/SlideMenu"; // adapte le chemin si nécessaire
 export default (() => {
 	return <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"index"} />
@@ -658,14 +659,7 @@ form.track3.value = titles[2] || "";
 			>
 				Deviens un DIGGER
 			</Link>
-			<Components.SlideMenu
-				bottom="-80px"
-				height="auto"
-				left="0"
-				right="0"
-				top="0"
-				width="100%"
-			/>
+<SlideMenu />
 		</Section>
 				<Section padding="20px 0" background="#ffffff" border-radius="30px">
 			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
