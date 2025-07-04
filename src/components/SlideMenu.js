@@ -19,7 +19,7 @@ const SlideMenu = () => {
 						position: "fixed",
 						top: "20px",
 						left: "20px",
-						zIndex: "1003",
+						zIndex: "9999",
 						cursor: "pointer",
 						background: "none",
 						padding: "10px"
@@ -41,7 +41,7 @@ const SlideMenu = () => {
 					height: "100vh",
 					background: "#fff",
 					boxShadow: "4px 0 15px rgba(0,0,0,0.1)",
-					zIndex: "1002",
+					zIndex: "9998",
 					transition: "left 0.3s ease",
 					display: "flex",
 					flexDirection: "column",
