@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "gatsby";
+const fontFamily = "'Black Ops One', cursive";
 
 const SlideMenu = () => {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ const SlideMenu = () => {
           onClick={() => setOpen(true)}
           style={{
             position: "fixed",
-            top: "20px",
+            top: "8px",
             left: "20px",
             zIndex: "9999",
             cursor: "pointer",
@@ -114,7 +115,7 @@ const SlideMenu = () => {
           ✕
         </div>
         
-        <div style={{ marginTop: "60px", display: "flex", flexDirection: "column" }}>
+        <div style={{ marginTop: "60px", display: "flex", flexDirection: "column", fontFamily }}>
           <div style={{ fontSize: "20px", marginBottom: "20px", fontWeight: "bold" }}>Menu</div>
           <a onClick={() => goTo("/")} style={linkStyle}>Search by mood</a>
           <a onClick={() => goTo("/votes")} style={linkStyle}>Page de votes</a>
@@ -152,7 +153,8 @@ const linkStyle = {
   padding: "8px 12px",
   borderRadius: "6px",
   transition: "background-color 0.2s ease",
-  display: "block"
+  display: "block",
+  fontFamily
 };
 
 export default SlideMenu;
