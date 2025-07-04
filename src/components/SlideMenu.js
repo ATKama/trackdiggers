@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import atomize from "@quarkly/atomize";
 import { navigate } from "gatsby";
 
 const SlideMenu = ({ ...props }) => {
 	const [open, setOpen] = useState(false);
+	const [hydrated, setHydrated] = useState(false);
+
+	useEffect(() => {
+		// Force le rendu côté client après hydratation
+		setHydrated(true);
+	}, []);
 
 	const goTo = url => {
 		setOpen(false);
@@ -11,6 +17,8 @@ const SlideMenu = ({ ...props }) => {
 			navigate(url);
 		}, 200); // Laisse le menu se fermer avant navigation
 	};
+
+	if (!hydrated) return null;
 
 	return (
 		<>
