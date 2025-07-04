@@ -29,7 +29,7 @@ const SlideMenu = ({ ...props }) => {
 						left: "20px",
 						zIndex: "1003",
 						cursor: "pointer",
-						background: "transparent",
+						background: "none",
 						padding: "10px"
 					}}
 				>
