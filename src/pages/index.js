@@ -658,14 +658,17 @@ form.track3.value = titles[2] || "";
 			>
 				Deviens un DIGGER
 			</Link>
-			<Components.SlideMenu
-				bottom="-80px"
-				height="auto"
-				left="0"
-				right="0"
-				top="0"
-				width="100%"
-			/>
+	{typeof window !== "undefined" && (
+	<Components.SlideMenu
+		key="hydrated-menu"
+		bottom="-80px"
+		height="auto"
+		left="0"
+		right="0"
+		top="0"
+		width="100%"
+	/>
+)}
 		</Section>
 				<Section padding="20px 0" background="#ffffff" border-radius="30px">
 			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
