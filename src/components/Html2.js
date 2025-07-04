@@ -77,7 +77,7 @@ const EmbedHTML = ({ children, ...props }) => {
 
           .auralink-form input[type="text"] {
             padding: 1rem;
-            font-size: 0.85rem;
+            font-size: 16px;
           }
 
           .auralink-form button {

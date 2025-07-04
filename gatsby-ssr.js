@@ -20,17 +20,26 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
       rel="stylesheet"
       href="/tarteaucitron/tarteaucitron.css"
     />,
-    <style
-      key="global-font-style"
-      dangerouslySetInnerHTML={{
-        __html: `
-          html, body, #___gatsby, #___gatsby > div {
-            font-family: 'Black Ops One', sans-serif !important;
-            overflow-x: hidden; /* ✅ Ajout ici */
-          }
-        `,
-      }}
-    />,
+<style
+  key="global-font-style"
+  dangerouslySetInnerHTML={{
+    __html: `
+      /* Appliquer Black Ops One seulement sur les cartes */
+      .track .title, .track .artist {
+        font-family: 'Black Ops One', sans-serif !important;
+      }
+
+      /* Verrouiller Inter sur tous les blocs sensibles */
+      .force-inter, .force-inter * {
+        font-family: 'Inter', sans-serif !important;
+      }
+
+      html, body {
+        overflow-x: hidden;
+      }
+    `,
+  }}
+/>
   ]);
 
   const postBodyComponents = [

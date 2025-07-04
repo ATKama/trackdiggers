@@ -5,10 +5,14 @@ import { navigate } from "gatsby";
 const SlideMenu = ({ ...props }) => {
 	const [open, setOpen] = useState(false);
 	const [hydrated, setHydrated] = useState(false);
+	const [canClick, setCanClick] = useState(false);
 
 	useEffect(() => {
-		// Force le rendu côté client après hydratation
+		// Marque l'hydratation et active les clics après le premier rendu client
 		setHydrated(true);
+		// Active le clic une fois React prêt (évite le bug au premier chargement prod)
+		const timer = setTimeout(() => setCanClick(true), 50);
+		return () => clearTimeout(timer);
 	}, []);
 
 	const goTo = url => {
@@ -25,13 +29,15 @@ const SlideMenu = ({ ...props }) => {
 			{/* Icône burger */}
 			{!open && (
 				<div
-					onClick={() => setOpen(true)}
+					onClick={() => {
+						if (canClick) setOpen(true);
+					}}
 					style={{
 						position: "fixed",
 						top: "20px",
 						left: "20px",
 						zIndex: "1003",
-						cursor: "pointer",
+						cursor: canClick ? "pointer" : "default",
 						background: "transparent",
 						padding: "10px"
 					}}

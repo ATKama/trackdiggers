@@ -101,7 +101,7 @@ export default (() => {
     margin="0 0 24px 0"
     box-sizing="border-box"
   >
-    <Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
+    <Text as="h1" font="--lead" color="--dark" margin="0" display="inline" className="force-inter">
       <Text
         as="span"
         color="--light"
@@ -110,6 +110,7 @@ export default (() => {
         border-radius="6px"
         margin="0 6px 0 0"
         display="inline-block"
+		className="force-inter"
       >
         TrackDiggers
       </Text>
