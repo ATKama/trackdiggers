@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import atomize from "@quarkly/atomize";
 import { navigate } from "gatsby";
 
 const SlideMenu = ({ ...props }) => {
 	const [open, setOpen] = useState(false);
-	const [isClient, setIsClient] = useState(false);
+	const mounted = useRef(false);
 
 	useEffect(() => {
-		setIsClient(true);
+		// Assure que l’event onClick est actif après hydratation
+		mounted.current = true;
 	}, []);
 
 	const goTo = url => {
@@ -23,7 +24,7 @@ const SlideMenu = ({ ...props }) => {
 			{!open && (
 				<div
 					onClick={() => {
-						if (isClient) setOpen(true);
+						if (mounted.current) setOpen(true);
 					}}
 					style={{
 						position: "fixed",
