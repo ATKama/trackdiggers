@@ -4,17 +4,10 @@ import { navigate } from "gatsby";
 
 const SlideMenu = ({ ...props }) => {
 	const [open, setOpen] = useState(false);
-	const [hydrated, setHydrated] = useState(false);
-	const [canClick, setCanClick] = useState(false);
+	const [isClient, setIsClient] = useState(false);
 
 	useEffect(() => {
-		// Marque l'hydratation
-		setHydrated(true);
-
-		// Force un petit délai pour garantir que React a hydraté l’élément et que l'événement est actif
-		const timer = setTimeout(() => setCanClick(true), 100);
-
-		return () => clearTimeout(timer);
+		setIsClient(true);
 	}, []);
 
 	const goTo = url => {
@@ -27,17 +20,17 @@ const SlideMenu = ({ ...props }) => {
 	return (
 		<>
 			{/* Icône burger */}
-			{hydrated && !open && (
+			{!open && (
 				<div
 					onClick={() => {
-						if (canClick) setOpen(true);
+						if (isClient) setOpen(true);
 					}}
 					style={{
 						position: "fixed",
 						top: "20px",
 						left: "20px",
 						zIndex: "1003",
-						cursor: canClick ? "pointer" : "default",
+						cursor: "pointer",
 						background: "transparent",
 						padding: "10px"
 					}}
