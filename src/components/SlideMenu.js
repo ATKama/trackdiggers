@@ -41,9 +41,10 @@ const SlideMenu = ({ ...props }) => {
 
 			{/* Menu latéral — monté uniquement après hydratation */}
 			{mounted && (
-				<div
-					{...props}
-					style={{
+  <div
+    key={mounted ? 'ready' : 'loading'}
+    {...props}
+    style={{
 						position: "fixed",
 						top: "0",
 						left: open ? "0" : "-300px",
