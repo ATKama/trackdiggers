@@ -69,6 +69,7 @@ export default (() => {
 					xl-margin="30px 0px 0px 0px"
 				/>
 			</Link>
+			<SlideMenu />
 		</Section>
 		<Section
 			background="#ffffff"
@@ -659,7 +660,6 @@ form.track3.value = titles[2] || "";
 			>
 				Deviens un DIGGER
 			</Link>
-<SlideMenu />
 		</Section>
 				<Section padding="20px 0" background="#ffffff" border-radius="30px">
 			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
