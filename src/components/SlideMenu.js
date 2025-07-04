@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { navigate } from "gatsby";
 
 const SlideMenu = () => {
@@ -9,8 +9,8 @@ const SlideMenu = () => {
 		setTimeout(() => navigate(url), 200);
 	};
 
-	useLayoutEffect(() => {
-		console.log("LayoutEffect triggered"); // Debug
+	useEffect(() => {
+		console.log("Effect triggered"); // Debug
 	}, []);
 
 	return (
