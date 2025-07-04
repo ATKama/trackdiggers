@@ -7,7 +7,7 @@ const SlideMenu = ({ ...props }) => {
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
-		setMounted(true); // Marque le composant comme monté côté client
+		setMounted(true); 
 	}, []);
 
 	const goTo = (url) => {
