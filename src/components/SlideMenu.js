@@ -8,10 +8,12 @@ const SlideMenu = ({ ...props }) => {
 	const [canClick, setCanClick] = useState(false);
 
 	useEffect(() => {
-		// Marque l'hydratation et active les clics après le premier rendu client
+		// Marque l'hydratation
 		setHydrated(true);
-		// Active le clic une fois React prêt (évite le bug au premier chargement prod)
-		const timer = setTimeout(() => setCanClick(true), 50);
+
+		// Force un petit délai pour garantir que React a hydraté l’élément et que l'événement est actif
+		const timer = setTimeout(() => setCanClick(true), 100);
+
 		return () => clearTimeout(timer);
 	}, []);
 
@@ -22,12 +24,10 @@ const SlideMenu = ({ ...props }) => {
 		}, 200); // Laisse le menu se fermer avant navigation
 	};
 
-	if (!hydrated) return null;
-
 	return (
 		<>
 			{/* Icône burger */}
-			{!open && (
+			{hydrated && !open && (
 				<div
 					onClick={() => {
 						if (canClick) setOpen(true);
