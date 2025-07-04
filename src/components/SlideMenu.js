@@ -9,36 +9,31 @@ const SlideMenu = () => {
 		setTimeout(() => navigate(url), 200);
 	};
 
-	useEffect(() => {
-		console.log("Effect triggered"); // Debug
-	}, []);
+	// Rendu du bouton burger (toujours affiché)
+	const renderBurger = (
+		!open && (
+			<div
+				onClick={() => setOpen(true)}
+				style={{
+					position: "fixed",
+					top: "20px",
+					left: "20px",
+					zIndex: "1003",
+					cursor: "pointer",
+					background: "none",
+					padding: "10px"
+				}}
+			>
+				<div style={{ width: "30px", height: "4px", background: "#000", margin: "6px 0" }} />
+				<div style={{ width: "30px", height: "4px", background: "#000", margin: "6px 0" }} />
+				<div style={{ width: "30px", height: "4px", background: "#000", margin: "6px 0" }} />
+			</div>
+		)
+	);
 
-	return (
-		<>
-			{/* Icône burger */}
-			{!open && (
-				<div
-					onClick={() => {
-						console.log("clicked burger"); // Debug
-						setOpen(true);
-					}}
-					style={{
-						position: "fixed",
-						top: "20px",
-						left: "20px",
-						zIndex: "1003",
-						cursor: "pointer",
-						background: "none",
-						padding: "10px"
-					}}
-				>
-					<div style={{ width: "30px", height: "4px", background: "#000", margin: "6px 0" }} />
-					<div style={{ width: "30px", height: "4px", background: "#000", margin: "6px 0" }} />
-					<div style={{ width: "30px", height: "4px", background: "#000", margin: "6px 0" }} />
-				</div>
-			)}
-
-			{/* Menu latéral */}
+	// Menu latéral (rendu uniquement côté client)
+	const renderMenu =
+		typeof window !== "undefined" && (
 			<div
 				style={{
 					position: "fixed",
@@ -82,6 +77,12 @@ const SlideMenu = () => {
 					<a onClick={() => goTo("/actus")} style={linkStyle}>Actualités & News</a>
 				</div>
 			</div>
+		);
+
+	return (
+		<>
+			{renderBurger}
+			{renderMenu}
 		</>
 	);
 };
