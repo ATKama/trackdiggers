@@ -237,17 +237,52 @@ document.getElementById("auralink-results").innerHTML = "";
     };
   }, []);
 
-  return <div {...props}>
-    <div ref={ref} />
-    {loading && <div style={{ margin: "20px auto", padding: "16px 24px", border: "2px solid #0000000", borderRadius: "12px", maxWidth: "260px", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "transparent" }}>
-      <div style={{ width: "30px", height: "30px", border: "4px solid #000000", borderTop: "4px solid transparent", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
-      <p style={{ marginTop: "10px", color: "#000000", fontSize: "20px" }}>
+return <div {...props}>
+  <div ref={ref} />
+  {loading && (
+    <div
+      style={{
+        margin: "20px auto",
+        padding: "16px 24px",
+        border: "2px solid #0000000",
+        borderRadius: "12px",
+        maxWidth: "260px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "transparent"
+      }}
+    >
+      <div
+        style={{
+          width: "30px",
+          height: "30px",
+          border: "4px solid #000000",
+          borderTop: "4px solid transparent",
+          borderRadius: "50%",
+          animation: "spin 1s linear infinite"
+        }}
+      />
+      <p
+        style={{
+          marginTop: "10px",
+          color: "#000000",
+          fontSize: "20px",
+          textAlign: "center" // ← ajout ici
+        }}
+      >
         Vote toi aussi pour les sons qui appraissent dans les sélections
       </p>
-      <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
-    </div>}
-    <div ref={containerRef} />
-  </div>;
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
+  )}
+  <div ref={containerRef} />
+</div>;
 };
 
 export default atomize(EmbedHTML)({
