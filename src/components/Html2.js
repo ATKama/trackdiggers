@@ -17,7 +17,7 @@ const EmbedHTML = ({ children, ...props }) => {
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 2rem 1rem;
+          padding: 1rem 1rem;
           width: 100%;
           box-sizing: border-box;
         }

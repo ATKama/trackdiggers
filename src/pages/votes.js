@@ -177,6 +177,44 @@ export default (() => {
 	<Text font="--base" color="#444444" margin="0 0 20px 0">
 	Tous les morceaux proposés sur cette page viennent directement d’artistes émergents, labels indépendants ou passionnés. Chaque vote reçu est une forme de soutien : plus un son est voté, plus il a de chances d’être sélectionné et de gagner en visibilité.
 </Text>
+<Box
+  background="#ffffff"
+  padding="12px 16px"
+  border-radius="12px"
+  text-align="center"
+  margin="0 0 24px 0"
+  box-sizing="border-box"
+  display="flex"
+  align-items="center"
+  justify-content="center"
+  flex-direction="column"
+>
+  <Text font="--base" color="--dark" margin="0 0 8px 0" className="force-inter">
+	Tous les morceaux sélectionnés sont maintenant regroupés dans notre playlist <strong>Spotify TrackDiggers</strong> 
+  </Text>
+  <Link
+	href="https://open.spotify.com/playlist/1nyWcB493Lb26W9rpKyh7Y"
+	target="_blank"
+	style={{
+	  display: "inline-flex",
+	  alignItems: "center",
+	  gap: "8px",
+	  background: "#1DB954",
+	  color: "#fff",
+	  padding: "10px 16px",
+	  borderRadius: "8px",
+	  textDecoration: "none",
+	  fontWeight: "bold"
+	}}
+  >
+	<img
+	  src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
+	  alt="Spotify logo"
+	  style={{ width: "20px", height: "20px" }}
+	/>
+	Écouter la playlist
+  </Link>
+</Box>
 	<Link
 		href="/"
 		text-decoration-line="none"

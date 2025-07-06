@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
-import SlideMenu from "../components/SlideMenu"; // adapte le chemin si nécessaire
+import SlideMenu from "../components/SlideMenu"; 
 export default (() => {
 	return <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"index"} />
@@ -121,7 +121,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 
     </Text>
   </Box>
-
+  
   <Components.Html2
     sm-margin="0px"
     margin="0px"
@@ -131,6 +131,44 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
   />
 </Box>
 </Section>
+<Box
+  background="#ffffff"
+  padding="12px 16px"
+  border-radius="12px"
+  text-align="center"
+  margin="0 0 24px 0"
+  box-sizing="border-box"
+  display="flex"
+  align-items="center"
+  justify-content="center"
+  flex-direction="column"
+>
+  <Text font="--base" color="--dark" margin="0 0 8px 0" className="force-inter">
+    Tous les morceaux sélectionnés sont maintenant regroupés dans notre playlist <strong>Spotify TrackDiggers</strong> 
+  </Text>
+  <Link
+    href="https://open.spotify.com/playlist/1nyWcB493Lb26W9rpKyh7Y"
+    target="_blank"
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+      background: "#1DB954",
+      color: "#fff",
+      padding: "10px 16px",
+      borderRadius: "8px",
+      textDecoration: "none",
+      fontWeight: "bold"
+    }}
+  >
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
+      alt="Spotify logo"
+      style={{ width: "20px", height: "20px" }}
+    />
+    Écouter la playlist
+  </Link>
+</Box>
 <Section padding="60px 0px" background="#f9f9f9">
   <Box max-width="900px" margin="0 auto" text-align="center">
     <Text as="h2" font="--headline2" margin="0 0 24px 0" color="#000000">
