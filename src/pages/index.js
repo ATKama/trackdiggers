@@ -154,7 +154,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
       borderRadius: "20px",
       textAlign: "center",
       margin: "32px auto",
-      maxWidth: "600px",
+      maxWidth: "900px",
       boxShadow: "0 12px 32px rgba(0,0,0,0.3)",
       display: "flex",
       flexDirection: "column",

@@ -57,16 +57,6 @@ const EmbedHTML = ({ children, ...props }) => {
   min-width: 44px;
   min-height: 44px;
   line-height: 1;
-}
-
-@media (max-width: 600px) {
-  .auralink-form button {
-    padding: 0 1rem;
-    font-size: 1.3rem;
-    min-width: auto;
-    width: 60px; /* largeur fixe plus large */
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
   }
 
   .auralink-form {
