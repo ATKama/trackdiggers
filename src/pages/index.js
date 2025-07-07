@@ -112,13 +112,14 @@ export default (() => {
 	display="block"
 	width="100%"
 	max-width="100%"
-	padding="80px 20px 0px 20px"
+	padding="80px 10px 0px 10px"
 />			
 <Box
-  max-width="900px"
+  max-width="1100px"
   width="100%"
   margin="0 auto"
-  padding="0 16px"
+  padding="0 8px"
+  sm-padding="0 0px"
   box-sizing="border-box"
 >
   <Box
@@ -149,12 +150,12 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
   </Box>
 <Box
     style={{
-      backgroundColor: "#f0f0f0",
+      backgroundColor: "#ffffff",
       padding: "10px",
       borderRadius: "20px",
       textAlign: "center",
       margin: "32px auto",
-      maxWidth: "900px",
+      maxWidth: "1100px",
       boxShadow: "0 12px 32px rgba(0,0,0,0.3)",
       display: "flex",
       flexDirection: "column",

@@ -184,7 +184,7 @@ const EmbedHTML = ({ children, ...props }) => {
 
         <div class="track track-card">
           <div class="title track-title">Aquarelle</div>
-          <div class="artist track-artist"><PINTO></div>
+          <div class="artist track-artist">PINTO</div>
           <div class="video">
             <iframe width="100%" height="200" src="https://www.youtube.com/embed/C9oOy1vBKRA" frameborder="0" allowfullscreen></iframe>
           </div>
