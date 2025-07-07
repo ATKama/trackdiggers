@@ -22,28 +22,31 @@ const EmbedHTML = ({ children, ...props }) => {
           box-sizing: border-box;
         }
 
-        .auralink-form {
-          display: flex;
-          width: 100%;
-          max-width: 700px;
-          border: 2px solid #000;
-          border-radius: 50px;
-          overflow: hidden;
-          background: #fff;
-          margin: 0 auto;
-        }
+       .auralink-form {
+  display: flex;
+  width: 100%;
+  max-width: 700px;
+  border: 2px solid #000;
+  border-radius: 50px;
+  overflow: hidden;
+  background: #fff;
+  margin: 0 auto;
+  -webkit-tap-highlight-color: transparent;
+}
 
-        .auralink-form input[type="text"] {
-          flex: 1;
-          padding: 1.2rem 1rem;
-          font-size: 1rem;
-          border: none;
-          outline: none;
-          background: transparent;
-          color: #000;
-        }
+.auralink-form input[type="text"] {
+  flex: 1;
+  padding: 1.2rem 1rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #000;
+  min-width: 0; /* ← fix Safari iOS overflow */
+  -webkit-appearance: none; /* ← empêche zoom auto */
+}
 
-     .auralink-form button {
+.auralink-form button {
   background: #000;
   color: #fff;
   border: none;
@@ -56,43 +59,35 @@ const EmbedHTML = ({ children, ...props }) => {
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  line-height: 1;
+  width: 60px; /* ← largeur fixe */
+  box-sizing: border-box;
+}
+
+.auralink-form button:hover {
+  background: #222;
+}
+
+@media (max-width: 600px) {
+  .auralink-wrapper {
+    padding: 1rem;
   }
 
   .auralink-form {
-    padding-right: 0;
+    max-width: 95%;
+    border-radius: 30px;
+  }
+
+  .auralink-form input[type="text"] {
+    padding: 1rem;
+    font-size: 16px;
+  }
+
+  .auralink-form button {
+    font-size: 1rem;
+    padding: 0 1rem;
+    width: 48px; /* ← mobile-friendly */
   }
 }
-
-        .auralink-form button:hover {
-          background: #222;
-        }
-
-        @media (max-width: 600px) {
-          .auralink-wrapper {
-            padding: 1rem;
-          }
-			@media (max-width: 600px) {
-  .links a:last-child {
-    margin-top: 8px;
-  }
-}
-
-          .auralink-form {
-            max-width: 100%;
-            border-radius: 30px;
-          }
-
-          .auralink-form input[type="text"] {
-            padding: 1rem;
-            font-size: 16px;
-          }
-
-          .auralink-form button {
-            padding: 0 1rem;
-            font-size: 1rem;
-          }
-        }
 
         .track {
           background:rgb(255, 255, 255);
