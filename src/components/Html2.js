@@ -43,18 +43,29 @@ const EmbedHTML = ({ children, ...props }) => {
           color: #000;
         }
 
-        .auralink-form button {
-          background: #000;
-          color: #fff;
-          border: none;
-          padding: 0 1.5rem;
-          font-size: 1.2rem;
-          cursor: pointer;
-          transition: background 0.3s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+     .auralink-form button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0 1.2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .auralink-form button {
+    padding: 0 0.8rem;
+    font-size: 1.1rem;
+    min-width: 40px;
+  }
+}
 
         .auralink-form button:hover {
           background: #222;
