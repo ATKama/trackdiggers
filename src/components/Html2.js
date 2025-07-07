@@ -61,12 +61,9 @@ const EmbedHTML = ({ children, ...props }) => {
 
 @media (max-width: 600px) {
   .auralink-form button {
-    padding: 0 1rem;
-    font-size: 1.2rem;
-    min-width: 50px;
-    height: 50px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    padding: 0 1.2rem; /* élargit visuellement le bouton noir */
+    font-size: 1.1rem;
+    min-width: 60px; /* largeur minimale augmentée */
   }
 }
 
