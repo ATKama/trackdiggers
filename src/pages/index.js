@@ -57,6 +57,32 @@ export default (() => {
 				margin="0 auto"
 				padding="0 20px"
 			/>
+<Box
+  style={{
+    position: "fixed",
+    top: "20px",
+    right: "12px",
+    zIndex: 1100
+  }}
+>
+  <Link
+    href="https://open.spotify.com/playlist/1nyWcB493Lb26W9rpKyh7Y"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      display: "flex",
+      alignItems: "center"
+    }}
+  >
+    <Image
+      src="https://pub-88284dcd109849ecb2081e535622d2f5.r2.dev/Primary_Logo_Black_RGB.svg"
+      width="35x"
+      height="35px"
+      alt="Spotify"
+    />
+  </Link>
+</Box>
+			
 			<Link href="/" text-decoration="none">
 				<Image
 					src="https://uploads.quarkly.io/682f25cf9335410018cc8538/images/TrackDigger.svg?v=2025-06-12T13:46:43.953Z"
@@ -64,9 +90,9 @@ export default (() => {
 					max-width="100%"
 					height="auto"
 					alt="Logo Trackdigger"
-					margin="30px 0px 0px 0px"
-					sm-margin="30px 0px 0px 0px"
-					xl-margin="30px 0px 0px 0px"
+					margin="20px 0px 0px 0px"
+					sm-margin="20px 0px 0px 0px"
+					xl-margin="20px 0px 0px 0px"
 				/>
 			</Link>
 			<SlideMenu />
@@ -104,10 +130,10 @@ export default (() => {
     box-sizing="border-box"
   >
     <Text as="h1" font="--lead" color="--dark" margin="0" display="inline" className="force-inter">
-      <Text
+      <Text //efface
         as="span"
         color="--light"
-        background="rgba(0, 0, 0, 0.81)"
+        background="#000000"
         padding="4px 8px"
         border-radius="6px"
         margin="0 6px 0 0"
@@ -121,15 +147,75 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 
     </Text>
   </Box>
-  
-  <Components.Html2
-    sm-margin="0px"
-    margin="0px"
-    width="100%"
-    max-width="100%"
-    display="block"
-  />
+<Box
+    style={{
+      backgroundColor: "#f0f0f0",
+      padding: "10px",
+      borderRadius: "20px",
+      textAlign: "center",
+      margin: "32px auto",
+      maxWidth: "600px",
+      boxShadow: "0 12px 32px rgba(0,0,0,0.3)",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "0px"
+    }}
+  >
+	
+<Box
+  style={{
+    backgroundColor: "rgba(31, 31, 31, 0.7)", // semi-transparent
+    padding: "12px 20px",
+    borderRadius: "12px",
+    display: "inline-block",
+    marginBottom: "0px",
+    backdropFilter: "blur(6px)", // floutage du fond autour
+    WebkitBackdropFilter: "blur(6px)", // pour compatibilité Safari
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)" // flou autour pour renforcer l’effet
+  }}
+>
+  <Text
+    as="h2"
+    fontSize="28px"
+    fontWeight="900"
+    color="#fff"
+    style={{
+      fontFamily: "'Black Ops One', sans-serif",
+      textTransform: "uppercase",
+      letterSpacing: "1px",
+      textShadow: "2px 2px 0 #000, 4px 4px 6px rgba(0, 0, 0, 0.6)",
+      margin: 0,
+    }}
+  >
+    T’as une vibe en tête ?
+  </Text>
 </Box>
+
+<Text
+  fontSize="16px"
+  fontWeight="600"
+  color="#000000"
+  fontStyle="italic"
+  style={{
+    textShadow: "0.3px 0.3px 0 #000",
+	marginBottom: "10px"
+  }}
+>
+  ⬇︎ TAPE ICI ⬇︎
+</Text>
+
+    {/* Barre de recherche intégrée */}
+    <Components.Html2
+      sm-margin="0px"
+      margin="0px"
+      width="100%"
+      max-width="100%"
+      display="block"
+    />
+</Box> {/* ✅ Fermeture du Box global */}
+</Box>
+
 </Section>
 <Box
   background="#ffffff"

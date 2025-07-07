@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import theme from "theme";
 import { Theme, Link, Image, Section, Text, Box } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
+const IntroTexteVote = () => {
+  const [expanded, setExpanded] = useState(false);
+  const handleToggle = () => setExpanded(!expanded);
+
+  return (
+<Box
+  background="#f0f0f0"
+  padding="16px"
+  border-radius="12px"
+  max-width="1000px"
+  margin="0px auto 40px auto"
+  text-align="center"
+  sm-margin="0px auto 40px auto"
+>
+  <Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
+        {"C'est toi qui sélectionne les morceaux TrackDiggers\n\nDécouvre les morceaux proposés par la communauté et vote pour ceux que tu veux entendre dans la prochaine playlist.\nT’es artiste ? Propose ton son et fais-le valider par le public"}
+        {!expanded && "... "}
+        {expanded &&
+          ". Chaque vote compte : les morceaux les plus appréciés reçoivent leur propre carte collector et intègrent la sélection officielle.\nParticipe à faire émerger les talents de demain — un clic peut tout changer.\n\nTu peux aussi partager le lien de ton son dans ta story ou à tes proches pour booster tes chances de récolter plus de votes !"}
+      </Text>
+      <button
+        onClick={handleToggle}
+        style={{
+          background: "none",
+          border: "none",
+          padding: "0",
+          fontSize: "16px",
+          color: "#999999",
+          cursor: "pointer",
+          marginTop: "12px",
+        }}
+      >
+        {expanded ? "Voir moins ▲" : "Afficher la suite"}
+      </button>
+    </Box>
+  );
+};
+
 export default (() => {
 	return <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"votes"} />
@@ -56,6 +94,31 @@ export default (() => {
 				margin="0 auto"
 				padding="0 20px"
 			/>
+			<Box
+			  style={{
+				position: "fixed",
+				top: "20px",
+				right: "12px",
+				zIndex: 1100
+			  }}
+			>
+			  <Link
+				href="https://open.spotify.com/playlist/1nyWcB493Lb26W9rpKyh7Y"
+				target="_blank"
+				rel="noopener noreferrer"
+				style={{
+				  display: "flex",
+				  alignItems: "center"
+				}}
+			  >
+				<Image
+				  src="https://pub-88284dcd109849ecb2081e535622d2f5.r2.dev/Primary_Logo_Black_RGB.svg"
+				  width="35x"
+				  height="35px"
+				  alt="Spotify"
+				/>
+			  </Link>
+			</Box>
 			<Link href="/" text-decoration="none">
 				<Image
 					src="https://uploads.quarkly.io/682f25cf9335410018cc8538/images/TrackDigger.svg?v=2025-06-12T13:46:43.953Z"
@@ -63,9 +126,9 @@ export default (() => {
 					max-width="100%"
 					height="auto"
 					alt="Logo Trackdigger"
-					margin="30px 0px 0px 0px"
-					sm-margin="30px 0px 0px 0px"
-					xl-margin="30px 0px 0px 0px"
+					margin="20px 0px 0px 0px"
+					sm-margin="20px 0px 0px 0px"
+					xl-margin="20px 0px 0px 0px"
 				/>
 			</Link>
 		</Section>
@@ -87,30 +150,6 @@ export default (() => {
 				max-width="1200px"
 				margin="0 auto"
 			/>
-			<Box
-				background="#f0f0f0"
-				padding="16px"
-				border-radius="12px"
-				max-width="1000px"
-				margin="0px auto 40px auto"
-				text-align="center"
-				sm-margin="0px auto 40px auto"
-			>
-				<Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
-	C'est toi qui sélectionne les morceaux TrackDiggers
-	<br />
-	<br />
-	Découvre les morceaux proposés par la communauté et vote pour ceux que tu veux entendre dans la prochaine playlist.
-	T’es artiste ? Propose ton son et fais-le valider par le public.
-	<br />
-	<br />
-	Chaque vote compte : les morceaux les plus appréciés reçoivent leur propre carte collector et intègrent la sélection officielle.  
-	Participe à faire émerger les talents de demain — un clic peut tout changer.
-	<br />
-	<br />
-	Tu peux aussi partager le lien de ton son dans ta story ou à tes proches pour booster tes chances de récolter plus de votes !
-</Text>
-			</Box>
 			<Box display="flex" flex-direction="column" gap="16px" align-items="center">
 				<Link
 					href="/"
@@ -153,11 +192,13 @@ export default (() => {
 					display="inline-block"
 					text-align="center"
 					font-weight="700"
+					margin-bottom="20px"
 					sm-margin-bottom="20px"
 				>
 					Proposer ton morceau ici
 				</Link>
 			</Box>
+<IntroTexteVote />
 		</Section>
 		<Section background="#ffffff" margin="-40px 0 0 0" sm-margin="-60px 0 0 0" quarkly-title="CORPS">
 			<Override slot="SectionContent" border-color="#ffffff" />

@@ -56,6 +56,31 @@ const AboutPage = () => {
                     margin="0 auto"
                     padding="0 20px"
                 />
+                <Box
+                  style={{
+                    position: "fixed",
+                    top: "20px",
+                    right: "12px",
+                    zIndex: 1100
+                  }}
+                >
+                  <Link
+                    href="https://open.spotify.com/playlist/1nyWcB493Lb26W9rpKyh7Y"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center"
+                    }}
+                  >
+                    <Image
+                      src="https://pub-88284dcd109849ecb2081e535622d2f5.r2.dev/Primary_Logo_Black_RGB.svg"
+                      width="35x"
+                      height="35px"
+                      alt="Spotify"
+                    />
+                  </Link>
+                </Box>
                 <Link href="/" text-decoration="none">
                     <Image
                         src="https://uploads.quarkly.io/682f25cf9335410018cc8538/images/TrackDigger.svg?v=2025-06-12T13:46:43.953Z"
@@ -63,9 +88,9 @@ const AboutPage = () => {
                         max-width="100%"
                         height="auto"
                         alt="Logo Trackdigger"
-                        margin="30px 0px 0px 0px"
-                        sm-margin="30px 0px 0px 0px"
-                        xl-margin="30px 0px 0px 0px"
+                        margin="20px 0px 0px 0px"
+					sm-margin="20px 0px 0px 0px"
+					xl-margin="20px 0px 0px 0px"
                     />
                 </Link>
             </Section>

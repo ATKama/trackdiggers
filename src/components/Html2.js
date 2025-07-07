@@ -17,7 +17,7 @@ const EmbedHTML = ({ children, ...props }) => {
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 1rem 1rem;
+          padding: 0rem 1rem;
           width: 100%;
           box-sizing: border-box;
         }
@@ -149,7 +149,9 @@ const EmbedHTML = ({ children, ...props }) => {
           <button type="submit">🔍</button>
         </form>
       </div>
-
+<h2 id="auralink-heading" style="text-align: left; font-size: 15px; marginTop: 0px; margin-bottom: 24px;"> 
+  Ajouts récents
+</h2>
       <div id="auralink-results">
         <div class="track track-card">
           <div class="title track-title">BROLY #1</div>
@@ -195,6 +197,8 @@ const EmbedHTML = ({ children, ...props }) => {
     const form = ref.current.querySelector("#mood-form");
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
+	  const heading = document.getElementById("auralink-heading");
+if (heading) heading.style.display = "none";
       const mood = form.querySelector("#mood").value;
 
       if (typeof gtag !== "undefined") {
@@ -232,6 +236,12 @@ document.getElementById("auralink-results").innerHTML = "";
       setLoading(false);
       if (containerRef.current) {
         containerRef.current.innerHTML = html;
+		    const heading = document.getElementById("auralink-heading");
+    if (heading) {
+      heading.textContent = "Ta sélection";
+      heading.style.display = "block";
+    }
+
         setHasContent(true);
       }
     };
