@@ -130,6 +130,11 @@ const EmbedHTML = ({ children, ...props }) => {
         .links a:hover {
           background: #000000;
         }
+		  @media (max-width: 600px) {
+  .links a:last-child {
+    margin-top: 8px;
+  }
+}
 
         .video {
           margin-bottom: 15px;

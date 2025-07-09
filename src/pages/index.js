@@ -785,6 +785,38 @@ form.track3.value = titles[2] || "";
 			>
 				Deviens un DIGGER
 			</Link>
+			<Box margin="24px 0 0 0" display="flex" justify-content="center">
+  <Link
+    href="https://forms.gle/eBhbSL1Xd9zXch4P6"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      padding: "12px 24px",
+      backgroundColor: "#ff0000",
+      color: "#ffff",
+      borderRadius: "8px",
+      fontWeight: "bold",
+      textDecoration: "none",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+      transition: "transform 0.2s ease, box-shadow 0.2s ease",
+	    display: "flex", // ← ajout
+      alignItems: "center", // ← ajout
+      justifyContent: "center", // ← ajout
+      textAlign: "center", // ← optionnel mais utile
+      whiteSpace: "normal", // ← permet le retour à la ligne si besoin sur mobile
+    }}
+    onMouseOver={e => {
+      e.currentTarget.style.transform = "scale(1.05)";
+      e.currentTarget.style.boxShadow = "0 6px 18px rgba(0, 0, 0, 0.3)";
+    }}
+    onMouseOut={e => {
+      e.currentTarget.style.transform = "scale(1)";
+      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.2)";
+    }}
+  >
+    💬 Donne ton avis sur Trackdiggers
+  </Link>
+</Box>
 		</Section>
 				<Section padding="20px 0" background="#ffffff" border-radius="30px">
 			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
