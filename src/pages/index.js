@@ -561,6 +561,7 @@ form.track3.value = titles[2] || "";
 		}
 
 		try {
+			const captchaToken = grecaptcha.getResponse(); // ✅ ligne à ajouter ici
 			const response = await fetch("https://n8n.atkmusic.fr/webhook/receive-pack-request", {
 				method: "POST",
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -571,6 +572,7 @@ form.track3.value = titles[2] || "";
 					track3,
 					consentCartes,
 					consentNews,
+					'g-recaptcha-response': captchaToken,
 				}),
 			});
 
@@ -616,7 +618,7 @@ form.track3.value = titles[2] || "";
 	>
 		Réclamer mon pack 🎁
 	</button>
-	<div class="g-recaptcha" data-sitekey="6Ldm13QrAAAAAHf__nAR96XS3TZQcO1h8vkPgAb2" required></div>
+	<div className="g-recaptcha" data-sitekey="6Ldm13QrAAAAAHf__nAR96XS3TZQcO1h8vkPgAb2" required></div>
 </form>
 
 {/* 🔽 Ce bloc doit être placé juste en dessous du formulaire pour afficher le résultat */}
