@@ -169,7 +169,7 @@ const EmbedHTML = ({ children, ...props }) => {
           </div>
           <div class="links">
             <a href="https://www.youtube.com/watch?v=XS0pEBm1acs" target="_blank">YouTube</a>
-            <a href="https://open.spotify.com/intl-fr/track/6nqrV2U9qblqeU73JJAoOy?si=4017d78a28c74003" target="_blank">Spotify</a>
+            <a href="https://open.spotify.com/intl-fr/track/6nqrV2U9qblqeU73JJAoOy?si=4017d78a28c74003" target="_blank">Streaming</a>
             <a href="https://www.instagram.com/gama_jdl/?hl=fr" target="_blank">Follow</a>
           </div>
         </div>
@@ -182,7 +182,7 @@ const EmbedHTML = ({ children, ...props }) => {
           </div>
           <div class="links">
             <a href="https://www.youtube.com/watch?v=YhwQogl8-3c" target="_blank">YouTube</a>
-            <a href="https://open.spotify.com/intl-fr/track/6uFq4YnbGzaDn8Ro1LCC7t?si=4b2f6ffdce3147ee" target="_blank">Spotify</a>
+            <a href="https://open.spotify.com/intl-fr/track/6uFq4YnbGzaDn8Ro1LCC7t?si=4b2f6ffdce3147ee" target="_blank">Streaming</a>
             <a href="https://www.instagram.com/kurtysmusic/?hl=fr" target="_blank">Follow</a>
           </div>
         </div>
@@ -195,7 +195,7 @@ const EmbedHTML = ({ children, ...props }) => {
           </div>
           <div class="links">
             <a href="https://www.youtube.com/C9oOy1vBKRA" target="_blank">YouTube</a>
-            <a href="https://open.spotify.com/intl-fr/track/72bBIkl4EsLc3yXVt4wGk2?si=6f145fea753843f6" target="_blank">Spotify</a>
+            <a href="https://open.spotify.com/intl-fr/track/72bBIkl4EsLc3yXVt4wGk2?si=6f145fea753843f6" target="_blank">Streaming</a>
             <a href="https://hyperfollow.com/bleupetrole?fbclid=PAZXh0bgNhZW0CMTEAAafWWXU9S-h9EMKgFNv7nc_5Lx0numUPkHrM77gk8tdain42b-tNQmKSGejXEw_aem_a5EpbtRfn6RL5vdBycwaMA" target="_blank">Follow</a>
           </div>
         </div>
