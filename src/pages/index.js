@@ -618,7 +618,7 @@ form.track3.value = titles[2] || "";
 	>
 		Réclamer mon pack 🎁
 	</button>
-	<div className="g-recaptcha" data-sitekey="6Ldm13QrAAAAAHf__nAR96XS3TZQcO1h8vkPgAb2" required></div>
+	<div className="g-recaptcha" data-sitekey="6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9" required></div>
 </form>
 
 {/* 🔽 Ce bloc doit être placé juste en dessous du formulaire pour afficher le résultat */}
