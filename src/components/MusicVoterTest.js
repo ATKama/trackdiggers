@@ -4,6 +4,7 @@ import atomize from "@quarkly/atomize";
 const MusicVoterTest = () => {
 	const [propositions, setPropositions] = useState([]);
 	const [filtreMood, setFiltreMood] = useState("");
+	const [filtreStyle, setFiltreStyle] = useState("");
 	const [recherche, setRecherche] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -110,10 +111,12 @@ const MusicVoterTest = () => {
 	};
 
 	const filtrer = p => {
-		const moodMatch = !filtreMood || (p.mood || "").trim().toLowerCase() === filtreMood.toLowerCase();
-		const searchMatch = (p.artist + " " + p.title).toLowerCase().includes(recherche.toLowerCase());
-		return moodMatch && searchMatch;
-	};
+  const moodMatch = !filtreMood || (p.mood || "").trim().toLowerCase() === filtreMood.toLowerCase();
+  const styleMatch = !filtreStyle || (p.Style || "").trim().toLowerCase() === filtreStyle.toLowerCase();
+  const searchMatch = (p.artist + " " + p.title).toLowerCase().includes(recherche.toLowerCase());
+  return moodMatch && styleMatch && searchMatch;
+};
+
 
 	const extraireIDYoutube = url => {
 		const match = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
@@ -167,64 +170,68 @@ const MusicVoterTest = () => {
 		</div>;
 	}
 
-	return <div style={{
-		padding: "1rem",
-		color: "#fff",
-		backgroundColor: "#fff"
-	}}>
-		      
-		<div style={{
-			marginBottom: "1rem"
-		}}>
-			        
-			<label style={{
-				marginRight: "0.5rem"
-			}}>
-				Mood :
-			</label>
-			        
-			<select onChange={e => setFiltreMood(e.target.value)}>
-				          
-				<option value="">
-					Tous
-				</option>
-				          
-				<option value="Dansant">
-					Dansant
-				</option>
-				          
-				<option value="Chill">
-					Chill
-				</option>
-				          
-				<option value="Réflexion">
-					Réflexion
-				</option>
-				          
-				<option value="Mélancolie">
-					Mélancolie
-				</option>
-				          
-				<option value="Planant">
-					Planant
-				</option>
-				          
-				<option value="Détermination">
-					Détermination
-				</option>
-				          
-				<option value="Love">
-					Love
-				</option>
-				        
-			</select>
-			        
-			<input type="text" placeholder="Rechercher artiste/titre" onChange={e => setRecherche(e.target.value)} style={{
-				marginLeft: "1rem",
-				padding: "4px 8px"
-			}} />
-			      
-		</div>
+return <div style={{
+	padding: "1rem",
+	color: "#fff",
+	backgroundColor: "#fff"
+}}>
+	
+	<div
+	style={{
+		display: "flex",
+		flexWrap: "wrap",
+		alignItems: "flex-start",
+		justifyContent: "flex-start",
+		marginBottom: "1rem",
+		gap: "0.5rem",
+		width: "100%"
+	}}
+>
+	<div style={{ display: "flex", flexDirection: "column", minWidth: "120px" }}>
+		<label style={{ fontSize: "0.85rem" }}>Mood</label>
+		<select onChange={e => setFiltreMood(e.target.value)} style={{ padding: "4px", width: "100%" }}>
+			<option value="">Mood (Tous)</option>
+			<option value="Dansant">Dansant</option>
+			<option value="Chill">Chill</option>
+			<option value="Réflexion">Réflexion</option>
+			<option value="Mélancolie">Mélancolie</option>
+			<option value="Planant">Planant</option>
+			<option value="Détermination">Détermination</option>
+			<option value="Love">Love</option>
+		</select>
+	</div>
+
+	<div style={{ display: "flex", flexDirection: "column", minWidth: "180px" }}>
+		<label style={{ fontSize: "0.85rem" }}>Style</label>
+		<select onChange={e => setFiltreStyle(e.target.value)} style={{ padding: "4px", width: "100%" }}>
+			<option value="">Style (Tous)</option>
+			<option value="Rap / Trap / Drill">Rap / Trap / Drill</option>
+			<option value="Afro / World / Reggaeton">Afro / World / Reggaeton</option>
+			<option value="Pop urbaine / R&B">Pop urbaine / R&B</option>
+			<option value="Électro / Club">Électro / Club</option>
+			<option value="Techno / House / Hard">Techno / House / Hard</option>
+			<option value="Lofi / Chill / Ambiant">Lofi / Chill / Ambiant</option>
+			<option value="Rock / Metal / Punk">Rock / Metal / Punk</option>
+			<option value="Alternatif / Expérimental">Alternatif / Expérimental</option>
+			<option value="Chanson / Variété">Chanson / Variété</option>
+			<option value="Jazz / Soul / Funk">Jazz / Soul / Funk</option>
+			<option value="Musique de film / BO">Musique de film / BO</option>
+			<option value="Autre">Autre</option>
+		</select>
+	</div>
+
+	<div style={{ flex: "1", minWidth: "200px", display: "flex", flexDirection: "column" }}>
+		<label style={{ fontSize: "0.85rem" }}>Recherche</label>
+		<input
+			type="text"
+			placeholder="Rechercher artiste/titre"
+			onChange={e => setRecherche(e.target.value)}
+			style={{ padding: "4px 8px", width: "100%" }}
+		/>
+	</div>
+</div>
+
+
 		      
 		<div style={{
 			display: "grid",
@@ -233,82 +240,83 @@ const MusicVoterTest = () => {
 			rowGap: "2rem"
 		}}>
 			        
-			{sorted.map(p => <div
-				key={p["CUSTOM ID"]}
-				id={`sound-${p["CUSTOM ID"]}`}
-				style={{
-	display: "flex",
-	flexDirection: "column",
-	border: "1px solid #222",
-	backgroundColor: "#161616",
-	boxShadow: "0 0 0 1px #2a2a2a inset, 0 2px 6px rgba(0,0,0,0.8)",
-	padding: "1rem",
-	borderRadius: "8px",
-	transition: "transform 0.2s ease, box-shadow 0.2s ease",
-	cursor: "pointer",
-	willChange: "transform, box-shadow",
-	backfaceVisibility: "hidden",
-	transform: "translateZ(0)"
-}}
-				onMouseEnter={e => {
-					e.currentTarget.style.transform = "scale(1.03)";
-					e.currentTarget.style.boxShadow = "0 4px 12px rgba(255,255,255,0.2)";
-				}}
-				onMouseLeave={e => {
-					e.currentTarget.style.transform = "scale(1)";
-					e.currentTarget.style.boxShadow = "0 2px 4px rgba(0,0,0,0.5)";
-				}}
-			>
-				            
-				<h3 style={{
-					color: "#fff",
-					fontSize: "1rem",
-					fontWeight: "bold",
-					lineHeight: "1.3",
-					minHeight: "2.6em",
-					maxHeight: "2.6em",
-					overflow: "hidden",
-					textOverflow: "ellipsis",
-					display: "-webkit-box",
-					WebkitLineClamp: 2,
-					WebkitBoxOrient: "vertical"
-				}}>
-					{p.artist}
-					 – 
-					{p.title}
-				</h3>
-				            
-{p.youtube?.includes("soundcloud.com") ? (
-	<iframe
-		width="100%"
-		height="100%"
-		style={{
-			aspectRatio: "1 / 1",
-			width: "100%",
-			borderRadius: "8px"
-		}}
-		scrolling="no"
-		frameBorder="no"
-		allow="autoplay"
-		src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(p.youtube)}&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
-		title={p.title}
-	/>
-) : (
-	<iframe
-		width="100%"
-		style={{
-			aspectRatio: "1 / 1",
-			width: "100%",
-			borderRadius: "8px"
-		}}
-		src={`https://www.youtube.com/embed/${extraireIDYoutube(p.youtube)}`}
-		frameBorder="0"
-		allowFullScreen
-		title={p.title}
-	/>
-)}
-				            
-				<div style={{
+{sorted.map(p => (
+  <div
+    key={p["CUSTOM ID"]}
+    id={`sound-${p["CUSTOM ID"]}`}
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      border: "1px solid #222",
+      backgroundColor: "#161616",
+      boxShadow: "0 0 0 1px #2a2a2a inset, 0 2px 6px rgba(0,0,0,0.8)",
+      padding: "1rem",
+      borderRadius: "8px",
+      transition: "transform 0.2s ease, box-shadow 0.2s ease",
+      cursor: "pointer",
+      willChange: "transform, box-shadow",
+      backfaceVisibility: "hidden",
+      transform: "translateZ(0)"
+    }}
+    onMouseEnter={e => {
+      e.currentTarget.style.transform = "scale(1.03)";
+      e.currentTarget.style.boxShadow = "0 4px 12px rgba(255,255,255,0.2)";
+    }}
+    onMouseLeave={e => {
+      e.currentTarget.style.transform = "scale(1)";
+      e.currentTarget.style.boxShadow = "0 2px 4px rgba(0,0,0,0.5)";
+    }}
+  >
+    <h3
+      style={{
+        color: "#fff",
+        fontSize: "1rem",
+        fontWeight: "bold",
+        lineHeight: "1.3",
+        minHeight: "2.6em",
+        maxHeight: "2.6em",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        display: "-webkit-box",
+        WebkitLineClamp: 2,
+        WebkitBoxOrient: "vertical"
+      }}
+    >
+      {p.artist} – {p.title}
+    </h3>
+
+    {p.youtube?.includes("soundcloud.com") ? (
+      <iframe
+        width="100%"
+        height="100%"
+        style={{
+          aspectRatio: "1 / 1",
+          width: "100%",
+          borderRadius: "8px"
+        }}
+        scrolling="no"
+        frameBorder="no"
+        allow="autoplay"
+        src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(
+          p.youtube
+        )}&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`}
+        title={p.title}
+      />
+    ) : (
+      <iframe
+        width="100%"
+        style={{
+          aspectRatio: "1 / 1",
+          borderRadius: "8px"
+        }}
+        src={`https://www.youtube.com/embed/${extraireIDYoutube(p.youtube)}`}
+        frameBorder="0"
+        allowFullScreen
+        title={p.title}
+      />
+    )}
+
+    	<div style={{
 					marginTop: "0.5rem"
 				}}>
 					              
@@ -321,6 +329,10 @@ const MusicVoterTest = () => {
 						 
 						{p.mood || "Non précisé"}
 					</p>
+					<p style={{ margin: "0.25rem 0 0 0" }}>
+  <strong>Style :</strong> {p.Style || "Non précisé"}
+</p>
+
 					              
 					<p style={{
 						margin: "0.25rem 0 0 0"
@@ -378,35 +390,33 @@ const MusicVoterTest = () => {
 						                Partage
               
 					</button>
-					{false && (
-						<button
-  onClick={() => {
-    localStorage.removeItem("votedForever");
-    setVotedIds([]);
-    alert("Votes réinitialisés (uniquement côté local).");
-  }}
-  style={{
-    marginTop: "2rem",
-    padding: "10px",
-    backgroundColor: "#f44336",
-    color: "#fff",
-    border: "none",
-    borderRadius: "6px",
-    fontWeight: "bold",
-    cursor: "pointer"
-  }}
->
-  🔁 Réinitialiser mes votes
-</button>
-)}
-					            
-				</div>
-				          
-			</div>)}
-			      
-		</div>
-		    
-	</div>;
+
+      {false && (
+        <button
+          onClick={() => {
+            localStorage.removeItem("votedForever");
+            setVotedIds([]);
+            alert("Votes réinitialisés (uniquement côté local).");
+          }}
+          style={{
+            marginTop: "2rem",
+            padding: "10px",
+            backgroundColor: "#f44336",
+            color: "#fff",
+            border: "none",
+            borderRadius: "6px",
+            fontWeight: "bold",
+            cursor: "pointer"
+          }}
+        >
+          🔁 Réinitialiser mes votes
+        </button>
+      )}
+    </div>
+  </div>
+))}
+		</div>  
+	</div>     
 };
 
 export default atomize(MusicVoterTest)({

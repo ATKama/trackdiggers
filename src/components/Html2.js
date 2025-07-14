@@ -13,53 +13,58 @@ const EmbedHTML = ({ children, ...props }) => {
 
     ref.current.innerHTML = `
       <style>
-        .auralink-wrapper {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 0rem 1rem;
-          width: 100%;
-          box-sizing: border-box;
-        }
-
-       .auralink-form {
+.auralink-wrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auralink-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
   max-width: 700px;
   border: 2px solid #000;
-  border-radius: 50px;
-  overflow: hidden;
+  border-radius: 24px;
+  padding: 12px;
   background: #fff;
   margin: 0 auto;
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
-.auralink-form input[type="text"] {
-  flex: 1;
-  padding: 1.2rem 1rem;
-  font-size: 1rem;
-  border: none;
-  outline: none;
-  background: transparent;
+.auralink-form input[type="text"],
+.auralink-form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #f9f9f9;
   color: #000;
-  min-width: 0; /* ← fix Safari iOS overflow */
-  -webkit-appearance: none; /* ← empêche zoom auto */
+  outline: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
 }
 
 .auralink-form button {
   background: #000;
   color: #fff;
   border: none;
-  padding: 0 1.2rem;
-  font-size: 1.2rem;
+  padding: 0.9rem;
+  font-size: 16px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
   min-height: 44px;
-  width: 60px; /* ← largeur fixe */
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -68,26 +73,24 @@ const EmbedHTML = ({ children, ...props }) => {
 }
 
 @media (max-width: 600px) {
-  .auralink-wrapper {
-    padding: 1rem;
-  }
-
   .auralink-form {
-    max-width: 95%;
-    border-radius: 30px;
+    padding: 10px;
+    border-radius: 18px;
   }
 
-  .auralink-form input[type="text"] {
-    padding: 1rem;
+  .auralink-form input[type="text"],
+  .auralink-form select {
     font-size: 16px;
+    padding: 0.65rem 0.8rem;
   }
 
   .auralink-form button {
-    font-size: 1rem;
-    padding: 0 1rem;
-    width: 48px; /* ← mobile-friendly */
+    font-size: 16px;
+    padding: 0.7rem;
   }
 }
+
+
 
         .track {
           background:rgb(255, 255, 255);
@@ -145,17 +148,36 @@ const EmbedHTML = ({ children, ...props }) => {
       </style>
 
       <div class="auralink-wrapper">
-        <form id="mood-form" class="auralink-form">
-          <input 
-            type="text" 
-            id="mood" 
-            name="mood" 
-            placeholder="Ex : J’veux danser, je suis triste, besoin d’un boost..." 
-            required 
-            maxlength="60"
-          />
-          <button type="submit">🔍</button>
-        </form>
+  <form id="mood-form" class="auralink-form">
+  <input 
+    type="text" 
+    id="mood" 
+    name="mood" 
+    placeholder="Ex : J’veux danser, je suis triste, besoin d’un boost..." 
+    required 
+    maxlength="60"
+  />
+
+  <select id="style-select" name="style">
+    <option value="">Style (facultatif)</option>
+    <option value="Rap / Trap / Drill">🎤 Rap / Trap / Drill</option>
+    <option value="Afro / World / Reggaeton">🌍 Afro / World / Reggaeton</option>
+    <option value="Pop urbaine / R&B">🎶 Pop urbaine / R&B</option>
+    <option value="Électro / Club">🪩 Électro / Club</option>
+    <option value="Techno / House / Hard">🔊 Techno / House / Hard</option>
+    <option value="Lofi / Chill / Ambiant">🌙 Lofi / Chill / Ambiant</option>
+    <option value="Rock / Metal / Punk">🎸 Rock / Metal / Punk</option>
+    <option value="Alternatif / Expérimental">🎧 Alternatif / Expérimental</option>
+    <option value="Chanson / Variété">🎙 Chanson / Variété</option>
+    <option value="Jazz / Soul / Funk">🎷 Jazz / Soul / Funk</option>
+    <option value="Musique de film / BO">🎬 Musique de film / BO</option>
+    <option value="Autre">❓ Autre</option>
+  </select>
+
+  <button type="submit">🔍</button>
+</form>
+
+
       </div>
 <h2 id="auralink-heading" style="text-align: left; font-size: 15px; marginTop: 0px; margin-bottom: 24px;"> 
   Ajouts récents
@@ -208,6 +230,8 @@ const EmbedHTML = ({ children, ...props }) => {
 	  const heading = document.getElementById("auralink-heading");
 if (heading) heading.style.display = "none";
       const mood = form.querySelector("#mood").value;
+const style = form.querySelector("#style-select").value;
+
 
       if (typeof gtag !== "undefined") {
         gtag('event', 'mood_search', {
@@ -217,13 +241,14 @@ if (heading) heading.style.display = "none";
 document.getElementById("auralink-results").innerHTML = "";
       window.startAuralinkLoading && window.startAuralinkLoading();
 
-      const res = await fetch("https://n8n.atkmusic.fr/webhook/0760f2ba-0b65-46f5-b5fa-2deb23ac1d66", {
+      const res = await fetch("https://n8n.atkmusic.fr/webhook/v3test", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Basic " + btoa("admin:LOrenzOmOOd!")
         },
-        body: JSON.stringify({ chatInput: mood })
+        body: JSON.stringify({ chatInput: mood, style: style || null })
+
       });
 
       const html = await res.text();
