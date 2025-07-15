@@ -7,8 +7,12 @@ import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
 import SlideMenu from "../components/SlideMenu"; 
-export default (() => {
-	return <Theme theme={theme}>
+import Layout from "../components/layout";
+
+export default function IndexPage() {
+	return (
+		<Layout pageUrl="index">
+
 		<GlobalQuarklyPageStyles pageUrl={"index"} />
 		<Helmet>
 			<title>
@@ -864,5 +868,6 @@ form.track3.value = titles[2] || "";
   </Link>
 </Box>
 		</Section>
-	</Theme>;
-});
+		</Layout>
+	);
+}

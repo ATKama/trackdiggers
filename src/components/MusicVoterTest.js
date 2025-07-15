@@ -112,7 +112,7 @@ const MusicVoterTest = () => {
 
 	const filtrer = p => {
   const moodMatch = !filtreMood || (p.mood || "").trim().toLowerCase() === filtreMood.toLowerCase();
-  const styleMatch = !filtreStyle || (p.Style || "").trim().toLowerCase() === filtreStyle.toLowerCase();
+  const styleMatch = !filtreStyle || (p.style || "").trim().toLowerCase() === filtreStyle.toLowerCase();
   const searchMatch = (p.artist + " " + p.title).toLowerCase().includes(recherche.toLowerCase());
   return moodMatch && styleMatch && searchMatch;
 };
@@ -241,6 +241,7 @@ return <div style={{
 		}}>
 			        
 {sorted.map(p => (
+	
   <div
     key={p["CUSTOM ID"]}
     id={`sound-${p["CUSTOM ID"]}`}
@@ -320,29 +321,17 @@ return <div style={{
 					marginTop: "0.5rem"
 				}}>
 					              
-					<p style={{
-						margin: 0
-					}}>
-						<strong>
-							Mood :
-						</strong>
-						 
-						{p.mood || "Non précisé"}
-					</p>
+<p style={{ margin: 0 }}>
+  <strong>Mood :</strong> {p.mood || "Non précisé"}
+</p>
 					<p style={{ margin: "0.25rem 0 0 0" }}>
-  <strong>Style :</strong> {p.Style || "Non précisé"}
+  <strong>Style :</strong> {p.style || p.Style || "Non précisé"}
 </p>
 
 					              
-					<p style={{
-						margin: "0.25rem 0 0 0"
-					}}>
-						<strong>
-							Votes :
-						</strong>
-						 
-						{p.votes || 0}
-					</p>
+<p style={{ margin: "0.25rem 0 0 0" }}>
+  <strong>Votes :</strong> {p.votes || 0}
+</p>
 					            
 				</div>
 				            

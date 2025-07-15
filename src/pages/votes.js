@@ -20,7 +20,7 @@ const IntroTexteVote = () => {
   sm-margin="0px auto 40px auto"
 >
   <Text as="h1" font="--lead" color="--dark" margin="0" display="inline">
-        {"C'est toi qui sélectionne les morceaux TrackDiggers\n\nDécouvre les morceaux proposés par la communauté et vote pour ceux que tu veux entendre dans la prochaine playlist.\nT’es artiste ? Propose ton son et fais-le valider par le public"}
+        {"C'est toi qui sélectionne les morceaux TrackDiggers ! \n\nDécouvre les morceaux proposés par la communauté et vote pour ceux que tu veux entendre dans la prochaine playlist.\nT’es artiste ? Propose ton son et fais-le valider par le public"}
         {!expanded && "... "}
         {expanded &&
           ". Chaque vote compte : les morceaux les plus appréciés reçoivent leur propre carte collector et intègrent la sélection officielle.\nParticipe à faire émerger les talents de demain — un clic peut tout changer.\n\nTu peux aussi partager le lien de ton son dans ta story ou à tes proches pour booster tes chances de récolter plus de votes !"}
@@ -150,29 +150,44 @@ export default (() => {
 				max-width="1200px"
 				margin="0 auto"
 			/>
+<Text
+  font="--lead"
+  color="#000000"
+  margin="0 0 10px 0"
+  text-align="center"
+>
+  🚀 Pendant la phase de lancement, les sons restent visibles jusqu’à 30 jours et n’ont besoin que de 10 votes pour être sélectionnés. Profitez-en pour faire découvrir vos pépites 💎
+</Text>
+
+<Text
+  font="--base"
+  color="#555555"
+  margin="0 0 20px 0"
+  text-align="center"
+>
+  👉 Un artiste peut avoir jusqu’à <strong>3 morceaux en vote</strong> en même temps.  
+  <br />
+  🔁 Si un nouveau son est proposé alors que la limite est atteinte, il sera mis en attente.  
+  <br />
+  ⏳ Les morceaux expirent automatiquement au bout de <strong>30 jours</strong> s’ils ne sont pas sélectionnés.  
+</Text>
+<Text
+  font="--small"
+  color="#646363ff"
+  margin="0 0 20px 0"
+  text-align="center"
+>
+  La sélection finale peut inclure une part de curation humaine. 
+  <a 
+    href="/informations-legales" 
+    style={{ color: '#646363', textDecoration: 'underline', marginLeft: '5px' }}
+  >
+    En savoir plus
+  </a>
+</Text>
+
+
 			<Box display="flex" flex-direction="column" gap="16px" align-items="center">
-				<Link
-					href="/"
-					text-decoration-line="none"
-					color="--light"
-					font="--lead"
-					padding="1rem 2rem"
-					border-radius="10px"
-					background="#222222"
-					transition="transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease"
-					box-shadow="0px 4px 12px rgba(0, 0, 0, 0.3)"
-					hover-transform="scale(1.05)"
-					hover-box-shadow="0px 6px 18px rgba(255, 255, 255, 0.2)"
-					hover-background="#444444"
-					active-transform="scale(0.97)"
-					active-box-shadow="0px 3px 8px rgba(255, 255, 255, 0.1)"
-					display="inline-block"
-					text-align="center"
-					font-weight="700"
-					margin-bottom="8px"
-				>
-					Découvrir le moteur TrackDiggers
-				</Link>
 				<Link
 					href="https://airtable.com/app6jjhoCkgO9tcDB/pagiKds3fkQEmlWqp/form"
 					target="_blank"
@@ -198,12 +213,12 @@ export default (() => {
 					Proposer ton morceau ici
 				</Link>
 			</Box>
-<IntroTexteVote />
 		</Section>
 		<Section background="#ffffff" margin="-40px 0 0 0" sm-margin="-60px 0 0 0" quarkly-title="CORPS">
 			<Override slot="SectionContent" border-color="#ffffff" />
 			<Components.MusicVoterTest />
 		</Section>
+		<IntroTexteVote />
 		<Section background="#ffffff" padding="40px 0px">
 	<Override slot="SectionContent" max-width="800px" margin="0 auto" text-align="center" />
 	<Text font="--lead" color="#000000" margin="0 0 20px 0">

@@ -216,7 +216,13 @@ export default (() => {
 				>
 					Hébergeur :
 				</Span>
-				{" "}Cloudflare, Inc., 101 Townsend Street, San Francisco, California 94107, États-Unis{"\n  "}
+				{" "}<br />
+- Front-end : Cloudflare Pages (Cloudflare, Inc.)
+<br />
+- Stockage images : Cloudflare R2
+<br />
+- Automatisations : n8n auto-hébergé chez Hetzner (Union Européenne)
+{"\n  "}
 			</Text>
 		</Section>
 		<Section padding="80px 0 40px 0" quarkly-title="Politique de confidentialité">
@@ -262,11 +268,20 @@ Aucune donnée personnelle n’est revendue ni partagée avec des tiers extérie
 <br />
 Les informations sont stockées sur des bases de données sécurisées (type Google Sheets, Airtable) et traitées automatiquement via des outils comme <Strong>n8n</Strong> hébergé sur <Strong>Hetzner</Strong>, dans l’Union européenne.
 <br />
+Trackdiggers utilise également des services d’automatisation comme n8n (hébergé sur Hetzner), des outils d’intelligence artificielle via OpenRouter (comme Mistral) pour interpréter les demandes utilisateur, ainsi qu’un service interne nommé ImageRouter pour générer des visuels associés aux morceaux.  
+Google Analytics est utilisé à des fins de mesure d’audience, dans le respect des préférences cookies définies par l’utilisateur.
+<br />
 	Les <Strong>plateformes externes intégrées</Strong> comme YouTube, Spotify ou SoundCloud peuvent quant à elles collecter des données selon leurs propres politiques, indépendamment de Trackdiggers.
-	<br /><br />
+	<br />
+	Certaines pages intègrent des lecteurs embarqués (type iframe) provenant de plateformes tierces comme YouTube, Spotify ou SoundCloud.  
+Ces services peuvent collecter des données personnelles (comme l’IP, les cookies) dès le chargement de la page, même sans interaction de l’utilisateur.  
+L’utilisateur peut refuser cette collecte en configurant ses préférences de consentement.
+	<br />
 <Strong>Publicités Google AdSense</Strong> : Trackdiggers utilise le service Google AdSense pour afficher des publicités ciblées. Ce service peut déposer des cookies ou collecter certaines données personnelles via des scripts tiers, dans le respect de la politique de confidentialité de Google. 
 <br />
-L’affichage de ces publicités est soumis au <Strong>consentement explicite</Strong> de l’utilisateur via la bannière de gestion des cookies (Tarteaucitron.js). 
+L’affichage de ces publicités est soumis au consentement explicite de l’utilisateur via une bannière RGPD conforme au Consent Mode v2 de Google.  
+Ce système sera pleinement activé lors de la validation du site dans le programme Google AdSense. Aucun cookie publicitaire n’est déposé sans autorisation préalable.  
+L’utilisateur peut gérer ou retirer son consentement à tout moment via le lien “Gestion des cookies” disponible en bas de page. 
 <br />
 Les utilisateurs peuvent à tout moment gérer ou retirer leur consentement dans la section “Gestion des cookies” disponible en bas de page.
 <br /><br />
@@ -323,10 +338,20 @@ Les utilisateurs peuvent à tout moment gérer ou retirer leur consentement dans
 				</Strong>
 				{" "}: Trackdiggers est proposé “tel quel”, sans garantie de disponibilité continue. L’algorithme repose sur une interprétation subjective des émotions musicales. Le service peut être modifié, suspendu ou interrompu à tout moment.
 				<br />
+<Strong>
+Sélection et mise en avant des morceaux
+</Strong>
+{" "}: Trackdiggers propose une sélection de morceaux basée sur un algorithme prenant en compte plusieurs critères, notamment les votes des utilisateurs, les caractéristiques émotionnelles, l’énergie perçue, ou encore la diversité musicale globale.  
+Une part de sélection éditoriale ou humaine peut intervenir à tout moment afin de garantir une expérience cohérente, éviter les déséquilibres ou favoriser certains morceaux dans le cadre de tests, de découvertes ou d’animations spécifiques.  
+Trackdiggers se réserve le droit de mettre en avant certains morceaux de manière ponctuelle ou continue, sans en divulguer publiquement les critères, et sans que cela n’ouvre droit à contestation ou réclamation de la part des utilisateurs.  
+Aucun utilisateur ne peut revendiquer un droit automatique à la visibilité, même en cas de vote élevé. Le système de vote est conçu pour limiter les abus et garantir une certaine équité. Toutefois, Trackdiggers ne garantit pas l’unicité absolue des votes par utilisateur.  
+Toute tentative manifeste de manipulation pourra entraîner la suppression du vote ou du morceau concerné.
+
+<br />
 				<Strong>
 					Emails informatifs
 				</Strong> 
-				{" "}: En cas de consentement explicite, l’utilisateur accepte de recevoir occasionnellement des emails informatifs en lien avec le service (nouveaux packs, fonctionnalités, rappels). Ces emails incluent toujours un lien de désinscription. L’utilisateur peut s’opposer à tout moment à leur réception via ce lien ou en contactant contact@atkmusic.fr.
+				{" "}: En cas de consentement explicite, l’utilisateur accepte de recevoir occasionnellement des emails informatifs en lien avec le service (nouveaux packs, fonctionnalités, rappels). Ces emails incluent toujours un lien de désinscription. L’utilisateur peut s’opposer à tout moment à leur réception via ce lien ou en contactant contact@trackdiggers.fr.
 				<br />
 				<br />
 				<br />
@@ -335,7 +360,7 @@ Les utilisateurs peuvent à tout moment gérer ou retirer leur consentement dans
 				<Strong>
 					Dernière mise à jour
 				</Strong>
-				{" "}: 20 juin 2025
+				{" "}: 15 juillet 2025
 			</Text>
 		</Section>
 		<Section padding="40px 0" quarkly-title="Pied de page">

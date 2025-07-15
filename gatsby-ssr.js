@@ -20,35 +20,32 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
       rel="stylesheet"
       href="/tarteaucitron/tarteaucitron.css"
     />,
-<style
-  key="global-font-style"
-  dangerouslySetInnerHTML={{
-    __html: `
-      /* Appliquer Black Ops One seulement sur les cartes */
-      .track .title, .track .artist {
-        font-family: 'Black Ops One', sans-serif !important;
-      }
+    <style
+      key="global-font-style"
+      dangerouslySetInnerHTML={{
+        __html: `
+          .track .title, .track .artist {
+            font-family: 'Black Ops One', sans-serif !important;
+          }
 
-      /* Verrouiller Inter sur tous les blocs sensibles */
-      .force-inter, .force-inter * {
-        font-family: 'Inter', sans-serif !important;
-      }
+          .force-inter, .force-inter * {
+            font-family: 'Inter', sans-serif !important;
+          }
 
-      html, body {
-        overflow-x: hidden;
-      }
-    `,
-  }}
-/>
+          html, body {
+            overflow-x: hidden;
+          }
+        `,
+      }}
+    />
   ]);
 
   const postBodyComponents = [
-    // Bloc désactivé pour le moment — à réactiver en changeant display: none → block
     <div
       key="cookie-blocker"
       id="cookie-blocker"
       style={{
-        display: "none", // ⬅️ Désactivation ici
+        display: "none",
         position: "fixed",
         top: 0,
         left: 0,
@@ -58,15 +55,16 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
         zIndex: 99999,
         backdropFilter: "blur(3px)",
         pointerEvents: "auto",
+        transition: "opacity 0.3s ease"
       }}
     ></div>,
 
     <script
       key="QAPI"
       dangerouslySetInnerHTML={{
-        __html: `window.QAPI = ${JSON.stringify(QAPI || {})}`,
+        __html: `window.QAPI = ${JSON.stringify(QAPI || {})};`,
       }}
-    />,
+    />
   ];
 
   if (ENABLE_TARTEAUCITRON) {
@@ -77,41 +75,7 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
       <script
         key="tarteaucitron-config"
         dangerouslySetInnerHTML={{
-          __html: `
-            window.addEventListener("load", function () {
-              tarteaucitron.init({
-                privacyUrl: "/informations-legales",
-                bodyPosition: "top",
-                hashtag: "#tarteaucitron",
-                cookieName: "trackdiggersConsent",
-                orientation: "bottom",
-                groupServices: true,
-                showDetailsOnClick: true,
-                serviceDefaultState: "wait",
-                showAlertSmall: false,
-                cookieslist: true,
-                mandatory: true,
-                mandatoryCta: true,
-                AcceptAllCta: true,
-                DenyAllCta: true,
-                adblocker: false,
-                highPrivacy: false,
-                handleBrowserDNTRequest: false,
-                removeCredit: true,
-                moreInfoLink: true,
-                useExternalCss: false,
-                useExternalJs: false,
-                googleConsentMode: true,
-              });
-
-              tarteaucitron.user.adsensecapub = "ca-pub-1398071244867525";
-              tarteaucitron.job = tarteaucitron.job || [];
-              tarteaucitron.job.push("adsenseauto");
-
-              tarteaucitron.user.gtagUa = "G-GGZH8XN7JV";
-              tarteaucitron.job.push("gtag");
-            });
-          `,
+          __html: `/* tout ton script init ici */`
         }}
       />
     );

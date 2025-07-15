@@ -139,12 +139,26 @@ const EmbedHTML = ({ children, ...props }) => {
   }
 }
 
-        .video {
-          margin-bottom: 15px;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 0 12px rgba(0, 255, 200, 0.1);
-        }
+  .video {
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 255, 200, 0.1);
+  width: 100%;
+  height: 200px;
+  display: block;
+  position: relative;
+}
+
+.video iframe,
+.video .youtube_player {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  display: block;
+}
+
       </style>
 
       <div class="auralink-wrapper">
@@ -187,8 +201,21 @@ const EmbedHTML = ({ children, ...props }) => {
           <div class="title track-title">BROLY #1</div>
           <div class="artist track-artist">Gama</div>
           <div class="video">
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/XS0pEBm1acs" frameborder="0" allowfullscreen></iframe>
-          </div>
+<div class="youtube_player"
+  data-videoID="XS0pEBm1acs"
+  data-width="100%"
+  data-height="200"
+  data-theme="dark"
+  data-rel="0"
+  data-controls="1"
+  data-showinfo="0"
+  data-autoplay="0"
+  data-mute="0"
+  data-loop="0"
+  data-loading="1"
+  
+></div>
+</div>
           <div class="links">
             <a href="https://www.youtube.com/watch?v=XS0pEBm1acs" target="_blank">YouTube</a>
             <a href="https://open.spotify.com/intl-fr/track/6nqrV2U9qblqeU73JJAoOy?si=4017d78a28c74003" target="_blank">Streaming</a>
@@ -199,9 +226,22 @@ const EmbedHTML = ({ children, ...props }) => {
         <div class="track track-card">
           <div class="title track-title">Magalie</div>
           <div class="artist track-artist">KURTYS</div>
-          <div class="video">
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/YhwQogl8-3c" frameborder="0" allowfullscreen></iframe>
-          </div>
+     <div class="video">
+  <div class="youtube_player"
+    data-videoID="YhwQogl8-3c"
+    data-width="100%"
+    data-height="200"
+    data-theme="dark"
+    data-rel="0"
+    data-controls="1"
+    data-showinfo="0"
+    data-autoplay="0"
+    data-mute="0"
+    data-loop="0"
+    data-loading="1"
+  ></div>
+</div>
+
           <div class="links">
             <a href="https://www.youtube.com/watch?v=YhwQogl8-3c" target="_blank">YouTube</a>
             <a href="https://open.spotify.com/intl-fr/track/6uFq4YnbGzaDn8Ro1LCC7t?si=4b2f6ffdce3147ee" target="_blank">Streaming</a>
@@ -212,9 +252,22 @@ const EmbedHTML = ({ children, ...props }) => {
         <div class="track track-card">
           <div class="title track-title">Aquarelle</div>
           <div class="artist track-artist">PINTO</div>
-          <div class="video">
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/C9oOy1vBKRA" frameborder="0" allowfullscreen></iframe>
-          </div>
+         <div class="video">
+  <div class="youtube_player"
+    data-videoID="C9oOy1vBKRA"
+    data-width="100%"
+    data-height="200"
+    data-theme="dark"
+    data-rel="0"
+    data-controls="1"
+    data-showinfo="0"
+    data-autoplay="0"
+    data-mute="0"
+    data-loop="0"
+    data-loading="1"
+  ></div>
+</div>
+
           <div class="links">
             <a href="https://www.youtube.com/C9oOy1vBKRA" target="_blank">YouTube</a>
             <a href="https://open.spotify.com/intl-fr/track/72bBIkl4EsLc3yXVt4wGk2?si=6f145fea753843f6" target="_blank">Streaming</a>
@@ -223,6 +276,10 @@ const EmbedHTML = ({ children, ...props }) => {
         </div>
       </div>
     `;
+    
+      if (window.tarteaucitron && window.tarteaucitron.job) {
+    window.tarteaucitron.job.push("youtube");
+}
 
     const form = ref.current.querySelector("#mood-form");
     form.addEventListener("submit", async function (e) {
@@ -269,6 +326,16 @@ document.getElementById("auralink-results").innerHTML = "";
       setLoading(false);
       if (containerRef.current) {
         containerRef.current.innerHTML = html;
+          if (window.tarteaucitron && typeof window.tarteaucitron.makeYoutube === "function") {
+      const ytDivs = containerRef.current.querySelectorAll(".youtube_player");
+      ytDivs.forEach(div => {
+        window.tarteaucitron.makeYoutube(div);
+      });
+    }
+            if (window.tarteaucitron && window.tarteaucitron.job) {
+      window.tarteaucitron.job.push("youtube");
+    }
+
 		    const heading = document.getElementById("auralink-heading");
     if (heading) {
       heading.textContent = "Ta sélection";
