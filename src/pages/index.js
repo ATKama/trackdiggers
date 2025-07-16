@@ -32,7 +32,25 @@ export default function IndexPage() {
 			<link rel="canonical" href="https://trackdiggers.com" />
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
      crossorigin="anonymous"></script>
-	 <script src="https://www.google.com/recaptcha/api.js" async defer></script></Helmet>
+	 <script src="https://www.google.com/recaptcha/api.js" async defer></script><script type="application/ld+json">
+{`
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Trackdiggers",
+  "url": "https://trackdiggers.com",
+  "logo": "https://uploads.quarkly.io/682f25cf9335410018cc8538/images/TrackDigger.svg?v=2025-06-12T13:46:43.953Z",
+  "sameAs": [
+    "https://instagram.com/trackdiggers",
+    "https://tiktok.com/@trackdiggers",
+    "https://x.com/track_diggers",
+    "https://soundcloud.com/trackdiggers",
+    "https://open.spotify.com/playlist/1nyWcB493Lb26W9rpKyh7Y"
+  ]
+}
+`}
+</script>
+</Helmet>
 		<Section
 			padding="0px 0 16px 0"
 			quarkly-title="Header"

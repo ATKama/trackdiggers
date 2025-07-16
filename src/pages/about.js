@@ -6,10 +6,12 @@ import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
 import { Image } from "@quarkly/widgets";
+import Layout from "../components/layout"; // 👈 à ajouter tout en haut
 
 const AboutPage = () => {
   return (
-    <Theme theme={theme}>
+    <Layout pageUrl="about">
+      <Theme theme={theme}>
       <GlobalQuarklyPageStyles pageUrl={"about"} />
       <Helmet>
         <title>À propos | Trackdiggers</title>
@@ -184,7 +186,7 @@ const AboutPage = () => {
             </Box>
         </Section>
     </Theme>
-  );
-};
-
+	</Layout>
+ );
+}
 export default AboutPage;

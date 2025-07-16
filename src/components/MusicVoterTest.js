@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import atomize from "@quarkly/atomize";
 
 const MusicVoterTest = () => {
+	const [cookiesAccepted, setCookiesAccepted] = useState(false);
 	const [propositions, setPropositions] = useState([]);
 	const [filtreMood, setFiltreMood] = useState("");
 	const [filtreStyle, setFiltreStyle] = useState("");
@@ -9,6 +10,43 @@ const MusicVoterTest = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [votedIds, setVotedIds] = useState([]);
+
+useEffect(() => {
+	const checkConsent = () => {
+		if (window.tarteaucitron?.state?.youtube === true) {
+			setCookiesAccepted(true);
+		}
+	};
+
+	checkConsent();
+
+	// Ajoute les listeners
+	document.addEventListener("tac.cookie.add", checkConsent);
+	document.addEventListener("tac.cookie.update", checkConsent);
+	document.addEventListener("tac.user_interface", checkConsent);
+
+	// ✅ Déplace l’interval ici
+	let attempts = 0;
+	const interval = setInterval(() => {
+		if (window.tarteaucitron?.state?.youtube === true) {
+			setCookiesAccepted(true);
+			clearInterval(interval);
+		}
+		if (attempts > 5) clearInterval(interval);
+		attempts++;
+	}, 2000);
+
+	// Nettoyage
+	return () => {
+		document.removeEventListener("tac.cookie.add", checkConsent);
+		document.removeEventListener("tac.cookie.update", checkConsent);
+		document.removeEventListener("tac.user_interface", checkConsent);
+		clearInterval(interval);
+	};
+}, []);
+
+
+
 	useEffect(() => {
 		fetch("https://n8n.atkmusic.fr/webhook/8b290d8b-12b4-435c-ab94-58c157b7ba7d").then(res => res.json()).then(data => {
 			if (Array.isArray(data)) {
@@ -124,6 +162,38 @@ const MusicVoterTest = () => {
 	};
 
 	const sorted = [...propositions.filter(filtrer)].sort((a, b) => (b.votes || 0) - (a.votes || 0));
+		if (!cookiesAccepted) {
+		return (
+			<div style={{
+				padding: "2rem",
+				textAlign: "center",
+				color: "#000",
+				backgroundColor: "#fff",
+				minHeight: "100vh"
+			}}>
+				<h2>🍪 Consentement requis</h2>
+				<p>Pour accéder au module de vote, vous devez accepter les cookies (YouTube et localStorage).</p>
+				<button
+					onClick={() =>
+						window.tarteaucitron?.userInterface?.openPanel()
+					}
+					style={{
+						padding: "12px 24px",
+						marginTop: "16px",
+						backgroundColor: "#000",
+						color: "#fff",
+						border: "none",
+						borderRadius: "8px",
+						cursor: "pointer",
+						fontSize: "1rem"
+					}}
+				>
+					Gérer mes préférences
+				</button>
+			</div>
+		);
+	}
+
 
 	if (isLoading) {
 		return <div style={{

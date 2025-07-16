@@ -5,8 +5,11 @@ import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
-export default (() => {
-	return <Theme theme={theme}>
+import Layout from "../components/layout"; // 👈 à ajouter tout en haut
+export default function CartesPage() {
+  return (
+    <Layout pageUrl="cartes">
+      <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"cartes"} />
 		<Helmet>
 			<title>
@@ -554,4 +557,6 @@ export default (() => {
 			</Box>
 		</Section>
 	</Theme>;
-});
+	</Layout>
+ );
+}

@@ -6,8 +6,11 @@ import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
-export default (() => {
-	return <Theme theme={theme}>
+import Layout from "../components/layout"; // 👈 à ajouter tout en haut
+export default function InformationsLegalesPage() {
+  return (
+    <Layout pageUrl="informations-legales">
+      <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"informations-legales"} />
 		<Helmet>
 			<title>
@@ -405,4 +408,6 @@ Toute tentative manifeste de manipulation pourra entraîner la suppression du vo
 		</Section>
 		<Components.SlideMenu />
 	</Theme>;
-});
+	</Layout>
+ );
+}

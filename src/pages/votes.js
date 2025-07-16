@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import { Override } from "@quarkly/components";
 import * as Components from "components";
+import Layout from "../components/layout"; // 👈 à ajouter tout en haut
 const IntroTexteVote = () => {
   const [expanded, setExpanded] = useState(false);
   const handleToggle = () => setExpanded(!expanded);
@@ -43,8 +44,10 @@ const IntroTexteVote = () => {
   );
 };
 
-export default (() => {
-	return <Theme theme={theme}>
+export default function VotesPage() {
+  return (
+    <Layout pageUrl="votes">
+      <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"votes"} />
 		<Helmet>
 			<title>
@@ -623,4 +626,6 @@ export default (() => {
 						</Box>
 		</Section>
 	</Theme>;
-});
+	</Layout>
+ );
+}
