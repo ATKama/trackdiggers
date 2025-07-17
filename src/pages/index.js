@@ -12,36 +12,37 @@ import Layout from "../components/layout";
 export default function IndexPage() {
 useEffect(() => {
 	const loadRecaptcha = () => {
-		if (window.grecaptcha && document.getElementById("recaptcha-container")) {
-			// Ne rien faire si déjà chargé
-			if (document.getElementById("recaptcha-container").hasChildNodes()) return;
-
+		const container = document.getElementById("recaptcha-container");
+		if (
+			window.grecaptcha &&
+			container &&
+			container.childNodes.length === 0
+		) {
 			window.grecaptcha.render("recaptcha-container", {
 				sitekey: "6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9",
 			});
 		}
 	};
 
-	const injectScript = () => {
-		if (window.grecaptcha) {
-			loadRecaptcha();
-			return;
-		}
-
-		const script = document.createElement("script");
-		script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoadCallback&render=explicit";
-		script.async = true;
-		script.defer = true;
-		document.body.appendChild(script);
-	};
-
-	// Crée un callback global que reCAPTCHA va appeler
+	// ✅ Toujours définir AVANT l'injection du script
 	window.onRecaptchaLoadCallback = () => {
 		loadRecaptcha();
 	};
 
-	injectScript();
+	// ✅ Si grecaptcha est déjà dispo (script en cache), appeler directement
+	if (window.grecaptcha) {
+		loadRecaptcha();
+		return;
+	}
+
+	// 💉 Sinon injecter le script avec callback
+	const script = document.createElement("script");
+	script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoadCallback&render=explicit";
+	script.async = true;
+	script.defer = true;
+	document.body.appendChild(script);
 }, []);
+
 
 	return (
 		<Layout pageUrl="index">
