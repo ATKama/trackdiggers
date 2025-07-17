@@ -32,7 +32,7 @@ export default function IndexPage() {
 			<link rel="canonical" href="https://trackdiggers.com" />
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
      crossorigin="anonymous"></script>
-	 <script src="https://www.google.com/recaptcha/api.js" async defer></script><script type="application/ld+json">
+	 <script type="application/ld+json">
 {`
 {
   "@context": "https://schema.org",

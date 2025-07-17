@@ -3,6 +3,8 @@ import { Theme } from "@quarkly/widgets";
 import theme from "../theme";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import SlideMenu from "./SlideMenu";
+import { Helmet } from "react-helmet";
+
 
 const Layout = ({ children, pageUrl = "index" }) => {
 useEffect(() => {
@@ -64,6 +66,10 @@ window.tarteaucitron.job.push("youtube");
 			<GlobalQuarklyPageStyles pageUrl={pageUrl} />
 			<SlideMenu />
 			{children}
+			<Helmet>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</Helmet>
+
 		</Theme>
 	);
 };
