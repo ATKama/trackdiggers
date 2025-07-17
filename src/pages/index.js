@@ -551,7 +551,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 						<Text font="normal 900 30px/1.2 --fontFamily-sans" max-width="500px" text-align="center" text-shadow="1px 1px 2px rgba(0, 0, 0, 0.8)" margin="0 auto">
 							Tu veux collectionner ces morceaux ?{" "}
 							<br />
-							Reçois tes cartes Trackdiggers uniques !
+							Fais d’abord une recherche par mood — ce sont ces morceaux que tu retrouveras en cartes Trackdiggers !
 						</Text>
 						<Box
 							background="rgba(200, 200, 200, 0.2)"
