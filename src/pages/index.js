@@ -11,16 +11,37 @@ import Layout from "../components/layout";
 
 export default function IndexPage() {
   useEffect(() => {
-	const interval = setInterval(() => {
-		if (window.grecaptcha && document.getElementById("recaptcha-container")) {
-			clearInterval(interval);
-			window.grecaptcha.render("recaptcha-container", {
-				sitekey: "6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9"
+		const loadRecaptchaScript = () => {
+			return new Promise((resolve, reject) => {
+				if (window.grecaptcha) return resolve();
+
+				const script = document.createElement("script");
+				script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
+				script.onload = resolve;
+				script.onerror = reject;
+				document.body.appendChild(script);
 			});
-		}
-	}, 300);
-	return () => clearInterval(interval);
-}, []);
+		};
+
+		const renderCaptcha = () => {
+			const container = document.getElementById("recaptcha-container");
+			if (
+				window.grecaptcha &&
+				container &&
+				container.innerHTML.trim().length === 0
+			) {
+				window.grecaptcha.render("recaptcha-container", {
+					sitekey: "6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9"
+				});
+			}
+		};
+
+		loadRecaptchaScript()
+			.then(renderCaptcha)
+			.catch((err) => {
+				console.error("Erreur chargement script reCAPTCHA :", err);
+			});
+	}, []);
 
 	return (
 		<Layout pageUrl="index">
