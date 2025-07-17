@@ -10,6 +10,18 @@ import SlideMenu from "../components/SlideMenu";
 import Layout from "../components/layout";
 
 export default function IndexPage() {
+  useEffect(() => {
+	const interval = setInterval(() => {
+		if (window.grecaptcha && document.getElementById("recaptcha-container")) {
+			clearInterval(interval);
+			window.grecaptcha.render("recaptcha-container", {
+				sitekey: "6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9"
+			});
+		}
+	}, 300);
+	return () => clearInterval(interval);
+}, []);
+
 	return (
 		<Layout pageUrl="index">
 
@@ -640,7 +652,7 @@ form.track3.value = titles[2] || "";
 	>
 		Réclamer mon pack 🎁
 	</button>
-	<div className="g-recaptcha" data-sitekey="6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9" required></div>
+	<div id="recaptcha-container" style={{ marginTop: "10px" }}></div>
 </form>
 
 {/* 🔽 Ce bloc doit être placé juste en dessous du formulaire pour afficher le résultat */}
