@@ -10,38 +10,38 @@ import SlideMenu from "../components/SlideMenu";
 import Layout from "../components/layout";
 
 export default function IndexPage() {
-  useEffect(() => {
-		const loadRecaptchaScript = () => {
-			return new Promise((resolve, reject) => {
-				if (window.grecaptcha) return resolve();
+useEffect(() => {
+	const loadRecaptcha = () => {
+		if (window.grecaptcha && document.getElementById("recaptcha-container")) {
+			// Ne rien faire si déjà chargé
+			if (document.getElementById("recaptcha-container").hasChildNodes()) return;
 
-				const script = document.createElement("script");
-				script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
-				script.onload = resolve;
-				script.onerror = reject;
-				document.body.appendChild(script);
+			window.grecaptcha.render("recaptcha-container", {
+				sitekey: "6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9",
 			});
-		};
+		}
+	};
 
-		const renderCaptcha = () => {
-			const container = document.getElementById("recaptcha-container");
-			if (
-				window.grecaptcha &&
-				container &&
-				container.innerHTML.trim().length === 0
-			) {
-				window.grecaptcha.render("recaptcha-container", {
-					sitekey: "6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9"
-				});
-			}
-		};
+	const injectScript = () => {
+		if (window.grecaptcha) {
+			loadRecaptcha();
+			return;
+		}
 
-		loadRecaptchaScript()
-			.then(renderCaptcha)
-			.catch((err) => {
-				console.error("Erreur chargement script reCAPTCHA :", err);
-			});
-	}, []);
+		const script = document.createElement("script");
+		script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoadCallback&render=explicit";
+		script.async = true;
+		script.defer = true;
+		document.body.appendChild(script);
+	};
+
+	// Crée un callback global que reCAPTCHA va appeler
+	window.onRecaptchaLoadCallback = () => {
+		loadRecaptcha();
+	};
+
+	injectScript();
+}, []);
 
 	return (
 		<Layout pageUrl="index">
@@ -551,7 +551,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 						<Text font="normal 900 30px/1.2 --fontFamily-sans" max-width="500px" text-align="center" text-shadow="1px 1px 2px rgba(0, 0, 0, 0.8)" margin="0 auto">
 							Tu veux collectionner ces morceaux ?{" "}
 							<br />
-							Fais d’abord une recherche par mood — ce sont ces morceaux que tu retrouveras en cartes Trackdiggers !
+							Fais une recherche par mood et reçois tes cartes Trackdiggers uniques !
 						</Text>
 						<Box
 							background="rgba(200, 200, 200, 0.2)"
