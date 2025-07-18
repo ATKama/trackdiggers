@@ -10,7 +10,10 @@ import SlideMenu from "../components/SlideMenu";
 import Layout from "../components/layout";
 
 export default function IndexPage() {
+  const [isClient, setIsClient] = useState(false);
 useEffect(() => {
+	setIsClient(true); // <- Ajouté ici
+
 	const loadRecaptcha = () => {
 		const container = document.getElementById("recaptcha-container");
 		if (
@@ -24,18 +27,15 @@ useEffect(() => {
 		}
 	};
 
-	// ✅ Toujours définir AVANT l'injection du script
 	window.onRecaptchaLoadCallback = () => {
 		loadRecaptcha();
 	};
 
-	// ✅ Si grecaptcha est déjà dispo (script en cache), appeler directement
 	if (window.grecaptcha) {
 		loadRecaptcha();
 		return;
 	}
 
-	// 💉 Sinon injecter le script avec callback
 	const script = document.createElement("script");
 	script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoadCallback&render=explicit";
 	script.async = true;
@@ -674,7 +674,7 @@ form.track3.value = titles[2] || "";
 	>
 		Réclamer mon pack 🎁
 	</button>
-	<div id="recaptcha-container" style={{ marginTop: "10px" }}></div>
+	{isClient && <div id="recaptcha-container" style={{ marginTop: "10px" }}></div>}
 </form>
 
 {/* 🔽 Ce bloc doit être placé juste en dessous du formulaire pour afficher le résultat */}
