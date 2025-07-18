@@ -8,48 +8,10 @@ import { Override } from "@quarkly/components";
 import * as Components from "components";
 import SlideMenu from "../components/SlideMenu"; 
 import Layout from "../components/layout";
+import RecaptchaClient from "../components/RecaptchaClient";
 
 export default function IndexPage() {
-  const [isClient, setIsClient] = useState(false);
-useEffect(() => {
-	setIsClient(true);
-
-	const renderCaptcha = () => {
-		const container = document.getElementById("recaptcha-container");
-		if (
-			window.grecaptcha &&
-			container &&
-			container.childNodes.length === 0
-		) {
-			window.grecaptcha.render("recaptcha-container", {
-				sitekey: "6Ld1p4ArAAAAAPcqUMRFmI9AEJrZ94wfv2Br0BA9",
-			});
-		}
-	};
-
-	window.onRecaptchaLoadCallback = () => {
-		let attempts = 0;
-		const interval = setInterval(() => {
-			attempts++;
-			if (window.grecaptcha) {
-				renderCaptcha();
-				clearInterval(interval);
-			}
-			if (attempts > 10) clearInterval(interval); // abandonne après 10 tentatives (~2s)
-		}, 200);
-	};
-
-	const scriptAlreadyLoaded = document.querySelector('script[src*="recaptcha/api.js"]');
-	if (!scriptAlreadyLoaded) {
-		const script = document.createElement("script");
-		script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoadCallback&render=explicit";
-		script.async = true;
-		script.defer = true;
-		document.body.appendChild(script);
-	} else {
-		window.onRecaptchaLoadCallback();
-	}
-}, []);
+  
 
 
 	return (
@@ -682,7 +644,7 @@ form.track3.value = titles[2] || "";
 	>
 		Réclamer mon pack 🎁
 	</button>
-	{isClient && <div id="recaptcha-container" style={{ marginTop: "10px" }}></div>}
+	<RecaptchaClient />
 </form>
 
 {/* 🔽 Ce bloc doit être placé juste en dessous du formulaire pour afficher le résultat */}
