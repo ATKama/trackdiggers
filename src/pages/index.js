@@ -12,9 +12,9 @@ import Layout from "../components/layout";
 export default function IndexPage() {
   const [isClient, setIsClient] = useState(false);
 useEffect(() => {
-	setIsClient(true); // <- Ajouté ici
+	setIsClient(true);
 
-	const loadRecaptcha = () => {
+	const renderCaptcha = () => {
 		const container = document.getElementById("recaptcha-container");
 		if (
 			window.grecaptcha &&
@@ -28,19 +28,27 @@ useEffect(() => {
 	};
 
 	window.onRecaptchaLoadCallback = () => {
-		loadRecaptcha();
+		let attempts = 0;
+		const interval = setInterval(() => {
+			attempts++;
+			if (window.grecaptcha) {
+				renderCaptcha();
+				clearInterval(interval);
+			}
+			if (attempts > 10) clearInterval(interval); // abandonne après 10 tentatives (~2s)
+		}, 200);
 	};
 
-	if (window.grecaptcha) {
-		loadRecaptcha();
-		return;
+	const scriptAlreadyLoaded = document.querySelector('script[src*="recaptcha/api.js"]');
+	if (!scriptAlreadyLoaded) {
+		const script = document.createElement("script");
+		script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoadCallback&render=explicit";
+		script.async = true;
+		script.defer = true;
+		document.body.appendChild(script);
+	} else {
+		window.onRecaptchaLoadCallback();
 	}
-
-	const script = document.createElement("script");
-	script.src = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoadCallback&render=explicit";
-	script.async = true;
-	script.defer = true;
-	document.body.appendChild(script);
 }, []);
 
 
