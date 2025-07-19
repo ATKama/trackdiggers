@@ -5,6 +5,22 @@ const ENABLE_TARTEAUCITRON = false;
 
 exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
   setHeadComponents([
+        <script
+      key="gtag-lib"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GGZH8XN7JV"
+    />,
+    <script
+      key="gtag-init"
+      dangerouslySetInnerHTML={{
+        __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GGZH8XN7JV');
+        `,
+      }}
+    />,
     <link
       key="material-symbols"
       rel="stylesheet"
