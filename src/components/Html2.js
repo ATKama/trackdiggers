@@ -323,6 +323,43 @@ document.getElementById("auralink-results").innerHTML = "";
     };
 
     window.refreshAuralink = html => {
+      // Charger l'API YouTube si elle n'est pas encore là
+if (!window.YT) {
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+// Quand l'API est prête, on initialise les players
+window.onYouTubeIframeAPIReady = () => {
+  const iframes = containerRef.current?.querySelectorAll('iframe[src*="youtube.com/embed"]') || [];
+
+  iframes.forEach((iframe) => {
+    const videoId = iframe.src.split('/embed/')[1]?.split('?')[0];
+
+    // Initialiser un player pour chaque iframe
+    const player = new YT.Player(iframe, {
+      events: {
+        onStateChange: (event) => {
+          if (event.data === YT.PlayerState.PLAYING) {
+            // Ici tu envoies un événement de tracking à Google Analytics
+            if (typeof gtag !== "undefined") {
+              gtag('event', 'video_play', {
+                event_category: 'TrackDiggers',
+                event_label: videoId,
+                value: 1
+              });
+            }
+
+            // Debug console (à supprimer en prod)
+            console.log(`[TRACKDIGGERS] Lecture de la vidéo : ${videoId}`);
+          }
+        }
+      }
+    });
+  });
+};
       setLoading(false);
       if (containerRef.current) {
         containerRef.current.innerHTML = html;
