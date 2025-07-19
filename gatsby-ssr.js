@@ -17,7 +17,9 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-GGZH8XN7JV');
+          gtag('config', 'G-GGZH8XN7JV', {
+  debug_mode: true
+});
         `,
       }}
     />,
