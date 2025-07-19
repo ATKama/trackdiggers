@@ -291,9 +291,11 @@ const style = form.querySelector("#style-select").value;
 
 
       if (typeof gtag !== "undefined") {
-        gtag('event', 'mood_search', {
-          mood_text: mood
-        });
+     gtag('event', 'mood_search', {
+  mood_text: mood,
+  debug_mode: true,
+  send_to: 'G-GGZH8XN7JV'
+});
       }
 document.getElementById("auralink-results").innerHTML = "";
       window.startAuralinkLoading && window.startAuralinkLoading();
@@ -323,11 +325,13 @@ const initYTTracking = () => {
         onStateChange: (event) => {
           if (event.data === YT.PlayerState.PLAYING) {
             if (typeof gtag !== "undefined") {
-              gtag('event', 'video_play', {
-                event_category: 'TrackDiggers',
-                event_label: videoId,
-                value: 1
-              });
+             gtag('event', 'video_play', {
+  event_category: 'TrackDiggers',
+  event_label: videoId,
+  value: 1,
+  debug_mode: true,
+  send_to: 'G-GGZH8XN7JV'
+});
             }
             console.log(`[TRACKDIGGERS] Lecture de la vidéo : ${videoId}`);
           }
