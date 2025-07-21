@@ -1,28 +1,10 @@
 const React = require("react");
 const QAPI = require("./qapi").default;
 
-const ENABLE_TARTEAUCITRON = false;
+const ENABLE_TARTEAUCITRON = true;
 
 exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
   setHeadComponents([
-        <script
-      key="gtag-lib"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-GGZH8XN7JV"
-    />,
-    <script
-      key="gtag-init"
-      dangerouslySetInnerHTML={{
-        __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-GGZH8XN7JV', {
-  debug_mode: true
-});
-        `,
-      }}
-    />,
     <link
       key="material-symbols"
       rel="stylesheet"
@@ -87,13 +69,62 @@ exports.onRenderBody = ({ setHeadComponents, setPostBodyComponents }) => {
 
   if (ENABLE_TARTEAUCITRON) {
     postBodyComponents.push(
-      <script key="tarteaucitron-js" src="/tarteaucitron/tarteaucitron.min.js" defer />,
-      <script key="tarteaucitron-services" src="/tarteaucitron/tarteaucitron.services.js" defer />,
-      <script key="tarteaucitron-lang" src="/tarteaucitron/lang/tarteaucitron.fr.js" defer />,
       <script
-        key="tarteaucitron-config"
+        key="tarteaucitron-loader"
         dangerouslySetInnerHTML={{
-          __html: `/* tout ton script init ici */`
+          __html: `
+            (function() {
+              var script = document.createElement('script');
+              script.src = '/tarteaucitron/tarteaucitron.min.js';
+              script.onload = function () {
+                var serviceScript = document.createElement('script');
+                serviceScript.src = '/tarteaucitron/tarteaucitron.services.js';
+                serviceScript.onload = function () {
+                  tarteaucitron.init({
+                    privacyUrl: "",
+                    bodyPosition: "top",
+                    hashtag: "#tarteaucitron",
+                    cookieName: "tarteaucitron",
+                    orientation: "middle",
+                    groupServices: true,
+                    showDetailsOnClick: true,
+                    serviceDefaultState: "wait",
+                    showAlertSmall: false,
+                    cookieslist: false,
+                    cookieslistEmbed: false,
+                    closePopup: true,
+                    showIcon: true,
+                    iconPosition: "BottomRight",
+                    adblocker: false,
+                    DenyAllCta: true,
+                    AcceptAllCta: true,
+                    highPrivacy: true,
+                    alwaysNeedConsent: false,
+                    handleBrowserDNTRequest: false,
+                    removeCredit: false,
+                    moreInfoLink: true,
+                    useExternalCss: false,
+                    useExternalJs: false,
+                    mandatory: true,
+                    mandatoryCta: false,
+                    googleConsentMode: true,
+                    bingConsentMode: true,
+                    softConsentMode: false,
+                    dataLayer: false,
+                    serverSide: false,
+                    partnersList: true,
+                  });
+
+                  tarteaucitron.user.gtagUa = "G-GGZH8XN7JV";
+                  tarteaucitron.job = tarteaucitron.job || [];
+                  tarteaucitron.job.push("gtag");
+                  tarteaucitron.job.push("youtube");
+                };
+                document.body.appendChild(serviceScript);
+              };
+              document.body.appendChild(script);
+            })();
+          `
         }}
       />
     );

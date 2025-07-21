@@ -7,7 +7,11 @@ import { Helmet } from "react-helmet";
 
 
 const Layout = ({ children, pageUrl = "index" }) => {
+const ENABLE_TARTEAUCITRON = false;
+
 useEffect(() => {
+	if (!ENABLE_TARTEAUCITRON) return;
+
 	if (!window.tarteaucitron) {
 		const script = document.createElement("script");
 		script.src = "/tarteaucitron/tarteaucitron.min.js";
@@ -49,9 +53,8 @@ useEffect(() => {
 					serverSide: false,
 					partnersList: true,
 				});
-        window.tarteaucitron.job = window.tarteaucitron.job || [];
-window.tarteaucitron.job.push("youtube");
-
+				window.tarteaucitron.job = window.tarteaucitron.job || [];
+				window.tarteaucitron.job.push("youtube");
 			};
 			document.body.appendChild(serviceScript);
 		};
