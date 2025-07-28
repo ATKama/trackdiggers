@@ -329,19 +329,37 @@ const initYTTracking = () => {
       if (window.YT && typeof window.YT.Player === "function") {
         clearInterval(waitForYT);
 
-        new YT.Player(iframe, {
+        const player = new YT.Player(iframe, {
           events: {
             onStateChange: (event) => {
               if (event.data === YT.PlayerState.PLAYING) {
-                console.log(`[TRACKDIGGERS] Lecture de la vidéo : ${videoId}`);
-                if (typeof gtag !== "undefined") {
-                  gtag('event', 'video_play', {
-                    event_category: 'TrackDiggers',
-                    event_label: videoId,
-                    value: 1,
-                    send_to: 'G-GGZH8XN7JV'
-                  });
-                }
+                console.log(`[TRACKDIGGERS] Lecture démarrée : ${videoId}`);
+
+                // Timer 3 secondes
+                const playTimer = setTimeout(() => {
+                  if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+                    if (typeof gtag !== "undefined") {
+                      gtag('event', 'video_play_3s', {
+                        video_id: videoId,
+                        event_category: 'TrackDiggers',
+                        event_label: videoId,
+                        value: 1,
+                        send_to: 'G-GGZH8XN7JV'
+                      });
+                      console.log(`[GA4] Événement video_play_3s envoyé pour ${videoId}`);
+                    }
+                  }
+                }, 3000);
+
+                // Annule le timer si pause ou arrêt
+                const onStateChange = (e) => {
+                  if (e.data !== YT.PlayerState.PLAYING) {
+                    clearTimeout(playTimer);
+                    player.removeEventListener("onStateChange", onStateChange);
+                  }
+                };
+
+                player.addEventListener("onStateChange", onStateChange);
               }
             }
           }
