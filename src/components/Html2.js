@@ -315,7 +315,7 @@ document.getElementById("auralink-results").innerHTML = "";
     });
   }, []);
 const initYTTracking = () => {
-  const iframes = containerRef.current?.querySelectorAll('iframe[src*="youtube.com/embed"]') || [];
+  const iframes = containerRef.current?.querySelectorAll('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"]') || [];
 
   iframes.forEach((iframe) => {
     const videoId = iframe.src.split('/embed/')[1]?.split('?')[0];
