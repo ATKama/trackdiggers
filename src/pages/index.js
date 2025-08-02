@@ -340,7 +340,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
       padding="24px 16px"
       text-align="center"
       width="200px"
-      box-shadow="0 0 0 1px rgba(0,0,0,0.05)"
+      box-shadow="0 0 0 1,1px rgba(0,0,0,0.05)"
       display="flex"
       flex-direction="column"
     >
