@@ -5,7 +5,6 @@ import atomize from "@quarkly/atomize";
 const EmbedHTML = ({ children, ...props }) => {
   const ref = useRef(null);
   const containerRef = useRef(null);
-  const [hasContent, setHasContent] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useLayoutEffect(() => {
@@ -269,7 +268,7 @@ const EmbedHTML = ({ children, ...props }) => {
 </div>
 
           <div class="links">
-            <a href="https://www.youtube.com/C9oOy1vBKRA" target="_blank">YouTube</a>
+            <a href="https://www.youtube.com/watch?v=C9oOy1vBKRA" target="_blank">YouTube</a>
             <a href="https://open.spotify.com/intl-fr/track/72bBIkl4EsLc3yXVt4wGk2?si=6f145fea753843f6" target="_blank">Streaming</a>
             <a href="https://hyperfollow.com/bleupetrole?fbclid=PAZXh0bgNhZW0CMTEAAafWWXU9S-h9EMKgFNv7nc_5Lx0numUPkHrM77gk8tdain42b-tNQmKSGejXEw_aem_a5EpbtRfn6RL5vdBycwaMA" target="_blank">Follow</a>
           </div>
@@ -290,7 +289,9 @@ if (heading) heading.style.display = "none";
 const style = form.querySelector("#style-select").value;
 
 
-      if (typeof gtag !== "undefined") {
+      if (typeof gtag !== "undefined" &&
+    window.tarteaucitron?.userInterface?.responded &&
+    window.tarteaucitron?.state?.gtag === true) {
      gtag('event', 'mood_search', {
   mood_text: mood,
   send_to: 'G-GGZH8XN7JV'
@@ -303,7 +304,6 @@ document.getElementById("auralink-results").innerHTML = "";
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Basic " + btoa("admin:LOrenzOmOOd!")
         },
         body: JSON.stringify({ chatInput: mood, style: style || null })
 
@@ -312,6 +312,28 @@ document.getElementById("auralink-results").innerHTML = "";
       const html = await res.text();
       window.refreshAuralink && window.refreshAuralink(html);
     });
+    // Lancement du tracking initial dès que les iframes sont injectées
+const observer = new MutationObserver(() => {
+  if (window.YT && typeof window.YT.Player === "function") {
+    initYTTracking();
+    observer.disconnect();
+  }
+});
+observer.observe(ref.current, { childList: true, subtree: true });
+
+if (!window.YT || typeof window.YT.Player !== "function") {
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+
+  window.onYouTubeIframeAPIReady = () => {
+    initYTTracking();
+    observer.disconnect();
+  };
+} else {
+  initYTTracking();
+}
   }, []);
 const initYTTracking = () => {
   const iframes = document.querySelectorAll('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"]');
@@ -337,8 +359,10 @@ const initYTTracking = () => {
 
                 // Timer 3 secondes
                 const playTimer = setTimeout(() => {
-                  if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-                    if (typeof gtag !== "undefined") {
+                 if (typeof player.getPlayerState === "function" && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                    if (typeof gtag !== "undefined" &&
+    window.tarteaucitron?.userInterface?.responded &&
+    window.tarteaucitron?.state?.gtag === true) {
                       gtag('event', 'video_play_3s', {
                         video_id: videoId,
                         event_category: 'TrackDiggers',
@@ -371,7 +395,6 @@ const initYTTracking = () => {
 const patchTarteaucitronYoutube = () => {
   if (!window.tarteaucitron || typeof window.tarteaucitron.makeYoutube !== "function") return;
 
-  const originalMakeYoutube = window.tarteaucitron.makeYoutube;
 
   window.tarteaucitron.makeYoutube = function (div) {
     const videoID = div.getAttribute("data-videoID");
@@ -394,7 +417,6 @@ const patchTarteaucitronYoutube = () => {
 
     window.startAuralinkLoading = () => {
       setLoading(true);
-      setHasContent(false);
       if (containerRef.current) containerRef.current.innerHTML = "";
     };
 
@@ -436,7 +458,6 @@ patchTarteaucitronYoutube(); // force les iframes avec enablejsapi=1
       heading.style.display = "block";
     }
 
-    setHasContent(true);
   }
 };
   }, []);

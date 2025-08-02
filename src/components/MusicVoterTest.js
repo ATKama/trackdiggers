@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import atomize from "@quarkly/atomize";
+import { db } from "../firebase"; // 🔁 chemin adapté à ton projet
+import { collection, onSnapshot } from "firebase/firestore";
 
 const MusicVoterTest = () => {
 	const [cookiesAccepted, setCookiesAccepted] = useState(false);
@@ -10,6 +12,7 @@ const MusicVoterTest = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [votedIds, setVotedIds] = useState([]);
+	const [votesMap, setVotesMap] = useState({});
 
 useEffect(() => {
 	const checkConsent = () => {
@@ -82,6 +85,17 @@ useEffect(() => {
 		document.head.appendChild(styleSheet);
 	}, []);
 	useEffect(() => {
+	const unsubscribe = onSnapshot(collection(db, "votes"), (snapshot) => {
+		const updated = {};
+		snapshot.forEach(doc => {
+			updated[doc.id] = doc.data().votes || 0;
+		});
+		setVotesMap(updated);
+	});
+
+	return () => unsubscribe();
+}, []);
+	useEffect(() => {
 		const params = new URLSearchParams(window.location.search);
 		const soundID = params.get("soundID");
 
@@ -102,51 +116,41 @@ useEffect(() => {
 		}
 	}, []);
 
-	const vote = async customID => {
-		let storedVotes = [];
+	const vote = async (customID) => {
+  let storedVotes = [];
 
-		try {
-			storedVotes = JSON.parse(localStorage.getItem("votedForever")) || [];
-		} catch (e) {
-			storedVotes = [];
-		}
+  try {
+    storedVotes = JSON.parse(localStorage.getItem("votedForever")) || [];
+  } catch (e) {
+    storedVotes = [];
+  }
 
-		if (storedVotes.includes(customID)) {
-			alert("Vous avez déjà voté pour ce son !");
-			return;
-		}
+  if (storedVotes.includes(customID)) {
+    alert("Vous avez déjà voté pour ce son !");
+    return;
+  }
 
-		setVotedIds(prev => [...prev, customID]);
+  setVotedIds(prev => [...prev, customID]);
 
-		try {
-			const res = await fetch("https://n8n.atkmusic.fr/webhook/02c420f4-9f2c-4d80-ac57-5687d787410e", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					id: customID
-				})
-			});
+  try {
+    const res = await fetch("https://n8n.atkmusic.fr/webhook/vote-update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id: customID })
+    });
 
-			if (res.ok) {
-				const data = await res.json();
-				setPropositions(prev =>
-  prev.map(p =>
-    p["CUSTOM ID"] === customID
-      ? { ...p, votes: Number(data.votes || 0) }
-      : p
-  )
-);
-				const updatedVotes = [...storedVotes, customID];
-				localStorage.setItem("votedForever", JSON.stringify(updatedVotes));
-			} else {
-				alert("Le vote a échoué côté serveur.");
-			}
-		} catch (err) {
-			alert("Erreur de réseau : le vote n’a pas pu être envoyé.");
-		}
-	};
+    if (res.ok) {
+      const updatedVotes = [...storedVotes, customID];
+      localStorage.setItem("votedForever", JSON.stringify(updatedVotes));
+    } else {
+      alert("Le vote a échoué côté serveur.");
+    }
+  } catch (err) {
+    alert("Erreur de réseau : le vote n’a pas pu être envoyé.");
+  }
+};
 
 	const filtrer = p => {
   const moodMatch = !filtreMood || (p.mood || "").trim().toLowerCase() === filtreMood.toLowerCase();
@@ -161,7 +165,9 @@ useEffect(() => {
 		return match ? match[1] : "";
 	};
 
-	const sorted = [...propositions.filter(filtrer)].sort((a, b) => (b.votes || 0) - (a.votes || 0));
+	const sorted = [...propositions.filter(filtrer)].sort(
+  (a, b) => (votesMap[b["CUSTOM ID"]] || 0) - (votesMap[a["CUSTOM ID"]] || 0)
+);
 		if (!cookiesAccepted) {
 		return (
 			<div style={{
@@ -258,7 +264,7 @@ return <div style={{
 	}}
 >
 	<div style={{ display: "flex", flexDirection: "column", minWidth: "120px" }}>
-		<label style={{ fontSize: "0.85rem" }}>Mood</label>
+		<label htmlFor="filtre-mood" style={{ fontSize: "0.85rem" }}>Mood</label>
 		<select onChange={e => setFiltreMood(e.target.value)} style={{ padding: "4px", width: "100%" }}>
 			<option value="">Mood (Tous)</option>
 			<option value="Dansant">Dansant</option>
@@ -272,7 +278,7 @@ return <div style={{
 	</div>
 
 	<div style={{ display: "flex", flexDirection: "column", minWidth: "180px" }}>
-		<label style={{ fontSize: "0.85rem" }}>Style</label>
+		<label htmlFor="filtre-style" style={{ fontSize: "0.85rem" }}>Style</label>
 		<select onChange={e => setFiltreStyle(e.target.value)} style={{ padding: "4px", width: "100%" }}>
 			<option value="">Style (Tous)</option>
 			<option value="Rap / Trap / Drill">Rap / Trap / Drill</option>
@@ -291,7 +297,7 @@ return <div style={{
 	</div>
 
 	<div style={{ flex: "1", minWidth: "200px", display: "flex", flexDirection: "column" }}>
-		<label style={{ fontSize: "0.85rem" }}>Recherche</label>
+		<label htmlFor="recherche" style={{ fontSize: "0.85rem" }}>Recherche</label>
 		<input
 			type="text"
 			placeholder="Rechercher artiste/titre"
@@ -313,6 +319,7 @@ return <div style={{
 {sorted.map(p => (
 	
   <div
+  role="presentation"
     key={p["CUSTOM ID"]}
     id={`sound-${p["CUSTOM ID"]}`}
     style={{
@@ -400,7 +407,7 @@ return <div style={{
 
 					              
 <p style={{ margin: "0.25rem 0 0 0" }}>
-  <strong>Votes :</strong> {p.votes || 0}
+  <strong>Votes :</strong> {votesMap[p["CUSTOM ID"]] || 0}
 </p>
 					            
 				</div>

@@ -25,7 +25,8 @@ const SlideMenu = () => {
     <>
       {/* Burger toujours visible avec forçage de visibilité */}
       {!open && (
-        <div
+        <button
+        aria-label="Ouvrir le menu"
           onClick={() => setOpen(true)}
           style={{
             position: "fixed",
@@ -65,7 +66,7 @@ const SlideMenu = () => {
             margin: "6px 0",
             borderRadius: "2px"
           }} />
-        </div>
+        </button>
       )}
 
       {/* Menu latéral */}
@@ -85,7 +86,7 @@ const SlideMenu = () => {
           padding: "40px 20px"
         }}
       >
-        <div
+        <button
           onClick={() => setOpen(false)}
           style={{
             position: "absolute",
@@ -113,21 +114,23 @@ const SlideMenu = () => {
           }}
         >
           ✕
-        </div>
+        </button>
         
         <div style={{ marginTop: "60px", display: "flex", flexDirection: "column", fontFamily }}>
           <div style={{ fontSize: "20px", marginBottom: "20px", fontWeight: "bold" }}>Menu</div>
-          <a onClick={() => goTo("/")} style={linkStyle}>Search by mood</a>
-          <a onClick={() => goTo("/votes")} style={linkStyle}>Page de votes</a>
-          <a onClick={() => goTo("/cartes")} style={linkStyle}>Mes cartes</a>
-          <a onClick={() => goTo("/about")} style={linkStyle}>À propos</a>
-          <a onClick={() => goTo("/actus")} style={linkStyle}>Actualités & News</a>
+          <button onClick={() => goTo("/")} style={linkStyle}>Search by mood</button>
+          <button onClick={() => goTo("/votes")} style={linkStyle}>Page de votes</button>
+          <button onClick={() => goTo("/cartes")} style={linkStyle}>Mes cartes</button>
+          <button onClick={() => goTo("/about")} style={linkStyle}>À propos</button>
+          <button onClick={() => goTo("/actus")} style={linkStyle}>Actualités & News</button>
         </div>
       </div>
 
       {/* Overlay quand le menu est ouvert */}
       {open && (
         <div
+        role="presentation"
+aria-hidden="true"
           onClick={() => setOpen(false)}
           style={{
             position: "fixed",

@@ -3,7 +3,7 @@ module.exports = {
         title: "Trackdiggers – Recherche par mood",
         description: "Découvre des sons en fonction de ton humeur, vote pour tes morceaux préférés et collectionne des cartes musicales uniques.",
         author: "@trackdiggers",
-        siteUrl: "https://trackdiggers.com", // 👈 Mets bien ton vrai domaine ici
+        siteUrl: "https://trackdiggers.com",
     },
     plugins: [
         "gatsby-plugin-react-helmet",
@@ -16,10 +16,25 @@ module.exports = {
         {
             resolve: "gatsby-plugin-sitemap",
             options: {
-                output: "/sitemap.xml", // 👈 Correct path
+                output: "/sitemap.xml",
             }
         },
 
-        // "gatsby-plugin-offline", // optionnel si PWA
+        // 👉 Charge les fichiers Markdown de ton dépôt externe
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `articles`,
+                path: `${__dirname}/external/articles/articles`,
+            },
+        },
+
+        // 👉 Transforme les fichiers Markdown en noeuds Gatsby
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [],
+            },
+        },
     ],
 };
