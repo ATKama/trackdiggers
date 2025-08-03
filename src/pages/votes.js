@@ -159,7 +159,7 @@ export default function VotesPage() {
   margin="0 0 10px 0"
   text-align="center"
 >
-  🚀 Pendant la phase de lancement, les sons restent visibles jusqu’à 30 jours et n’ont besoin que de 10 votes pour être sélectionnés. Profitez-en pour faire découvrir vos pépites 💎
+  🚀 Pendant la phase de lancement, les sons restent visibles jusqu’à 30 jours et n’ont besoin que de 20 votes pour être sélectionnés. Profitez-en pour faire découvrir vos pépites 💎
 </Text>
 
 <Text
