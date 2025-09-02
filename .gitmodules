@@ -1,0 +1,3 @@
+[submodule "external/articles"]
+    path = external/articles
+    url = https://github.com/ATKama/trackdiggers-articles.git
