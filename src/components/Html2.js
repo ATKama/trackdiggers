@@ -1,6 +1,8 @@
 /* global gtag, YT */
 import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
 import atomize from "@quarkly/atomize";
+  import { db } from "../firebase"; // ← en haut du fichier
+import { doc, onSnapshot } from "firebase/firestore";
 
 const EmbedHTML = ({ children, ...props }) => {
   const ref = useRef(null);
@@ -419,18 +421,74 @@ const patchTarteaucitronYoutube = () => {
       setLoading(true);
       if (containerRef.current) containerRef.current.innerHTML = "";
     };
+   
 
+
+const makeSoundcloud = (div) => {
+  const url = div.getAttribute("data-url");
+  if (!url) return;
+
+  const iframe = document.createElement("iframe");
+  iframe.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true`;
+  iframe.allow = "autoplay";
+  iframe.setAttribute("width", "100%");
+  iframe.setAttribute("height", "100%");
+  iframe.setAttribute("frameborder", "no");
+  iframe.setAttribute("scrolling", "no");
+  iframe.style.borderRadius = "12px";
+
+  div.innerHTML = "";
+  div.appendChild(iframe);
+};
 window.refreshAuralink = html => {
-  setLoading(false);
   
+  setLoading(false);
+
   if (containerRef.current) {
     containerRef.current.innerHTML = html;
+ const liked = JSON.parse(localStorage.getItem("likedForever") || "[]");
 
-    // IMPORTANT : appelle initYTTracking ici, après injection du HTML
+const likeContainers = containerRef.current.querySelectorAll(".like-container");
+
+likeContainers.forEach(container => {
+  const id = container.getAttribute("data-id");
+  const btn = container.querySelector(".like-btn");
+  const count = container.querySelector(".like-count");
+
+  if (!id || !btn || !count) return;
+
+  onSnapshot(doc(db, "likes", id), (docSnap) => {
+    if (docSnap.exists()) {
+      count.textContent = docSnap.data().likes || 0;
+    }
+  });
+
+  if (liked.includes(id)) {
+    btn.textContent = "❤️";
+    btn.disabled = true;
+  }
+
+  btn.addEventListener("click", async () => {
+    if (liked.includes(id)) return;
+
+    btn.textContent = "❤️";
+    btn.disabled = true;
+
+    await fetch("https://n8n.atkmusic.fr/webhook/like-update", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id })
+    });
+
+    const newLiked = [...liked, id];
+    localStorage.setItem("likedForever", JSON.stringify(newLiked));
+  });
+});
+
+    // 🔁 Traitement YouTube
     if (window.YT && typeof window.YT.Player === "function") {
       initYTTracking();
     } else {
-      // Charger l'API si elle n'est pas encore dispo
       const tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
       const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -440,7 +498,9 @@ window.refreshAuralink = html => {
         initYTTracking();
       };
     }
-patchTarteaucitronYoutube(); // force les iframes avec enablejsapi=1
+
+    patchTarteaucitronYoutube();
+
     if (window.tarteaucitron && typeof window.tarteaucitron.makeYoutube === "function") {
       const ytDivs = containerRef.current.querySelectorAll(".youtube_player");
       ytDivs.forEach(div => {
@@ -452,14 +512,19 @@ patchTarteaucitronYoutube(); // force les iframes avec enablejsapi=1
       window.tarteaucitron.job.push("youtube");
     }
 
+    // 🎧 Traitement SoundCloud
+    const scDivs = containerRef.current.querySelectorAll(".soundcloud_player");
+    scDivs.forEach(div => makeSoundcloud(div));
+
+    // Mise à jour du titre
     const heading = document.getElementById("auralink-heading");
     if (heading) {
       heading.textContent = "Ta sélection";
       heading.style.display = "block";
     }
-
   }
 };
+
   }, []);
 
 return <div {...props}>

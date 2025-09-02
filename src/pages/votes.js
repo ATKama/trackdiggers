@@ -67,7 +67,7 @@ export default function VotesPage() {
 			<meta name="robots" content="index, follow" />
 			<link rel="canonical" href="https://trackdiggers.com/votes/" />
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
 	 </Helmet>
 		<Section
 			padding="0px 0 16px 0"
@@ -159,7 +159,7 @@ export default function VotesPage() {
   margin="0 0 10px 0"
   text-align="center"
 >
-  🚀 Pendant la phase de lancement, les sons restent visibles jusqu’à 30 jours et n’ont besoin que de 20 votes pour être sélectionnés. Profitez-en pour faire découvrir vos pépites 💎
+  20 votes suffisent pour qu’un son soit sélectionné. Il reste 30 jours en ligne.
 </Text>
 
 <Text
@@ -168,11 +168,7 @@ export default function VotesPage() {
   margin="0 0 20px 0"
   text-align="center"
 >
-  👉 Un artiste peut avoir jusqu’à <strong>3 morceaux en vote</strong> en même temps.  
-  <br />
-  🔁 Si un nouveau son est proposé alors que la limite est atteinte, il sera mis en attente.  
-  <br />
-  ⏳ Les morceaux expirent automatiquement au bout de <strong>30 jours</strong> s’ils ne sont pas sélectionnés.  
+  👉 Max 3 sons par artiste. Les autres attendent leur tour.
 </Text>
 <Text
   font="--small"
@@ -192,7 +188,7 @@ export default function VotesPage() {
 
 			<Box display="flex" flex-direction="column" gap="16px" align-items="center">
 				<Link
-					href="https://airtable.com/app6jjhoCkgO9tcDB/pagiKds3fkQEmlWqp/form"
+					href="https://trackdiggers.com/propose/"
 					target="_blank"
 					text-decoration-line="none"
 					color="--light"
@@ -414,7 +410,7 @@ export default function VotesPage() {
 	  <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
 	  <Text font="--base" margin="0 0 20px 0" color="#444">Tu es artiste ? Propose ton son et tente d’intégrer la prochaine sélection Trackdiggers. Mets ta musique entre les mains de vrais auditeurs.</Text>
 	  <Link
-		href="https://airtable.com/app6jjhoCkgO9tcDB/pagiKds3fkQEmlWqp/form"
+		href="https://trackdiggers.com/propose/"
 		background="#000"
 		color="#fff"
 		padding="10px 16px"

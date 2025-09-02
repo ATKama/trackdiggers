@@ -120,9 +120,29 @@ const SlideMenu = () => {
           <div style={{ fontSize: "20px", marginBottom: "20px", fontWeight: "bold" }}>Menu</div>
           <button onClick={() => goTo("/")} style={linkStyle}>Search by mood</button>
           <button onClick={() => goTo("/votes")} style={linkStyle}>Page de votes</button>
+          <button onClick={() => goTo("/playlist")} style={linkStyle}>Playlist</button>
           <button onClick={() => goTo("/cartes")} style={linkStyle}>Mes cartes</button>
-          <button onClick={() => goTo("/about")} style={linkStyle}>À propos</button>
           <button onClick={() => goTo("/actus")} style={linkStyle}>Actualités & News</button>
+          <button onClick={() => goTo("/about")} style={linkStyle}>À propos</button>
+  <button
+    onClick={() => goTo("/propose")}
+    style={{
+      ...linkStyle,
+      fontSize: "20px",
+      fontWeight: "bold",
+      backgroundColor: "#000",
+      color: "#fff",
+      marginTop: "30px"
+    }}
+    onMouseEnter={(e) => {
+      e.target.style.backgroundColor = "#222";
+    }}
+    onMouseLeave={(e) => {
+      e.target.style.backgroundColor = "#000";
+    }}
+  >
+    Propose ton son
+  </button>
         </div>
       </div>
 

@@ -158,7 +158,7 @@ const AboutPage = () => {
                 © 2025 Trackdiggers — ATK Music
             </Text>
             {"  "}
-            <Text font="--base" color="--dark">
+            <Text font="--base" as="div" color="--dark">
                 {"    "}
                 <Link href="/informations-legales/" margin="0 10px">
                     Mentions légales

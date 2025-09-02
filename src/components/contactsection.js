@@ -53,13 +53,16 @@ const ContactSection = () => {
         feedback.innerHTML = "❌ Une erreur est survenue. Réessaie plus tard.";
         setError(txt);
       }
+      
     });
   }, []);
+    void success;
+void error;
 
   return (
     <section style={{ padding: "30px 20px", background: "#f9f9f9", textAlign: "center", borderRadius: "16px" }}>
       <div style={{ maxWidth: "600px", margin: "0 auto", marginBottom: "40px" }}>
-        <h2 style={{ marginBottom: "20px" }}>Une remarque ? Un bug ? Un message ?</h2>
+        <h2 style={{ marginBottom: "20px" }}>Contacte l’équipe Trackdiggers</h2>
         <p style={{ color: "#555" }}>
           Dis-nous ce que tu penses, signale un problème ou envoie un message directement ici.
         </p>

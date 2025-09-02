@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import atomize from "@quarkly/atomize";
 import { db } from "../firebase"; // 🔁 chemin adapté à ton projet
 import { collection, onSnapshot } from "firebase/firestore";
+import * as FingerprintJS from '@fingerprintjs/fingerprintjs';
+
+const getFingerprint = async () => {
+  const fp = await FingerprintJS.load();
+  const result = await fp.get();
+  return result.visitorId;
+};
 
 const MusicVoterTest = () => {
 	const [cookiesAccepted, setCookiesAccepted] = useState(false);
@@ -12,6 +19,7 @@ const MusicVoterTest = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [votedIds, setVotedIds] = useState([]);
+	const [visibleIds, setVisibleIds] = useState({});
 	const [votesMap, setVotesMap] = useState({});
 
 useEffect(() => {
@@ -133,12 +141,17 @@ useEffect(() => {
   setVotedIds(prev => [...prev, customID]);
 
   try {
+    const fingerprint = await getFingerprint(); // ← ici on l’utilise
+
     const res = await fetch("https://n8n.atkmusic.fr/webhook/vote-update", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ id: customID })
+      body: JSON.stringify({
+        id: customID,
+        fingerprint
+      })
     });
 
     if (res.ok) {
@@ -381,17 +394,53 @@ return <div style={{
         title={p.title}
       />
     ) : (
-      <iframe
-        width="100%"
-        style={{
-          aspectRatio: "1 / 1",
-          borderRadius: "8px"
-        }}
-        src={`https://www.youtube.com/embed/${extraireIDYoutube(p.youtube)}`}
-        frameBorder="0"
-        allowFullScreen
-        title={p.title}
-      />
+visibleIds[p["CUSTOM ID"]] ? (
+  <iframe
+    width="100%"
+    height="100%"
+    style={{ aspectRatio: "1 / 1", borderRadius: "8px" }}
+    src={`https://www.youtube.com/embed/${extraireIDYoutube(p.youtube)}?autoplay=1&rel=0`}
+    frameBorder="0"
+    allow="autoplay; encrypted-media"
+    allowFullScreen
+    title={p.title}
+  />
+) : (
+ <button
+  aria-label="Lire l'extrait"
+  onClick={() =>
+    setVisibleIds((prev) => ({ ...prev, [p["CUSTOM ID"]]: true }))
+  }
+  style={{
+    width: "100%",
+    aspectRatio: "1 / 1",
+    border: "0",
+    borderRadius: "8px",
+    cursor: "pointer",
+    position: "relative",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(https://img.youtube.com/vi/${extraireIDYoutube(
+      p.youtube
+    )}/hqdefault.jpg)`
+  }}
+>
+  <img
+    src="https://img.icons8.com/color/96/000000/youtube-play.png"
+    alt="Play"
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      width: "64px",
+      height: "64px",
+      opacity: 0.95
+    }}
+  />
+</button>
+)
     )}
 
     	<div style={{

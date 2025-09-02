@@ -62,11 +62,13 @@ $ npm run build
 - Server-side Rendering
 
 # 💡 About [Quarkly](https://quarkly.io)
+<div>
 <p>
 A unique tool for webmasters, designers and developers.
 <br>
 Here you can create websites and web apps quickly, conveniently and beautifully.
 </p>
+</div>
 
 - [Documentation](https://quarkly.io/docs)
 - [Features](https://quarkly.io/features)

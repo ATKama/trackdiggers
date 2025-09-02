@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import theme from "theme";
 import { Theme, Link, Image, Section, Text, Box } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
@@ -7,8 +7,61 @@ import { Override } from "@quarkly/components";
 import * as Components from "components";
 import Layout from "../components/layout"; // 👈 à ajouter tout en haut
 export default function CartesPage() {
+
+const [showModal, setShowModal] = useState(true);
+
+useEffect(() => {
+  setShowModal(true);
+}, []);
   return (
     <Layout pageUrl="cartes">
+		{showModal && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "#fff",
+        padding: "30px",
+        borderRadius: "12px",
+        textAlign: "center",
+        maxWidth: "90%",
+        width: "400px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+      }}
+    >
+      <h2 style={{ marginBottom: "16px" }}>⛏️ Cartes en cours de création</h2>
+      <p style={{ marginBottom: "24px" }}>
+        Cette fonctionnalité est actuellement en bêta. Les cartes musicales seront bientôt disponibles !
+      </p>
+      <button
+        onClick={() => (window.location.href = "/")}
+        style={{
+          padding: "12px 20px",
+          borderRadius: "8px",
+          backgroundColor: "#000",
+          color: "#fff",
+          border: "none",
+          cursor: "pointer",
+          fontWeight: "bold",
+        }}
+      >
+        Retour à l’accueil
+      </button>
+    </div>
+  </div>
+)}
       <Theme theme={theme}>
 		<GlobalQuarklyPageStyles pageUrl={"cartes"} />
 		<Helmet>
@@ -29,7 +82,7 @@ export default function CartesPage() {
 			<meta name="robots" content="index, follow" />
 			<link rel="canonical" href="https://trackdiggers.com/cartes/" />
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
 	 </Helmet>
 		<Section
 			padding="0px 0 16px 0"
@@ -143,7 +196,7 @@ export default function CartesPage() {
 					</Link>
 				</Text>
 			</Box>
-			<Components.Playlist margin="0px 0px 0px 0px" />
+			<Components.Cards margin="0px 0px 0px 0px" />
 			<Box
 				background="#f0f0f0"
 				padding="24px"
@@ -195,7 +248,7 @@ export default function CartesPage() {
 					Découvrir le moteur TrackDiggers
 				</Link>
 				<Link
-					href="https://airtable.com/app6jjhoCkgO9tcDB/pagiKds3fkQEmlWqp/form"
+					href="https://trackdiggers.com/propose/"
 					target="_blank"
 					text-decoration-line="none"
 					color="--light"
@@ -357,7 +410,7 @@ export default function CartesPage() {
 			  <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
 			  <Text font="--base" margin="0 0 20px 0" color="#444">Tu es artiste ? Propose ton son et tente d’intégrer la prochaine sélection Trackdiggers. Mets ta musique entre les mains de vrais auditeurs.</Text>
 			  <Link
-				href="https://airtable.com/app6jjhoCkgO9tcDB/pagiKds3fkQEmlWqp/form"
+				href="https://trackdiggers.com/propose/"
 				background="#000"
 				color="#fff"
 				padding="10px 16px"
@@ -556,7 +609,7 @@ export default function CartesPage() {
 			  </Link>
 			</Box>
 		</Section>
-	</Theme>;
+	</Theme>
 	</Layout>
  );
 }

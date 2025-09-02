@@ -2,7 +2,7 @@ const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
-const targetDir = path.join(__dirname, "../external/articles/articles");
+const targetDir = path.join(__dirname, "../external/articles");
 
 if (!fs.existsSync(targetDir)) {
   console.log("Clonage du dépôt d'articles...");

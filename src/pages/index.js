@@ -35,7 +35,7 @@ export default function IndexPage() {
 			<meta name={"msapplication-TileColor"} content={"#000000"} />
 			<link rel="canonical" href="https://trackdiggers.com" />
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
 	 <script type="application/ld+json">
 {`
 {
@@ -54,6 +54,19 @@ export default function IndexPage() {
 }
 `}
 </script>
+  <style>{`
+    [data-hidden="true"] {
+      position: absolute !important;
+      left: -9999px !important;
+      top: 0 !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+    }
+  `}</style>
+
 </Helmet>
 		<Section
 			padding="0px 0 16px 0"
@@ -140,6 +153,19 @@ export default function IndexPage() {
 	max-width="100%"
 	padding="80px 10px 0px 10px"
 />			
+<Text
+  as="h2"
+  style={{
+    fontFamily: "'Black Ops One', sans-serif",
+    fontSize: "42px",
+    fontWeight: "bold",
+    color: "#000",
+    textAlign: "center",
+    margin: "0 0 24px 0"
+  }}
+>
+  T’as une vibe en tête ?
+</Text>
 <Box
   max-width="1100px"
   width="100%"
@@ -149,6 +175,7 @@ export default function IndexPage() {
   box-sizing="border-box"
 >
   <Box
+  className="visually-hidden"
     background="#f0f0f0"
     padding="16px"
     border-radius="12px"
@@ -180,7 +207,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
       padding: "10px",
       borderRadius: "20px",
       textAlign: "center",
-      margin: "32px auto",
+      margin: "0px auto",
       maxWidth: "1100px",
       boxShadow: "0 12px 32px rgba(0,0,0,0.3)",
       display: "flex",
@@ -190,34 +217,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
     }}
   >
 	
-<Box
-  style={{
-    backgroundColor: "rgba(31, 31, 31, 0.7)", // semi-transparent
-    padding: "12px 20px",
-    borderRadius: "12px",
-    display: "inline-block",
-    marginBottom: "0px",
-    backdropFilter: "blur(6px)", // floutage du fond autour
-    WebkitBackdropFilter: "blur(6px)", // pour compatibilité Safari
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)" // flou autour pour renforcer l’effet
-  }}
->
-  <Text
-    as="h2"
-    fontSize="28px"
-    fontWeight="900"
-    color="#fff"
-    style={{
-      fontFamily: "'Black Ops One', sans-serif",
-      textTransform: "uppercase",
-      letterSpacing: "1px",
-      textShadow: "2px 2px 0 #000, 4px 4px 6px rgba(0, 0, 0, 0.6)",
-      margin: 0,
-    }}
-  >
-    T’as une vibe en tête ?
-  </Text>
-</Box>
+
 
 <Text
   fontSize="16px"
@@ -229,7 +229,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 	marginBottom: "10px"
   }}
 >
-  ⬇︎ TAPE ICI ⬇︎
+  ⬇︎ FAIS UNE RECHERCHE PAR MOOD ICI ⬇︎
 </Text>
 
     {/* Barre de recherche intégrée */}
@@ -249,7 +249,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
   padding="12px 16px"
   border-radius="12px"
   text-align="center"
-  margin="0 0 24px 0"
+  margin="0 0 0px 0"
   box-sizing="border-box"
   display="flex"
   align-items="center"
@@ -257,33 +257,42 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
   flex-direction="column"
 >
   <Text font="--base" color="--dark" margin="0 0 8px 0" className="force-inter">
-    Tous les morceaux sélectionnés sont maintenant regroupés dans notre playlist <strong>Spotify TrackDiggers</strong> 
+    Tous les morceaux sélectionnés sont regroupés dans notre playlist officielle <strong>TrackDiggers</strong> 
   </Text>
   <Link
-    href="https://open.spotify.com/playlist/1nyWcB493Lb26W9rpKyh7Y"
-    target="_blank"
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "8px",
-      background: "#1DB954",
-      color: "#fff",
-      padding: "10px 16px",
-      borderRadius: "8px",
-      textDecoration: "none",
-      fontWeight: "bold"
-    }}
-  >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg"
-      alt="Spotify logo"
-      style={{ width: "20px", height: "20px" }}
-    />
-    Écouter la playlist
-  </Link>
+  href="/playlist"
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    background: "#FFC978", // couleur inspirée de ton header de l'index
+    color: "#111",
+    padding: "10px 16px",
+    borderRadius: "8px",
+    textDecoration: "none",
+    fontWeight: "bold",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+    transition: "background 0.3s",
+  }}
+  onMouseEnter={(e) => e.currentTarget.style.background = "#FFB347"}
+  onMouseLeave={(e) => e.currentTarget.style.background = "#FFC978"}
+>
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
+    alt="Icône Play"
+    style={{ width: "20px", height: "20px" }}
+  />
+  Accéder à la playlist
+</Link>
+<Box
+  width="100%"
+  height="2px"
+  background="#ababab"
+  margin="24px 0"
+/>
 </Box>
-<Section padding="60px 0px" background="#f9f9f9">
-  <Box max-width="900px" margin="0 auto" text-align="center">
+<Section data-hidden="true" padding="60px 0px" background="#f9f9f9">
+  <Box  max-width="900px" margin="0 auto" text-align="center">
     <Text as="h2" font="--headline2" margin="0 0 24px 0" color="#000000">
       La mission de Trackdiggers
     </Text>
@@ -305,8 +314,8 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
     </Link>
   </Box>
 </Section>
-<Section padding="80px 24px 0px 0px" background="#ffffff" sm-padding="50px 0px 0px 0px" style={{
-    minHeight: "850px" }}> 
+<Section  padding="80px 24px 0px 0px" background="#ffffff" sm-padding="50px 0px 0px 0px" style={{
+    minHeight: "850px", position: "absolute", left: "-9999px" }}> 
   <Override slot="SectionContent" max-width="1000px" margin="0 auto" />
   
   <Text
@@ -432,7 +441,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
       <Text font="--lead" margin="0 0 10px 0" font-weight="700">Proposer un son</Text>
       <Text font="--base" margin="0 0 20px 0" color="#444">Tu es artiste ? Propose ton son et tente d’intégrer la prochaine sélection Trackdiggers. Mets ta musique entre les mains de vrais auditeurs.</Text>
       <Link
-        href="https://airtable.com/app6jjhoCkgO9tcDB/pagiKds3fkQEmlWqp/form"
+        href="https://trackdiggers.com/propose/"
         background="#000"
         color="#fff"
         padding="10px 16px"
@@ -500,8 +509,8 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
     </Box>
   </Box>
 </Section>
-		<Section id="booster" background="white" color="--dark" padding="64px 0 50px 0">
-			<Box margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff" justify-content="center" >
+		<Section data-hidden="true" id="booster" background="white" color="--dark" padding="64px 0 50px 0">
+			<Box data-hidden="true" margin="-16px -16px -16px -16px" display="flex" flex-wrap="wrap" sm-background="#ffffff" justify-content="center" >
 				{"  "}
 				<Box padding="0px 0px 0px 0px" width="50%" lg-width="100%" margin="0 auto">
 					{"    "}
@@ -513,7 +522,7 @@ c’est ton outil pour dénicher des morceaux d’artistes en pleine ascension. 
 							letter-spacing="1px"
 							text-transform="uppercase"
 							margin="0"
-							marginBotton="30px"
+						
 							text-align="center"
 							text-shadow="1px 1px 2px rgba(0, 0, 0, 0.8)"
 						>
@@ -668,7 +677,7 @@ form.track3.value = titles[2] || "";
 			</Box>
 		</Section>
 		
-<Section padding="40px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 80px 0px"> 
+<Section data-hidden="true" padding="40px 24px 0px 0px" background="#ffffff" sm-padding="0px 0px 80px 0px"> 
   <Override slot="SectionContent" flex-direction="column" align-items="center" />
   <Text as="h2" font="--headline2" margin="0 0 48px 0" text-align="center" color="#000000">
     Comment ça marche ?
@@ -759,7 +768,7 @@ form.track3.value = titles[2] || "";
     </Box>
   </Box>
 </Section>
-		<Section padding="80px 0" sm-padding="0px 0 0px 0">
+		<Section data-hidden="true" padding="80px 0" sm-padding="0px 0 0px 0">
 			<Override
 				slot="SectionContent"
 				align-items="center"
@@ -819,6 +828,7 @@ form.track3.value = titles[2] || "";
     target="_blank"
     rel="noopener noreferrer"
     style={{
+      position: "absolute", left: "-9999px",
       padding: "12px 24px",
       backgroundColor: "#ff0000",
       color: "#ffff",
@@ -846,7 +856,7 @@ form.track3.value = titles[2] || "";
   </Link>
 </Box>
 		</Section>
-				<Section padding="20px 0" background="#ffffff" border-radius="30px">
+				<Section padding="0px 0" background="#ffffff" border-radius="30px">
 			<Override slot="SectionContent" max-width="720px" margin="0 auto" text-align="center" />
 			<Components.contactsection sm-margin="0px" margin="0px" width="100%" max-width="100%" display="block" border-radius="100px" />
 		</Section>

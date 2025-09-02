@@ -23,7 +23,7 @@ export default (() => {
 			<meta name={"msapplication-TileImage"} content={"https://uploads.quarkly.io/682f25cf9335410018cc8538/images/Copie%20de%20TrackDigger%20%2864%20x%2064%20px%29.png?v=2025-06-21T16:50:26.362Z"} />
 			<meta name={"msapplication-TileColor"} content={"#000000"} />
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398071244867525"
-     crossorigin="anonymous"></script></Helmet>
+     crossOrigin="anonymous"></script></Helmet>
 		<Section
 			padding="0px 0 16px 0"
 			quarkly-title="Header"
